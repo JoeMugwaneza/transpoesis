@@ -1,31 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div container-fuild>
+  <%= link_to "New Post", new_post_path, style: "float: right; padding-right:50px;}}"%>
+  <% @posts.each do |post| %>
+  <h4><%= link_to post.name, post %></h4>
+    <p class="post_index">
+      <%= post.body %>
+    </p>
 
-<h1>Posts</h1>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= post.body %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+</div>

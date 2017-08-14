@@ -1,0 +1,9 @@
+<div class="comment clearfix">
+  <div class="comment_content">
+    <p class="comment_time"> Commented <%= time_ago_in_words(comment.created_at) %> Ago</p>
+    <p class="comment_body"><%= comment.body %><br>
+    <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash", method: :delete, data: {confirm: 'you are going to delete this comment, you want to continue?'},  style: "color: red;"%>
+    </p>
+  </div>
+   <p></p>
+</div>
