@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyString
-  post_id: 1
+  email: MyString
+  password_digest: MyString
 
 two:
-  body: MyString
-  post_id: 1
+  email: MyString
+  password_digest: MyString
