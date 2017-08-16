@@ -2,7 +2,7 @@
 <div container>
 <h4><%= @post.name %></h4>
   <p class="post_show">
-    <%= @post.body %><br>
+    <%= @post.body.html_safe %><br>
     <%= link_to 'Edit', "/posts/#{@post.id}/edit" %>
     <%= link_to 'Delete', post_path, method: :delete, data: {confirm: 'Are you sure?'} %>
   </p>
