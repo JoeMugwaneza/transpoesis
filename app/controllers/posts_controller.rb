@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authorize, only: [:edit, :update]
   
   def index
-    @posts = Post.all
+    @posts = Post.where('review =?', true)
     @post = Post.new
   end
 

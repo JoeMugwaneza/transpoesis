@@ -57,4 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt-ruby', '~> 3.1', '>= 3.1.5'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-
+gem 'ckeditor', '~> 4.2', '>= 4.2.4'
+gem 'carrierwave'
+gem 'mini_magick'
