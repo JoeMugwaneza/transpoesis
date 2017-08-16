@@ -1,0 +1,4 @@
+<% @user.each do |user|%>
+<h4><%= link_to user.name, post_path(user)%></h4>
+<p><%= user.body%></p>
+<% end%>
