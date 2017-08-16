@@ -7,7 +7,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <li>
+    <a href="<%= users_path%>">Member</a>
+  </li>
   <body>
     <% if current_user %>
       Logged in as <%= current_user.email %>.
