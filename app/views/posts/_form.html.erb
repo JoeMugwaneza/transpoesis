@@ -1,14 +1,32 @@
 <%= javascript_include_tag Ckeditor.cdn_url %>
-<div container-fuild>
+<div class="jumbotron">
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+     <h4> New Poem </h4>  
+      
   <%= form_for @post do |f| %>
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
 
     <%= f.label :body %><br>
     <p>
-    <%= f.cktext_area :body %><br>
-    <%= f.submit %>
-      
+      <%= f.cktext_area :body %><br>
     </p>
+    <div class="checkbox">
+        <div>
+          <%= f.label :category_ids, "Select Poem Category" %><br>
+          <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id:"post_category_tokens"} %>
+        </div>
+    </div>
+      <div class="checkbox">
+        <%= f.submit class: "btn btn-primary active" %>
+      </div>
   <% end %> 
+      </div>
+  </div>
+  </div>
 </div>
+
+

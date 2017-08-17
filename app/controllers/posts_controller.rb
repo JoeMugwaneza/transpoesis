@@ -2,8 +2,11 @@ class PostsController < ApplicationController
   before_action :authorize, only: [:edit, :update]
   
   def index
-    @posts = Post.where('review =?', true)
-    @post = Post.new
+    if params[:sort]
+      @posts = Category.find_by(id: params[:sort].to_i).posts
+    else
+      @posts = Post.where('review =?', true)
+    end
   end
 
   def show 
@@ -55,7 +58,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:name, :body, :user_id)
+      params.require(:post).permit(:name, :body, :user_id, category_ids: [])
     end
 
     def find_post

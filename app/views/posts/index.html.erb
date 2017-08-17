@@ -3,7 +3,7 @@
   <% @posts.each do |post| %>
   <h4><%= link_to post.name, post %></h4>
     <p class="post_index">
-      <%= post.body %>
+      <%= post.body.html_safe %>
     </p>
 
   <% end %>
