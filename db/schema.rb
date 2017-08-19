@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819155041) do
+ActiveRecord::Schema.define(version: 20170819173408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,12 +62,17 @@ ActiveRecord::Schema.define(version: 20170819155041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "review", default: "f"
-    t.integer "cached_votes_up", default: 0
-    t.integer "cached_votes_down", default: 0
-    t.integer "cached_votes_score", default: 0
-    t.index ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
-    t.index ["cached_votes_score"], name: "index_posts_on_cached_votes_score"
-    t.index ["cached_votes_up"], name: "index_posts_on_cached_votes_up"
+  end
+
+  create_table "punches", force: :cascade do |t|
+    t.integer "punchable_id", null: false
+    t.string "punchable_type", limit: 20, null: false
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.datetime "average_time", null: false
+    t.integer "hits", default: 1, null: false
+    t.index ["average_time"], name: "index_punches_on_average_time"
+    t.index ["punchable_type", "punchable_id"], name: "punchable_index"
   end
 
   create_table "users", force: :cascade do |t|

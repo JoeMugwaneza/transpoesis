@@ -5,5 +5,5 @@ class Post < ApplicationRecord
   has_many :categories, through: :post_categories
   has_many :feedbacks
 
-  acts_as_votable
+  acts_as_punchable
 end

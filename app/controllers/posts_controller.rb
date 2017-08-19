@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def show 
     @post = Post.find_by(id: params[:id])
+    @post.punch(request)
   end
 
   def new
