@@ -15,3 +15,15 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+
+if (!isTouchDevice()) {
+  $('[data-toggle*="tooltip"]').tooltip();
+}
+
+// utility
+
+function isTouchDevice() {
+  return !!('ontouchstart' in window || navigator.msMaxTouchPoints);
+}

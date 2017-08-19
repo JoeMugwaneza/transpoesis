@@ -1,103 +1,159 @@
+<div class="navbar navbar-default visible-xs">
+  <div class="container-fluid">
+    <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
+      <i class="fa fa-tasks"></i> Categories
+    </button>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div class="row">
  
+<h1 class="text-center" style="color: white;">Poetry Soul</h1>
+<br>
 
-   <div class="col-md-3 col-md-offset-1">  
-        <div class="w3-sidebar w3-bar-block w3-collapse w3-card-2 w3-animate-left" style="width:300px;" id="mySidebar">
-          <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-          
-          <a href="#" class="w3-bar-item w3-button">Link 1</a>
-          <a href="#" class="w3-bar-item w3-button">Link 2</a>
-          <a href="#" class="w3-bar-item w3-button">Link 3</a>
+    <!-- filter sidebar -->
+    <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar thumbnail">
+
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-1">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Trending Poems
+        </h4>
+        <div id="group-1" class="list-group collapse in">
+         <% 10.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">312</span>Talking to my Soul
+          </a>
+         <% end %>
         </div>
       </div>
 
-      <div class="w3-main" style="margin-left:200px">
-        <div class="">
-          <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
-          <div class="w3-container">
-          </div>
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-2">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Recently Added
+        </h4>
+        <div id="group-2" class="list-group collapse in">
+          <% 10.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">312</span> Talking to my Soul
+          </a>
+         <% end %>
         </div>
       </div>
 
-      <script>
-        function w3_open() {
-          document.getElementById("mySidebar").style.display = "block";
-        }
-        function w3_close() {
-          document.getElementById("mySidebar").style.display = "none";
-        }
-      </script>
-
-
-  <div class="col-md-6 col-md-offset-4 col-xs-12">
-
-    <% 10.times do ||%>
-    <div class="main-box">
-
-      <div class="col-md-3">
-        <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="index-image">
-      </div>
-      <div class="col-md-9" style="padding-top: 10px;">
-        <a href="#"><p style="color: #2f5369"><strong>Katy Chrisie</strong></p></a>
-        <hr>
-        <p><strong>Poem Title:</strong>A tree in my heart!<p>
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-3">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Favorites
+        </h4>
+        <div id="group-3" class="list-group collapse in">
+          <% 10.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">312</span> Talking to my Soul
+          </a>
+         <% end %>
         </div>
-        <hr>
-        <div class="col-md-12 poem-body">
-          <p><span>I've planted a tree in my heart!
-            Whenever I feel tired,
-            rushing,
-            I sit down,
-            with my back against the trunk
-            I look at the sky
-            through the foliage of the tree
-            and peace comes back
-            to my heart.<i style="color: blue;">| Read more</i></span></p>
-          </div>
+      </div>
 
-          <div class="text-center">
-            <div class="btn-group">
-              <a href="" class="btn btn-primary react-buttons">Like</a>
-              <a href="" class="btn btn-primary react-buttons">Comment</a>
-              <!-- Trigger modal a button -->
-              <a type="button" class="btn btn-primary react-buttons" data-toggle="modal" data-target="#Modal">Listen</a>
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-4">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Categories
+        </h4>
+        <div id="group-4" class="list-group collapse in">
+          <% 1.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">31k</span>Love
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">45M</span>Education
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">54k</span>Woman
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">454k</span>Crush
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">97k</span>Imagination
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">33k</span>Imagination
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">45k</span>Other
+          </a>
+         <% end %>
+        </div>
+      </div>
 
-              <!-- Modal -->
-              <div id="Modal" class="modal fade" role="dialog">
-                <div class="modal-dialog video-box">
+    </div>
 
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <!-- table container -->
+    <div class="col-md-8">
+    <% 10.times do || %>  
+      <div class="col-md-12 main-box">
+        <div class="col-md-3">
+          <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="index-image">
+        </div>
+        <div class="col-md-9">
+          <a href="#" style="color: #2f5369"><strong>Katy Chrisie</strong></a> : <a href=""> Talking to Myself</a>
+          <hr>
+          <div class="col-md-12 poem-body">
+            <p>I've planted a tree in my heart!
+              Whenever I feel tired,
+              rushing,
+              I sit down,
+              with my back against the trunk
+              I look at the sky
+              through the foliage of the tree
+              and peace comes back
+              to my heart.<i style="color: blue;">| Read more</i></p>
+            </div>
 
-                    </div>
-                    <div class="modal-body">
+            <div class="text-center">
+              <div class="btn-group">
+                <a href="" class="btn btn-primary react-buttons">Like</a>
+                <a href="" class="btn btn-primary react-buttons">Comment</a>
+                <!-- Trigger modal a button -->
+                <a type="button" class="btn btn-primary react-buttons" data-toggle="modal" data-target="#Modal">Listen</a>
 
-                      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
+                <!-- Modal -->
+                <div id="Modal" class="modal fade" role="dialog">
+                  <div class="modal-dialog video-box">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                      </div>
+                      <div class="modal-body">
+                        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                <a href="#" class="dropdown-toggle btn btn-primary react-buttons" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share <span class="caret"></span></a>
+                <ul class="dropdown-menu pull-right">
+                  <li><a href="#">Facebook</a></li>
+                  <li><a href="#">Linkedin</a></li>
+                  <li><a href="#">Twitter</a></li>
+                  <li><a href="#">Instagram</a></li>
+                  <li><a href="#">Whatsapp</a></li>
+                  <li><a href="#">Google+</a></li>
+                </ul>
               </div>
-
-              <a href="#" class="dropdown-toggle btn btn-primary react-buttons" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share <span class="caret"></span></a>
-              <ul class="dropdown-menu pull-right">
-                <li><a href="#" class="fa fa-facebook">Facebook</a></li>
-                <li><a href="#">Linkedin</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Whatsapp</a></li>
-                <li><a href="#">Google+</a></li>
-
-              </ul>
             </div>
           </div>
-
-
         </div>
-        <%end%>
+        <% end %>
       </div>
     </div>
-  </div>

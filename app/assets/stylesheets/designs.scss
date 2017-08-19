@@ -4,14 +4,13 @@
 
 
 .main-box {
-  background-color: #e8e8e8;
-  margin-top: 10px;
+  background-color: white;
+  margin-bottom: 10px;
   padding: 20px;
 }
 
 .poem-body {
-  padding-left: 100px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 20px;
   padding-right: 20px;
 }
@@ -68,3 +67,159 @@
   color: white;
 }
 
+.category {
+  background-color: #d6d2d2;
+}
+
+.category-title {
+  background-color: #112a3e;
+  color: white;
+}
+
+.side-poet-image {
+  width: 30px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.time-elapsed {
+  color: grey;
+  font-size: 10px;
+}
+
+
+// sidebar
+
+
+// site specific
+
+.container-fluid {
+  max-width: 960px;
+}
+
+// utility
+
+[data-toggle="collapse"] {
+  cursor: pointer;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.valign-middle {
+  vertical-align: middle !important;
+}
+
+// responsive table override
+
+// wrap responsive table in media query
+@media screen and (max-width: 767px) {
+
+  .table-responsive {
+
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    th,
+    td {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    .align-center,
+    .align-right {
+      text-align: inherit;
+    }
+    
+    tr {
+      border-top: 1px solid #ddd;
+      
+      &:first-child {
+        border: 0;
+      }
+    }
+
+    // override bootstrap's styling
+    > tbody > tr > td {
+      padding-left: 50%;
+      border-top-color: rgba(221, 221, 221, 0.5);
+      
+      &:first-child {
+        border: 0;
+      }
+    }
+
+    [data-label] {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 8px;
+        content: attr(data-label);
+        font-weight: bold;
+      }
+    }
+
+  }
+  
+  // a little tweaking
+  
+  .navbar-fixed-top.visible-xs + .row {
+    padding-top: 60px; // height plus padding
+  }
+  
+  .btn .visible-xs {
+    display: inline-block !important;
+  }
+  
+  .sliding-sidebar {
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    min-height: 100%;
+    border-right: 1px solid #ccc;
+    
+    &.collapse,
+    &.collapsing {
+      display: block !important;
+      transform: translate3D(-100%, 0, 0);
+      transition: all 200ms;
+    }
+    
+    &.collapse.in {
+      transform: translate3D(0, 0, 0);
+      box-shadow: 
+        1px 0 0 rgba(0,0,0,0.05),
+        2px 0 0 rgba(0,0,0,0.05),
+        3px 0 0 rgba(0,0,0,0.05);
+    }
+  }
+}
+
+.parent-expanded {
+  
+}
+.parent-collapsed {
+  display: none;
+}
+
+.collapsed {
+  .parent-expanded {
+    display: none;
+  }
+  
+  .parent-collapsed {
+    display: inline-block;
+  }
+}

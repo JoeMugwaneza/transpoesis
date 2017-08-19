@@ -15,9 +15,13 @@
  */
 
  body{
-  font-family: 'Bellefair', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #214460;
   width: 100%;
+}
+
+p {
+    font-size: 15px;
 }
 
 
