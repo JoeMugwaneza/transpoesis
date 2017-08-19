@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show 
-    find_post
+    @post = Post.find_by(id: params[:id])
   end
 
   def new

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LikeDislike::Engine, at: '/'
   mount Ckeditor::Engine => '/ckeditor'
   root 'posts#index'
 
