@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # designs routes
   get "/home" => "designs#home"
   get "/poets" => "designs#poets"
+  get "/show" => "designs#show"
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
