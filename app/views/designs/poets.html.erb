@@ -1,223 +1,115 @@
-<div class="wrapper home">
+<div class="navbar navbar-default visible-xs">
+  <div class="container-fluid">
+    <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
+      <i class="fa fa-tasks"></i> Categories
+    </button>
+  </div>
+</div>
 
-  <section class="col-md-12 col-lg-10 grids">
-    <div class="row">
-      <div class="grid-item item1">
-        <div class="content">
-          <div class="bg" style="background-image: url('https://s-media-cache-ak0.pinimg.com/originals/e6/ab/81/e6ab813eef59c27432f3921b32657367.jpg');"></div>
-          <div class="caption">
-            <div class="text">
+<div class="container">
+  <div class="row">
+<br>
 
-              <p><span><div class="glyphicon glyphicon-user"></div><strong> Plante Josue</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 36 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
+    <!-- filter sidebar -->
+    <div id="filter-sidebar" class="col-xs-9 col-md-3 visible-sm visible-md visible-lg collapse sliding-sidebar thumbnail">
 
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-            </div>                
-          </div>                
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-1">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Trending Poems
+        </h4>
+        <div id="group-1" class="list-group collapse out">
+         <% 10.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">312</span>Talking to my Soul
+          </a>
+         <% end %>
         </div>
       </div>
-      <div class="grid-item item2">
-        <div class="content">
-          <div class="bg" style="background-image: url('http://www.newtimes.co.rw/files/photos/1453582239Andrea-Grieder.jpg');"></div>
-          <div class="caption">
-            <div class="text">
 
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-2">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Recently Added
+        </h4>
 
-              <p><span><div class="glyphicon glyphicon-user"></div><strong>Andrea Grieder</strong>| Female </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 103 poems</p>
-              <p><span>andreag@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +25078900000</span></p>
+        <div id="group-2" class="list-group collapse out">
+          <% 10.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">312</span> Talking to my Soul
+          </a>
+         <% end %>
+        </div>
 
-              <span class="calltoaction"><a href="/">Poems</a></span>
+      </div>
 
-
-            </div>                
-          </div>                
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-3">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Favorites
+        </h4>
+        <div id="group-3" class="list-group collapse out">
+          <% 10.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">312</span> Talking to my Soul
+          </a>
+         <% end %>
         </div>
       </div>
-      <div class="grid-item item3">
-        <div class="content">
-          <div class="bg" style="background-image: url('https://organicthemes.com/demo/profile/files/2012/12/profile_img.png');"></div>
-          <div class="caption">
-            <div class="text">
 
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong>John Smith</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 14 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +475045742057</span></p>
-
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>                
-          </div>                
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-4">
+          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+          Categories
+        </h4>
+        <div id="group-4" class="list-group collapse in">
+          <% 1.times do || %>
+          <a class="list-group-item" href="#">
+            <span class="badge">31k</span>Love
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">45M</span>Education
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">54k</span>Woman
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">454k</span>Crush
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">97k</span>Imagination
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">33k</span>Imagination
+          </a>
+          <a class="list-group-item" href="#">
+            <span class="badge">45k</span>Other
+          </a>
+         <% end %>
         </div>
       </div>
-      <div class="grid-item item4">
-        <div class="content">
-          <div class="bg" style="background-image: url('http://www.billboard.com/files/styles/review_main_image/public/media/jidenna-performance-2015-billboard-650.jpg');"></div>
-          <div class="caption">
-            <div class="text">
 
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong> Plante Josue</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 36 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>                
-          </div>                
-        </div>
-      </div>
-      <div class="grid-item item5">
-        <div class="content">
-          <div class="bg" style="background-image: url('http://s2.djyimg.com/n3/eet-content/uploads/2013/12/AP522083098158-676x450.jpg');"></div>
-          <div class="caption">
-            <div class="text">
-
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong>Shawn Jazzy</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 566 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +2507824525</span></p>
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>                
-          </div>                
-        </div>
-      </div>
-      <div class="grid-item item6">
-        <div class="content">
-          <div class="bg" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/db/57/46/db57467ca489d6d380e43269d9791681--picture-ideas-photo-ideas.jpg');"></div>
-          <div class="caption">
-            <div class="text">
-
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong>Katy Chrisie</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 4549 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>                
-          </div>                
-        </div>
-      </div>
-      <div class="grid-item item7">
-        <div class="content">
-          <div class="bg" style="background-image: url('http://sph.washington.edu/images/studentProfiles/5386.jpg');"></div>
-          <div class="caption">
-            <div class="text">
-
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong>Pamela Limly</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 26 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>                
-          </div>                
-        </div>
-      </div>
-      <div class="grid-item item8">
-        <div class="content">
-          <div class="bg" style="background-image: url('https://cdn2.thelineofbestfit.com/images/remote/https_cdn2.thelineofbestfit.com/media/2014/michael_kiwanuka_mar16.jpg');"></div>
-          <div class="caption">
-            <div class="text">
-
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong> Plante Josue</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 36 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>                
-          </div>                
-        </div>
-      </div>
-      <div class="grid-item item9">
-        <div class="content">
-          <div class="bg" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg');"></div>
-          <div class="caption">
-            <div class="text">
-
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong> Plante Josue</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 36 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>
-          </div>                
-        </div>
-      </div>
-      <div class="grid-item item10">
-        <div class="content">
-          <div class="bg" style="background-image: url('http://www.billboard.com/files/styles/review_main_image/public/media/jidenna-performance-2015-billboard-650.jpg');"></div>
-          <div class="caption">
-            <div class="text">
-
-
-              <p><span><div class="glyphicon glyphicon-user"></div><strong> Plante Josue</strong>| Male </span> </p>
-              <p></p><div class="glyphicon glyphicon-info-sign"></div> 36 poems</p>
-              <p><span>plantejosh1@gmail.com</span></p>
-              <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-              <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-            </div>                
-          </div>
-        </div> 
-        <div class="grid-item item11">
-          <div class="content">
-            <div class="bg" style="background-image: url('http://www.billboard.com/files/styles/review_main_image/public/media/jidenna-performance-2015-billboard-650.jpg');"></div>
-            <div class="caption">
-              <div class="text">
-
-
-                <p><span><div class="glyphicon glyphicon-user"></div><strong> Plante Josue</strong>| Male </span> </p>
-                <p></p><div class="glyphicon glyphicon-info-sign"></div> 36 poems</p>
-                <p><span>plantejosh1@gmail.com</span></p>
-                <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-                <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-              </div>
-            </div>                
-          </div>
-        </div>
-        <div class="grid-item item12">
-          <div class="content">
-            <div class="bg" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg');"></div>
-            <div class="caption">
-              <div class="text">
-
-
-                <p><span><div class="glyphicon glyphicon-user"></div><strong>Alice</strong>| Male </span> </p>
-                <p></p><div class="glyphicon glyphicon-info-sign"></div> 36 poems</p>
-                <p><span>plantejosh1@gmail.com</span></p>
-                <p><span><div class="glyphicon glyphicon-earphone"></div> +250789640745</span></p>
-                <span class="calltoaction"><a href="/">Poems</a></span>
-
-
-              </div>
-            </div>                
-          </div>
-        </div> 
-      </div>
-    </section>
     </div>
+
+    <!-- table container -->
+    <div class="col-md-9">
+   <% 100.times do ||%>
+    <div class="col-md-3 col-xs-12 house-box">            
+      <div class="thumbnail">
+        <div class="caption">
+          <h4>Katy Chrisie</h4>
+          <p>I am a poet since my childhood, in poetry is where I find peace and the healing power I found there I wanna share it with the world through the my majestic words</p>
+
+          <a href="" class="label label-default" rel="tooltip" title="Click to View my Poems">View <span class="badge">132</span> Poems</a></p>
+        </div>
+        <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" alt="...">
+      </div>
+    </div>
+  <%end%>
+</div>
+
+</div><!-- /.container -->
