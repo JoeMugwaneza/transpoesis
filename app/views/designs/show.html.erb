@@ -1,0 +1,141 @@
+  <%= render "sidebar"%>
+
+  <!-- table container -->
+  <div class="col-md-8 col-xs-12"> 
+    <div class="col-md-12">
+      <div class="panel panel-default widget">
+        <br>
+        <div class="col-md-3">
+          <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="index-image">
+        </div>
+        <div class="col-md-9">
+          <a href="#" style="color: #2f5369"><strong>Katy Chrisie</strong></a> : <a href="#"> Talking to Myself</a>
+          <hr>
+          <div class="col-md-12 poem-body">
+            <p>I've planted a tree in my heart!
+              Whenever I feel tired,
+              rushing,
+              I sit down,
+              with my back against the trunk
+              I look at the sky
+              through the foliage of the tree
+              and peace comes back
+              to my heart</p>
+
+              <p>I've planted a tree in my heart!
+                Whenever I feel tired,
+                rushing,
+                I sit down,
+                with my back against the trunk
+                I look at the sky
+                through the foliage of the tree
+                and peace comes back
+                to my heart</p>
+
+              </div>
+
+              <div class="text-center">
+                <div class="btn-group">
+                  <a href="" class="btn btn-default"><span class="badge">124 </span><div class="glyphicon glyphicon-heart"> </div></a>
+
+                  <a href="" class="btn btn-default"><span class="badge">45</span><div class="glyphicon glyphicon-comment"> </div></a>
+
+                  <a type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
+
+                  <!-- Modal -->
+                  <div id="Modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog video-box">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                        </div>
+                        <div class="modal-body">
+                          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="dropup">
+                    <a class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
+                      </li>
+                      <li>
+                        <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
+                      </li>
+                      <li>
+                        <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
+                      </li>
+                      <li>
+                        <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
+                      </li>
+
+                      <li>
+                        <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
+                      </li>
+
+                    </ul>
+                  </div>
+
+                  <ul>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- comments -->
+              <div class="panel-heading">
+                <span class="badge">24</span>
+
+                <h3 class="panel-title">
+                  Recent Comments</h3>
+                </div>
+                <div class="panel-body">
+                  <ul class="list-group">
+
+                    <% 10.times do || %>
+                    <li class="list-group-item">
+                      <div class="row">
+                        <div class="col-xs-3 col-md-1">
+                          <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="img-circle img-responsive" alt="" /></div>
+                          <div class="col-xs-9 col-md-11">
+                            <div>
+                              <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Andrea Grieder</a>
+                              <div class="mic-info">
+                              </a> on 11 Nov 2013
+                            </div>
+                          </div>
+                          <div class="comment-text">
+                            I've planted a tree in my heart!
+                            Whenever I feel tired, rushing,
+                          </div>
+                          <div class="action">
+                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                              <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+
+                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                              <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <% end %>
+                  </ul>
+
+                </div>
+                <textarea class="form-control" placeholder="add comment"></textarea>
+                <span> <button class="text-center">Comment</button> </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
