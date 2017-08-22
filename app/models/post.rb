@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   has_many :feedbacks
 
   acts_as_punchable
+  acts_as_votable
 end

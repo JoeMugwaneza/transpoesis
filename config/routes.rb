@@ -3,10 +3,18 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :users
-  resources :posts do 
+  
+  resources :posts do
+    member do 
+      get 'like', to: "posts#like"
+      get 'unlike', to: "posts#unlike"
+    end
     resources :comments
     end
+    
   resources :sessions
+
+
 
 
   get 'signup', to: 'users#new', as: 'signup'
