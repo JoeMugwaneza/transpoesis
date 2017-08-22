@@ -16,7 +16,7 @@
 
  body{
   font-family: 'Poppins', sans-serif;
-  background-color: #214460;
+  background-color: #c9c8c8;
   width: 100%;
 }
 
@@ -26,7 +26,7 @@ p {
 
 
 .myNavbar {
-  background-color: #112a3e;
+  background-color: #174865;
   border-color: transparent;
   width: 94%;
   /*margin-top: -33px;*/
