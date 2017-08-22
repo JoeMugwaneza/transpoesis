@@ -56,6 +56,27 @@ class PostsController < ApplicationController
 
   end
 
+
+  def like
+    @post = Post.find_by(id: params[:id])
+    @post.liked_by current_user
+
+    respond_to do |format|
+      format.html { redirect_to post_path(@post) }
+      format.js { render layout: false }
+    end
+  end
+
+  def unlike
+    @post = Post.find_by(id: params[:id])
+    @post.unliked_by current_user
+
+    respond_to do |format|
+      format.html { redirect_to post_path(@post) }
+      format.js { render layout: false }
+    end
+  end
+
   private
 
     def post_params
