@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :post_categories
   has_many :categories, through: :post_categories
   has_many :feedbacks
+  has_many :favorites, :dependent => :destroy
 
   acts_as_punchable
   acts_as_votable

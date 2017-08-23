@@ -62,6 +62,21 @@
               
               <a href="" class="btn btn-default btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Add to your favorite folder"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</a>
 
+              <!-- begin of Favorite codes -->
+
+                <div class="votes">
+                <% if (current_user.favorited? @post) %>
+
+                  <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: 'unfavorite_post btn btn-default btn-xs'%>
+                <% else %>
+
+                  <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: 'favorite_post btn btn-default btn-xs' %>
+                <% end %>
+                  </div>
+
+                  <!-- end of favorite codes -->
+                  <!-- End of codes about like -->
+
               <div class="text-center">
                 <div class="btn-group">
 
@@ -82,7 +97,7 @@
                   <%= link_to "Like", like_post_path(@post), method: :get, remote: true, class: 'like_post btn btn-default btn-xs' %>
                 <% end %>
                   </div>
-                  <!-- End of codes about lik -->
+                  <!-- End of codes about like -->
 
                   <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= @post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
 

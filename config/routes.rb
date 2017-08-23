@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :users
   
   resources :posts do
+    resources :favorites, only: [:create, :destroy]
     member do 
-      
       get 'like', to: "posts#like"
       get 'unlike', to: "posts#unlike"
     end
