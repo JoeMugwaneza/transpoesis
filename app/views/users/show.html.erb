@@ -1,4 +1,4 @@
-<% @user.each do |user|%>
+<% @user_posts.each do |user|%>
 <h4><%= link_to user.name, post_path(user)%></h4>
 <p><%= user.body.html_safe%></p>
 <% end%>

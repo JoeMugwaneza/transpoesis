@@ -38,11 +38,11 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if current_user %>
+        <li><a href="<%= new_post_path %>" class="pull-right btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
         <li><a href="#" class="dropdown-toggle nav-content-format pull-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="glyphicon glyphicon-user"></div><strong> <%= "#{current_user.last_name}" %></strong></a></li>
         <li><a href="<%= logout_path %>" class=" nav-content-format pull-right" role="button" ><strong>Logout</strong></a></li>
         <% else %>
 
-        <li><a href="#" class="pull-right btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
 
 
         <li class="dropdown">

@@ -1,0 +1,41 @@
+
+<div container>
+<h4><%= @post.hits %></h4>
+<h4><%= @post.name %></h4>
+  <p class="post_show">
+    <%= @post.body.html_safe %><br>
+    <%= link_to 'Edit', "/posts/#{@post.id}/edit" %>
+    <%= link_to 'Delete', post_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <hr>
+  </p>
+    <p>
+
+      <div class="vote_count">
+        <%= @post.get_likes.size %>
+      </div>
+
+   <div class="votes">
+
+    <% if (current_user.liked? @post) %>
+      <%= link_to "Unlike", unlike_post_path(@post), method: :get, remote: true, class: 'unlike_post'%>
+
+    <% else %>
+      <%= link_to "Like", like_post_path(@post), method: :get, remote: true, class: 'like_post' %>
+    <% end %>
+  </div>
+
+  </p>
+      <hr>
+        <div id="comments">
+          <% if @post.comments.empty? %>
+            <p style="font-weight: bold; font-style: italic; font-size: 12px;"> <%=@post.comments.count %> comment yet! So, be the first to comment on this post!</p>
+          <% else %>
+            <h3><%= @post.comments.count%> comments</h3>
+              <%= render @post.comments %>
+              <% end %>
+
+        </div>
+            <h3>Add a comment:</h3>
+              <%= render "comments/form" %>
+
+</div>

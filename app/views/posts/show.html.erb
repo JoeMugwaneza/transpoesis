@@ -1,41 +1,167 @@
+  <%= render "designs/sidebar"%>
 
-<div container>
-<h4><%= @post.hits %></h4>
-<h4><%= @post.name %></h4>
-  <p class="post_show">
-    <%= @post.body.html_safe %><br>
-    <%= link_to 'Edit', "/posts/#{@post.id}/edit" %>
-    <%= link_to 'Delete', post_path, method: :delete, data: {confirm: 'Are you sure?'} %>
-    <hr>
-  </p>
-    <p>
-
-      <div class="vote_count">
-        <%= @post.get_likes.size %>
-      </div>
-
-   <div class="votes">
-
-    <% if (current_user.liked? @post) %>
-      <%= link_to "Unlike", unlike_post_path(@post), method: :get, remote: true, class: 'unlike_post'%>
-
-    <% else %>
-      <%= link_to "Like", like_post_path(@post), method: :get, remote: true, class: 'like_post' %>
-    <% end %>
-  </div>
-
-  </p>
-      <hr>
-        <div id="comments">
-          <% if @post.comments.empty? %>
-            <p style="font-weight: bold; font-style: italic; font-size: 12px;"> <%=@post.comments.count %> comment yet! So, be the first to comment on this post!</p>
-          <% else %>
-            <h3><%= @post.comments.count%> comments</h3>
-              <%= render @post.comments %>
-              <% end %>
-
+  <!-- table container -->
+  <div class="col-md-8 col-xs-12"> 
+    <div class="col-md-12">
+      <div class="panel panel-default widget">
+        <br>
+        <div class="col-md-3">
+          <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="index-image img-responsive">
         </div>
-            <h3>Add a comment:</h3>
-              <%= render "comments/form" %>
+        <div class="col-md-9">
+          <!-- edit and delete buttons for posts-->
+          <div class="action pull-right">
 
-</div>
+            <button type="button" class="btn btn-primary btn-xs" title="Feedback" data-toggle="modal" data-target="#FeedbackModal"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
+            <!-- modal -->
+            <%= render "designs/feedback" %>
+
+            <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= edit_post_path(@post) %>'" title="Edit" >
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+
+            <%= link_to '', post_path, class: "glyphicon glyphicon-trash", method: :delete, data: {confirm: "You want to delete poem titled: #{@post.name}?"},  style: "color: red;"%>
+          </div>
+
+          <!-- poem and poet -->
+          <a href="<%= user_path(@post.user)%>" style="color: #2f5369"><strong><%= "#{@post.user.first_name} " "#{@post.user.last_name}" %></strong></a> : <a href="<%= post_path(@post) %>"> <%= @post.name %></a>
+          <div class="mic-info"><%= @post.hits %><i class="glyphicon glyphicon-eye-open"></i></div>
+          <div class="mic-info text-center">Posted <%= time_ago_in_words(@post.created_at) %> Ago</div>
+          <hr>
+          <div class="col-md-12 poem-body">
+            <p><%= @post.body.html_safe %></p>
+
+              </div>
+
+              <div class="dropup pull-right">
+                <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
+                  </li>
+                  <li>
+                    <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
+                  </li>
+                  <li>
+                    <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
+                  </li>
+                  <li>
+                    <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
+                  </li>
+
+                  <li>
+                    <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
+                  </li>
+
+                </ul>
+              </div>
+
+              <button type="button" class="btn btn-primary btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
+
+              <%= render "designs/signupmodal" %><!--  signup modal -->
+              
+              <a href="" class="btn btn-default btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Add to your favorite folder"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</a>
+
+              <div class="text-center">
+                <div class="btn-group">
+
+              <!-- Start codes about like-->
+               
+                <div class="vote_count">
+
+                  <a href="" class="btn btn-default btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
+
+
+                 </div>
+                 <div class="votes">
+                <% if (current_user.liked? @post) %>
+
+                  <%= link_to "Unlike", unlike_post_path(@post), method: :get, remote: true, class: 'unlike_post btn btn-default btn-xs'%><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div>
+                <% else %>
+
+                  <%= link_to "Like", like_post_path(@post), method: :get, remote: true, class: 'like_post btn btn-default btn-xs' %>
+                <% end %>
+                  </div>
+                  <!-- End of codes about lik -->
+
+                  <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= @post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
+
+                  <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
+
+                  <!-- Modal -->
+                  <div id="Modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog video-box">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                        </div>
+                        <div class="modal-body">
+                          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+            <!-- comments -->
+            <div class="panel-heading">
+              <span class="badge"><%= @post.comments.size %></span>
+              <h3 class="panel-title">
+                Recent Comments</h3>
+
+              </div>
+              <div class="panel-body">
+                <ul class="list-group">
+
+                  <% @post.comments.each do |comment| %>
+                  <li class="list-group-item" id="comment_<%= comment.id %>">
+                    <div class="row">
+                      <div class="col-xs-3 col-md-1">
+                        <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="img-circle img-responsive" alt="" /></div>
+                        <div class="col-xs-9 col-md-11">
+                          <div>
+
+                          <div class="action">
+
+                             <div id="comment_<%= comment.id %>" class="row single-comment vertical-align">
+                             <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
+                             </div>
+
+                            <a href="">Andrea Grieder</a>
+                            <div class="mic-info">Commented <%= time_ago_in_words(comment.created_at) %> Ago
+                            </div>
+                          </div>
+                          <div class="comment-text" id="comment-text">
+                            <%= comment.body %>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <% end %>
+                  </ul>
+
+                </div>
+
+                <div class="input-group">
+                  <div id="comments">
+                  <!-- <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
+                  <span class="input-group-btn" onclick="addComment()">     
+                    <a href="#" class="btn btn-primary btn-sm">Comment</a>
+                  </span> -->
+                    </div>
+                    <%= render "comments/form" %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
