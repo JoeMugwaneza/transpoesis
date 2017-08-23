@@ -1,9 +1,27 @@
-<div class="comment clearfix">
-  <div class="comment_content">
-    <p class="comment_time"> Commented <%= time_ago_in_words(comment.created_at) %> Ago</p>
-    <p class="comment_body"><%= comment.body %><br>
-    <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash", method: :delete, data: {confirm: 'you are going to delete this comment, you want to continue?'},  style: "color: red;"%>
-    </p>
-  </div>
-   <p></p>
-</div>
+<div >
+<li class="list-group-item" id="comment_<%= comment.id %>" class="row single-comment vertical-align">
+  <div class="row">
+    <div class="col-xs-3 col-md-1">
+      <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="img-circle img-responsive" alt="" /></div>
+      <div class="col-xs-9 col-md-11">
+
+        <div>
+          <div class="action">
+
+            <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
+            </div>
+          </div>
+
+          <a href="#">Andrea Grieder</a>
+          <div class="mic-info">Commented <%= time_ago_in_words(comment.created_at) %> Ago
+          </div>
+        </div>
+        <div class="comment-text" id="comment-text">
+          <%= comment.body %>
+        </div>
+        
+      </div>
+    </div>
+  </li>
+
+

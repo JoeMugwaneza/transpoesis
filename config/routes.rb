@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   resources :posts do
     member do 
+      
       get 'like', to: "posts#like"
       get 'unlike', to: "posts#unlike"
     end
