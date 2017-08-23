@@ -21,7 +21,11 @@
       <a class="navbar-brand text-center" href="/home">PoetrySpace</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <a class="navbar-brand" href="/poets">Poets</a>
+
+      <ul class="nav navbar-nav">   
+      <li><a href="/poets">Poets</a></li>
+    </ul>
+    
       
       <!-- <li>
 
@@ -42,7 +46,6 @@
         <li><a href="#" class="dropdown-toggle nav-content-format pull-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="glyphicon glyphicon-user"></div><strong> <%= "#{current_user.last_name}" %></strong></a></li>
         <li><a href="<%= logout_path %>" class=" nav-content-format pull-right" role="button" ><strong>Logout</strong></a></li>
         <% else %>
-
 
 
         <li class="dropdown">

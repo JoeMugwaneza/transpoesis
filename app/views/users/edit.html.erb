@@ -1,0 +1,98 @@
+  <div id="signupbox" style="margin-top:50px">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="panel-title">Sign Up</div>
+      </div>  
+      <div class="panel-body" >
+        <form id="signupform" class="form-horizontal" role="form">
+
+          <div class="form-group">
+            <label for="email" class="col-md-3 control-label">Who are you?</label>
+            <div class="col-md-9">
+              <label class="radio-inline"><input type="radio" name="gender" value="M" id=male />Poet</label>
+              <label class="radio-inline"><input type="radio" name="gender" value="F" id=female />Reader</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="col-md-3 control-label">Email</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="email" placeholder="Email Address">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="firstname" class="col-md-3 control-label">First Name</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="firstname" placeholder="First Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="col-md-3 control-label">Last Name</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lastname" class="col-md-3 control-label">Profile Picture</label>
+            <div class="col-md-9">
+              <input type="file" class="" name="" placeholder="">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="icode" class="col-md-3 control-label">What's your inspiration in poetry</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="icode" placeholder="What's your inspiration in poetry">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="icode" class="col-md-3 control-label">Choose your Favorite Categories</label>
+            <div class="col-md-9">
+
+             <div class="check_box" style="text-align: justify;">
+
+               <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Love <br>
+               <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Life Story <br>
+               <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Resilience <br>
+               <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Culture <br>
+               <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Social Life <br>
+               <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> History  <br>
+               <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Solidarity <br>
+
+
+
+             </div>
+           </div>
+         </div>
+
+         <div class="form-group">
+          <label for="password" class="col-md-3 control-label">Password</label>
+          <div class="col-md-9">
+            <input type="password" class="form-control" name="passwd" placeholder="Password">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="col-md-3 control-label">Password confirmation</label>
+          <div class="col-md-9">
+            <input type="password" class="form-control" name="passwd" placeholder="Re-type Password">
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <!-- Button -->                                        
+          <div class="col-md-offset-3 col-md-9">
+            <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button> 
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>               
+</div>
