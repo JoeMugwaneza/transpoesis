@@ -71,9 +71,9 @@
         Favorites
       </h4>
       <div id="group-4" class="list-group collapse out">
-        <% 10.times do || %>
-        <a class="list-group-item" href="#">
-          <span class="badge pull-right">312 <i class="glyphicon glyphicon-eye-open"></i></span> Talking to my Soul
+        <% Favorite.all.each do |favorite| %>
+        <a class="list-group-item" href="<%= post_path(favorite.post) %>">
+          <span class="badge pull-right">312 <i class="glyphicon glyphicon-eye-open"></i></span> <%=favorite.post.name%>
         </a>
         <% end %>
       </div>
