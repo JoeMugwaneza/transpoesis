@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show 
+   @user = User.find_by(id: params[:id])
     @post = Post.find_by(id: params[:id])
     @post.punch(request)
   end
@@ -53,7 +54,7 @@ class PostsController < ApplicationController
     find_post
     @post.destroy
     flash[:warning] = "Post Was Deleted"
-    redirect_to root_path
+    redirect_to root_url
 
   end
 
