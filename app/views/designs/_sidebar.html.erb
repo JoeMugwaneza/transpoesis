@@ -62,7 +62,7 @@
         <% end %>
       </div>
     </div>
-
+    <% if current_user && current_user.favorites.present?%>
     <div>
       <h4 data-toggle="collapse" data-target="#group-4" class="form-control">
         <i class="fa fa-fw fa-caret-down parent-expanded"></i>
@@ -71,14 +71,29 @@
         Favorites
       </h4>
       <div id="group-4" class="list-group collapse out">
-        <% Favorite.all.each do |favorite| %>
+        <% current_user.favorites.each do |favorite| %>
         <a class="list-group-item" href="<%= post_path(favorite.post) %>">
           <span class="badge pull-right">312 <i class="glyphicon glyphicon-eye-open"></i></span> <%=favorite.post.name%>
         </a>
         <% end %>
       </div>
     </div>
-
+    <%else %>
+    <div>
+      <h4 data-toggle="collapse" data-target="#group-4" class="form-control">
+        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+        <i class="glyphicon glyphicon-triangle-bottom"></i>
+        Favorites
+      </h4>
+      <div id="group-4" class="list-group collapse out">
+      
+        <a class="list-group-item" href="">
+          No Favorite, add or sign in
+        </a>
+      </div>
+    </div>
+    <% end %>
     <div>
       <h4 data-toggle="collapse" data-target="#group-5" class="form-control">
         <i class="fa fa-fw fa-caret-down parent-expanded"></i>
