@@ -123,61 +123,7 @@
 // wrap responsive table in media query
 @media screen and (max-width: 767px) {
 
-  .table-responsive {
-
-    thead,
-    tbody,
-    tfoot,
-    tr,
-    th,
-    td {
-      display: block;
-    }
-
-    thead {
-      display: none;
-    }
-
-    .align-center,
-    .align-right {
-      text-align: inherit;
-    }
-    
-    tr {
-      border-top: 1px solid #ddd;
-      
-      &:first-child {
-        border: 0;
-      }
-    }
-
-    // override bootstrap's styling
-    > tbody > tr > td {
-      padding-left: 50%;
-      border-top-color: rgba(221, 221, 221, 0.5);
-      
-      &:first-child {
-        border: 0;
-      }
-    }
-
-    [data-label] {
-      position: relative;
-
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 8px;
-        content: attr(data-label);
-        font-weight: bold;
-      }
-    }
-
-  }
-  
-  // a little tweaking
-  
+// a little tweaking  
   .navbar-fixed-top.visible-xs + .row {
     padding-top: 60px; // height plus padding
   }
@@ -210,9 +156,7 @@
   }
 }
 
-.parent-expanded {
-  
-}
+
 .parent-collapsed {
   display: none;
 }
@@ -229,8 +173,6 @@
 
 
 // poets index
-
-
 .thumbnail {
     position:relative;
     overflow:hidden;
@@ -240,7 +182,7 @@
     position:absolute;
     top:0;
     right:0;
-    background:rgba(66, 139, 202, 0.75);
+    background:rgba(00,00,00,0.3);
     width:100%;
     height:100%;
     padding:0%;

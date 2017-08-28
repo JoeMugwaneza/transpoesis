@@ -18,12 +18,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand text-center" href="/home">Transpoesis</a>
+      <a class="navbar-brand text-center" href="/">Transpoesis</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
 
       <ul class="nav navbar-nav">   
-      <li><a href="/poets">Poets</a></li>
+      <li><a href="/users">Poets</a></li>
     </ul>
     
       
@@ -43,7 +43,7 @@
 
         <% if current_user %>
         <li><a href="<%= new_post_path %>" class="pull-right btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
-        <li><a href="#" class="dropdown-toggle nav-content-format pull-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="glyphicon glyphicon-user"></div><strong> <%= "#{current_user.last_name}" %></strong></a></li>
+        <li><a href="users/<%= current_user.id %>" class="nav-content-format pull-right" role="button"><div class="glyphicon glyphicon-user"></div><strong> <%= "#{current_user.last_name}" %></strong></a></li>
         <li><a href="<%= logout_path %>" class=" nav-content-format pull-right" role="button" ><strong>Logout</strong></a></li>
         <% else %>
 
@@ -84,112 +84,13 @@
 <!-- body content -->
 
 
-<div class="navbar navbar-default visible-xs">
-  <div class="container-fluid">
-    <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
-      <i class="fa fa-tasks"></i> Categories
-    </button>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div class="row">
-    <br>
-
-    <!-- filter sidebar -->
-    <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar thumbnail">
-
-      <div>
-        <h4 data-toggle="collapse" data-target="#group-1" class="form-control">
-          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-          <i class="glyphicon glyphicon-triangle-bottom"></i>
-          Trending Poems
-        </h4>
-        <div id="group-1" class="list-group collapse out">
-         <% 10.times do || %>
-         <a class="list-group-item" href="#">
-          <span class="badge pull-right">312 <i class="glyphicon glyphicon-eye-open"></i></span> Talking to my Soul
-        </a>
-        <% end %>
-      </div>
-    </div>
-
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-2" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
-        Recently Added
-      </h4>
-
-      <div id="group-2" class="list-group collapse out">
-        <% 10.times do || %>
-        <a class="list-group-item" href="#">
-          <span class="badge pull-right">312 <i class="glyphicon glyphicon-eye-open"></i></span> Talking to my Soul
-        </a>
-        <% end %>
-      </div>
-    </div>
-
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-3" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
-        Recommended
-      </h4>
-
-      <div id="group-3" class="list-group collapse out">
-        <% 10.times do || %>
-        <a class="list-group-item" href="#">
-          <span class="badge pull-right">312 <i class="glyphicon glyphicon-eye-open"></i></span> Talking to my Soul
-        </a>
-        <% end %>
-      </div>
-    </div>
-
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-4" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
-        Favorites
-      </h4>
-      <div id="group-4" class="list-group collapse out">
-        <% Favorite.all.each do |favorite| %>
-        <a class="list-group-item" href="<%= post_path(favorite.post) %>">
-          <span class="badge pull-right">312 <i class="glyphicon glyphicon-eye-open"></i></span> <%=favorite.post.name%>
-        </a>
-        <% end %>
-      </div>
-    </div>
-
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-5" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
-        Categories
-      </h4>
-      <div id="group-5" class="list-group collapse in">
-        <% Category.all.each do |category| %>
-        <a class="list-group-item" href="/posts?category=<%= category.name %>">
-        <span class="badge">31k poems</span><%=category.name %>
-        </a>
-        <% end %>
-      </div>
-    </div>
-  </div>
+<%= render "layouts/sidebar" %>
 
 
 
 
 
-
-
-
-<section class="" >
+<section style="margin-top: -10px;">
   <p>
     <% flash.each do |key, value| %>
     <% alert_class = case key

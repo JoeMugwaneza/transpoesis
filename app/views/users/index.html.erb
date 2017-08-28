@@ -1,3 +1,17 @@
-<% @users.each do |user|%>
-<%=link_to "#{user.first_name} #{user.last_name}", user_path(user)%><br>
-<% end%>
+<!-- table container -->
+<div class="col-md-9">
+  <% @users.each do |user|%>
+  <div class="col-md-3 col-xs-12 house-box">           
+    <div class="thumbnail">
+      <div class="caption">
+        <h4 style="color: white;"><%=link_to "#{user.first_name} #{user.last_name}", user_path(user)%><br></h4>
+        <a href="/users/<%= user.id %>" class="label label-default" rel="tooltip" title="Click to View my Poems">View <span class="badge">132</span> Poems</a></p>
+
+        <p>I am a poet since my childhood, in poetry is where I find peace and the healing power I found there I wanna share it with the world through the my majestic words</p>
+
+      </div>
+      <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" alt="...">
+    </div>
+  </div>
+  <% end%>
+</div><!-- /.container -->

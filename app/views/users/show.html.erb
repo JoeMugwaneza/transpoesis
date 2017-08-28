@@ -1,6 +1,5 @@
-
- <!-- table container -->
- <div class="col-md-8">
+<!-- table container -->
+<div class="col-md-8">
 
   <% @user_posts.each do |user|%>
 
@@ -14,7 +13,7 @@
 
         <button type="button" class="btn btn-primary btn-xs" title="Feedback" data-toggle="modal" data-target="#FeedbackModal"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
         <!-- modal -->
-        <%= render "designs/feedback" %>
+        <%= render "layouts/feedback" %>
 
         <button type="button" class="btn btn-primary btn-xs" title="Edit">
           <span class="glyphicon glyphicon-pencil"></span>
@@ -75,34 +74,34 @@
     <div class="text-center">
       <div class="btn-group">
 
-       
-      <a href="" class="btn btn-primary btn-xs" id="like1"><span id="like1-bs3" class="badge"> </span></a><i id="like1" class="glyphicon glyphicon-thumbs-up btn-xs btn-primary btn"></i>
 
-      <i id="dislike1" class="glyphicon glyphicon-thumbs-down btn-xs btn-warning btn"></i><a href="" class="btn btn-warning btn-xs"><sapn id="dislike1-bs3" class="badge"></sapn></a>
+        <a href="" class="btn btn-primary btn-xs" id="like1"><span id="like1-bs3" class="badge"> </span></a><i id="like1" class="glyphicon glyphicon-thumbs-up btn-xs btn-primary btn"></i>
 
-      <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
+        <i id="dislike1" class="glyphicon glyphicon-thumbs-down btn-xs btn-warning btn"></i><a href="" class="btn btn-warning btn-xs"><sapn id="dislike1-bs3" class="badge"></sapn></a>
 
-      <!-- Modal -->
-      <div id="Modal" class="modal fade" role="dialog">
-        <div class="modal-dialog video-box">
+        <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- Modal -->
+        <div id="Modal" class="modal fade" role="dialog">
+          <div class="modal-dialog video-box">
 
-            </div>
-            <div class="modal-body">
-              <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+              </div>
+              <div class="modal-body">
+                <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
+              </div>
             </div>
           </div>
         </div>
+
       </div>
 
     </div>
-
   </div>
-</div>
-<% end %>
+  <% end %>
 </div>
 </div>
