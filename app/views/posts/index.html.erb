@@ -1,8 +1,5 @@
-
-
  <!-- table container -->
  <div class="col-md-8">
-
   <% @posts.each do |post| %>  
   <div class="col-md-12 main-box">
     <div class="col-md-3">
@@ -14,7 +11,7 @@
 
         <button type="button" class="btn btn-primary btn-xs" title="Feedback" onclick="location.href='<%= edit_post_path(post) %>'"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
         <!-- modal -->
-        <%= render "designs/feedback" %>
+        <%= render "layout/feedback" %>
 
         <button type="button" class="btn btn-primary btn-xs" title="Edit">
           <span class="glyphicon glyphicon-pencil"></span>
