@@ -93,6 +93,10 @@
 
 // sidebar
 
+.side-options {
+  background-color: #337ab7;
+  color: white;
+}
 
 // site specific
 
@@ -135,7 +139,7 @@
   .sliding-sidebar {
     position: absolute;
     z-index: 1;
-    background: #fff;
+    background: #c9c8c8;
     min-height: 100%;
     border-right: 1px solid #ccc;
     
