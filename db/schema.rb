@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170827100136) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "review", default: "f"
+    t.boolean "review", default: false
   end
 
   create_table "punches", force: :cascade do |t|
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170827100136) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.boolean "admin", default: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

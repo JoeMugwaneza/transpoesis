@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @recent_posts = Post.where('review =?', true).in_order.endmost(10)
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
