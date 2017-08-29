@@ -14,4 +14,6 @@ module UsersHelper
   def favorited?(post)
     favorites.find_by(post_id: post.id).present?
   end
+
+  
 end

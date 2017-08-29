@@ -1,4 +1,4 @@
- <%= render "designs/sidebar"%>
+ <%= render "sidebar"%>
 
  <!-- table container -->
  <div class="col-md-8">
@@ -27,7 +27,7 @@
       <!-- poem and poet  -->
       <a href="<%= user_path(post.user)%>" style="color: #2f5369"><strong><%= "#{post.user.first_name} #{post.user.last_name}" %></strong></a> : <a href="<%= post_path(post) %>"> <%=  post.name%></a>
       <div class="mic-info"><%= post.hits %> <i class="glyphicon glyphicon-eye-open"></i></div>
-      <div class="mic-info text-center">Posted <%= time_ago_in_words(post.created_at) %> Ago</div>
+      <div class="mic-info text-center"> <span style="font-style: italic;">Poem Published <%= time_ago_in_words(post.updated_at) %> Ago</span></div>
       <hr>
       <div class="col-md-12 poem-body">
         <p><%= post.body.html_safe %>.<i style="color: blue;">| Read more</i></p>
@@ -59,7 +59,7 @@
       </div>
 
 
-      <button type="button" class="btn btn-primary btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
+      <button type="button" class="btn btn-primary btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
 
       <%= render "designs/signupmodal" %><!--  signup modal -->
       

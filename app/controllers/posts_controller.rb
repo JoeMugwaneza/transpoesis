@@ -7,11 +7,15 @@ class PostsController < ApplicationController
     else
       @posts = Post.where('review =?', true)
     end
+
+    @recent_posts = Post.where('review =?', true).in_order.endmost(10)
   end
 
   def show 
-   @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id])
     @post = Post.find_by(id: params[:id])
+
+    @recent_posts = Post.where('review =?', true).in_order.endmost(10)
     @post.punch(request)
   end
 
