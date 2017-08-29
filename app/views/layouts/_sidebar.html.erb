@@ -14,6 +14,7 @@
     <br>
 
     <!-- filter sidebar -->
+
 <div class="mySidebar">
   
     <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar" style="background-color: #d6dbde;">
@@ -55,11 +56,12 @@
 
     <!-- Recommended -->
     <div>
+
       <% if current_user && current_user.recommends.present? %>
       <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
         <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
         <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
-        
+
         Recommended
       </h4>
       <% current_user.categories.each do |category| %>
@@ -72,8 +74,6 @@
       </div>
       <% end %>
       <% else %>
-
-
 
       <div>
         <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
@@ -148,7 +148,7 @@
       <div id="group-5" class="list-group collapse in">
         <% Category.all.each do |category| %>
         <a class="list-group-item" href="/posts?category=<%= category.name %>">
-          <span class="badge">31k poems</span><%=category.name %>
+        <span class="badge"><%= category.posts.where(review: true).size %></span><%=category.name %>
         </a>
         <% end %>
       </div>
