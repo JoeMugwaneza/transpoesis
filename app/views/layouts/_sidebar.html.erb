@@ -1,23 +1,29 @@
-<div class="navbar navbar-default visible-xs">
-  <div class="container-fluid">
-    <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
-      <i class="fa fa-tasks"></i> Categories
-    </button>
+<div class="mySidebar">  
+  <div class="navbar navbar-default visible-xs">
+    <div class="container-fluid">
+      <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
+        <i class="fa fa-tasks"></i> Categories
+      </button>
+    </div>
   </div>
 </div>
+
 
 <div class="container-fluid">
   <div class="row">
     <br>
 
     <!-- filter sidebar -->
-    <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar thumbnail">
+
+<div class="mySidebar">
+  
+    <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar" style="background-color: #d6dbde;">
 
       <div>
-        <h4 data-toggle="collapse" data-target="#group-1" class="form-control">
-          <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-          <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-          <i class="glyphicon glyphicon-triangle-bottom"></i>
+        <h4 data-toggle="collapse" data-target="#group-1" class="form-control side-options">
+          <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+          <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+          
           Trending Poems
         </h4>
         <div id="group-1" class="list-group collapse out">
@@ -29,28 +35,33 @@
       </div>
     </div>
 
+    <!-- Recently added -->
     <div>
-      <h4 data-toggle="collapse" data-target="#group-2" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
+      <h4 data-toggle="collapse" data-target="#group-2" class="form-control side-options">
+        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+        
         Recently Added
       </h4>
 
       <div id="group-2" class="list-group collapse out">
-          <% @recent_posts.each do |post| %>
-        <a class="list-group-item" href="<%= post_path(post) %>">
-          <span class="badge pull-right"><%= post.hits %> <i class="glyphicon glyphicon-eye-open"></i></span> <%= post.name %>
+        <%# @recent_posts.each do |post| %>
+        <a class="list-group-item" href="<%#= post_path(post) %>">
+          <span class="badge pull-right"><%#= post.hits %> <i class="glyphicon glyphicon-eye-open"></i></span> <%#= post.name %>
         </a>
-        <% end %>
+        <%# end %>
       </div>
     </div>
+
+
+    <!-- Recommended -->
     <div>
-    <% if current_user && current_user.recommends.present? %>
-      <h4 data-toggle="collapse" data-target="#group-3" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
+
+      <% if current_user && current_user.recommends.present? %>
+      <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
+        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+
         Recommended
       </h4>
       <% current_user.categories.each do |category| %>
@@ -63,28 +74,32 @@
       </div>
       <% end %>
       <% else %>
+
       <div>
-      <h4 data-toggle="collapse" data-target="#group-3" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
-        Recommended
-      </h4>
-      <div id="group-3" class="list-group collapse out">
-      
-        <a class="list-group-item" href="">
-          No recommended posts yet, add or sign in
-        </a>
+        <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
+          <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+          <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+
+          Recommended
+        </h4>
+        <div id="group-3" class="list-group collapse out">
+
+          <a class="list-group-item" href="">
+            No recommended posts yet, add or sign in
+          </a>
+        </div>
       </div>
-    </div>
       <% end %>
     </div>
+
+    <!-- Favorites -->
+
     <% if current_user && current_user.favorites.present?%>
     <div>
-      <h4 data-toggle="collapse" data-target="#group-4" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
+      <h4 data-toggle="collapse" data-target="#group-4" class="form-control side-options">
+        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+        
         Favorites
       </h4>
       <div id="group-4" class="list-group collapse out">
@@ -97,25 +112,37 @@
     </div>
     <%else %>
     <div>
-      <h4 data-toggle="collapse" data-target="#group-4" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
+      <h4 data-toggle="collapse" data-target="#group-4" class="form-control side-options">
+        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
         Favorites
       </h4>
+
       <div id="group-4" class="list-group collapse out">
-      
+        <% if current_user %>
         <a class="list-group-item" href="">
-          No Favorite, add or sign in
+          No Favorites yet, add some
         </a>
+        <% else %>
+        <!-- <a class="list-group-item" href=""> -->
+        <button type="button" class="btn btn-info btn-xs pull-right" title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal">Click Here</button>
+        <!-- modal -->
+        <%= render "layouts/signupmodal" %>
+        Sign in/up first
+        <!-- </a> -->
+        <% end %>
+
       </div>
     </div>
     <% end %>
+
+
+    <!-- Categories -->
     <div>
-      <h4 data-toggle="collapse" data-target="#group-5" class="form-control">
-        <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-        <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-        <i class="glyphicon glyphicon-triangle-bottom"></i>
+      <h4 data-toggle="collapse" data-target="#group-5" class="form-control side-options">
+        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+        
         Categories
       </h4>
       <div id="group-5" class="list-group collapse in">
@@ -126,4 +153,6 @@
         <% end %>
       </div>
     </div>
+
   </div>
+</div>

@@ -1,5 +1,4 @@
-
-  <!-- table container -->
+<!-- table container -->
   <div class="col-md-8 col-xs-12"> 
     <div class="col-md-12">
       <div class="panel panel-default widget">
@@ -31,152 +30,152 @@
           <div class="col-md-12 poem-body">
             <p><%= @post.body.html_safe %></p>
 
-              </div>
+          </div>
 
-              <div class="dropup pull-right">
-                <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
-                  </li>
-                  <li>
-                    <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
-                  </li>
-                  <li>
-                    <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
-                  </li>
-                  <li>
-                    <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
-                  </li>
+          <div class="dropup pull-right">
+            <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
+              </li>
+              <li>
+                <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
+              </li>
+              <li>
+                <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
+              </li>
+              <li>
+                <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
+              </li>
 
-                  <li>
-                    <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
-                  </li>
+              <li>
+                <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
+              </li>
 
-                </ul>
-              </div>
+            </ul>
+          </div>
 
-              <button type="button" class="btn btn-primary btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
+          <button type="button" class="btn btn-primary btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
 
-              <%#= render "designs/signupmodal" %><!--  signup modal -->
-              
-              <a href="" class="btn btn-default btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Add to your favorite folder"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</a>
+          <%#= render "designs/signupmodal" %><!--  signup modal -->
 
-              <!-- begin of Favorite codes -->
+          <a href="" class="btn btn-default btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Add to your favorite folder"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</a>
 
-                <div class="votes">
-                <% if (current_user.favorited? @post) %>
+          <!-- begin of Favorite codes -->
 
-                  <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: 'unfavorite_post btn btn-default btn-xs'%>
-                <% else %>
+          <div class="votes">
+            <% if (current_user.favorited? @post) %>
 
-                  <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: 'favorite_post btn btn-default btn-xs' %>
-                <% end %>
-                  </div>
+            <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: 'unfavorite_post btn btn-default btn-xs'%>
+            <% else %>
 
-                  <!-- end of favorite codes -->
-                  <!-- End of codes about like -->
+            <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: 'favorite_post btn btn-default btn-xs' %>
+            <% end %>
+          </div>
 
-              <div class="text-center">
-                <div class="btn-group">
+          <!-- end of favorite codes -->
+          <!-- End of codes about like -->
+
+          <div class="text-center">
+            <div class="btn-group">
 
               <!-- Start codes about like-->
-               
-                <div class="vote_count">
 
-                  <a href="" class="btn btn-default btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
+              <div class="vote_count">
+
+                <a href="" class="btn btn-default btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
 
 
-                 </div>
-                 <div class="votes">
+              </div>
+              <div class="votes">
                 <% if (current_user.liked? @post) %>
 
-                  <%= link_to "Unlike", unlike_post_path(@post), method: :get, remote: true, class: 'unlike_post btn btn-default btn-xs'%><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div>
+                <%= link_to "Unlike", unlike_post_path(@post), method: :get, remote: true, class: 'unlike_post btn btn-default btn-xs'%><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div>
                 <% else %>
 
-                  <%= link_to "Like", like_post_path(@post), method: :get, remote: true, class: 'like_post btn btn-default btn-xs' %>
+                <%= link_to "Like", like_post_path(@post), method: :get, remote: true, class: 'like_post btn btn-default btn-xs' %>
                 <% end %>
+              </div>
+              <!-- End of codes about like -->
+
+              <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= @post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
+
+              <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
+
+              <!-- Modal -->
+              <div id="Modal" class="modal fade" role="dialog">
+                <div class="modal-dialog video-box">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
+                    </div>
                   </div>
-                  <!-- End of codes about like -->
+                </div>
+              </div>
 
-                  <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= @post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
+            </div>
 
-                  <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
+          </div>
+        </div>
 
-                  <!-- Modal -->
-                  <div id="Modal" class="modal fade" role="dialog">
-                    <div class="modal-dialog video-box">
 
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- comments -->
+        <div class="panel-heading">
+          <span class="badge"><%= @post.comments.size %></span>
+          <h3 class="panel-title">
+            Recent Comments</h3>
 
-                        </div>
-                        <div class="modal-body">
-                          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
-                        </div>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+
+              <% @post.comments.each do |comment| %>
+              <li class="list-group-item" id="comment_<%= comment.id %>">
+                <div class="row">
+                  <div class="col-xs-3 col-md-1">
+                    <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="img-circle img-responsive" alt="" /></div>
+                    <div class="col-xs-9 col-md-11">
+                      <div>
+
+                        <div class="action">
+
+                         <div id="comment_<%= comment.id %>" class="row single-comment vertical-align">
+                           <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
+                         </div>
+
+                         <a href="">Andrea Grieder</a>
+                         <div class="mic-info">Commented <%= time_ago_in_words(comment.created_at) %> Ago
+                         </div>
+                       </div>
+                       <div class="comment-text" id="comment-text">
+                        <%= comment.body %>
                       </div>
                     </div>
                   </div>
+                </li>
+                <% end %>
+              </ul>
 
-                </div>
-
-              </div>
             </div>
 
-
-            <!-- comments -->
-            <div class="panel-heading">
-              <span class="badge"><%= @post.comments.size %></span>
-              <h3 class="panel-title">
-                Recent Comments</h3>
-
-              </div>
-              <div class="panel-body">
-                <ul class="list-group">
-
-                  <% @post.comments.each do |comment| %>
-                  <li class="list-group-item" id="comment_<%= comment.id %>">
-                    <div class="row">
-                      <div class="col-xs-3 col-md-1">
-                        <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="img-circle img-responsive" alt="" /></div>
-                        <div class="col-xs-9 col-md-11">
-                          <div>
-
-                          <div class="action">
-
-                             <div id="comment_<%= comment.id %>" class="row single-comment vertical-align">
-                             <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
-                             </div>
-
-                            <a href="">Andrea Grieder</a>
-                            <div class="mic-info">Commented <%= time_ago_in_words(comment.created_at) %> Ago
-                            </div>
-                          </div>
-                          <div class="comment-text" id="comment-text">
-                            <%= comment.body %>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <% end %>
-                  </ul>
-
-                </div>
-
-                <div class="input-group">
-                  <div id="comments">
+            <div class="input-group">
+              <div id="comments">
                   <!-- <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
                   <span class="input-group-btn" onclick="addComment()">     
                     <a href="#" class="btn btn-primary btn-sm">Comment</a>
                   </span> -->
-                    </div>
-                    <%= render "comments/form" %>
                 </div>
-
+                <%= render "comments/form" %>
               </div>
+
             </div>
           </div>
         </div>
       </div>
+    </div>

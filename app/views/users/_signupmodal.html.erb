@@ -1,0 +1,176 @@
+<!-- Modal -->
+<div id="SignupModal" class="modal fade" role="dialog">
+  <div class="modal-dialog video-box">
+    <!-- Modal content | feedback--> 
+    <div class="modal-content">
+      <div class="modal-header text-center" style="background-color: #112a3e; color: white;">
+        <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
+        <h3>Sign up or Sign In, First</h3>
+      </div>
+      <div class="modal-body"> 
+
+
+        <div class="text-center">
+          <div class="panel" style="background-color: transparent;">
+            <div class="panel-heading">
+              <ul class="nav nav-tabs">
+                <li class="active col-md-6 text-center"><a href="#tab1primary" data-toggle="tab"><p><b>Sign In</b></p></a></li>          <li class="col-md-6 text-center"><a href="#tab2primary" data-toggle="tab"><p><b>Sign Up</b></p></a></li>
+              </ul>
+            </div>
+
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="tab1primary">
+
+
+
+                <div id="loginbox" style="margin-top:50px;" class="mainbox">                    
+                  <div class="panel panel-info" >
+                    <div class="panel-heading">
+                      <div class="panel-title">Sign In</div>
+                    </div>
+                    <div style="padding-top:30px" class="panel-body" >
+                      <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                      <form id="loginform" class="form-horizontal" role="form">
+                        <div style="margin-bottom: 25px" class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                          <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                        </div>
+                        <div style="margin-bottom: 25px" class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                          <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                        </div>
+
+                        <div class="input-group">
+                          <div class="checkbox">
+                            <label>
+                              <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                            </label>
+                          </div>
+                        </div>
+                      </form>     
+                      <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-sm-12 controls">
+                          <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                        </div>
+                      </div>
+
+
+                    </div>                     
+                  </div>  
+                </div>
+
+              </div>
+
+              <div class="tab-pane fade" id="tab2primary">
+
+                <div id="signupbox" style="margin-top:50px">
+                  <div class="panel panel-info">
+                    <div class="panel-heading">
+                      <div class="panel-title">Sign Up</div>
+                    </div>  
+                    <div class="panel-body" >
+                      <form id="signupform" class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                          <label for="email" class="col-md-3 control-label">Who are you?</label>
+                          <div class="col-md-9">
+                            <label class="radio-inline"><input type="radio" name="gender" value="M" id=male />Poet</label>
+                            <label class="radio-inline"><input type="radio" name="gender" value="F" id=female />Reader</label>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="email" class="col-md-3 control-label">Email</label>
+                          <div class="col-md-9">
+                            <input type="text" class="form-control" name="email" placeholder="Email Address">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="firstname" class="col-md-3 control-label">First Name</label>
+                          <div class="col-md-9">
+                            <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                          <div class="col-md-9">
+                            <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="lastname" class="col-md-3 control-label">Profile Picture</label>
+                          <div class="col-md-9">
+                            <input type="file" class="" name="" placeholder="">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="icode" class="col-md-3 control-label">What's your inspiration in poetry</label>
+                          <div class="col-md-9">
+                            <input type="text" class="form-control" name="icode" placeholder="What's your inspiration in poetry">
+                          </div>
+                        </div>
+
+
+                        <div class="form-group">
+
+                          <label for="icode" class="col-md-3 control-label">Choose your Favorite Categories</label>
+                          <div class="col-md-9">
+
+                           <div class="check_box" style="text-align: justify;">
+
+                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Love <br>
+                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Life Story <br>
+                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Resilience <br>
+                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Culture <br>
+                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Social Life <br>
+                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> History  <br>
+                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Solidarity <br>
+
+
+
+                           </div>
+                         </div>
+                       </div>
+
+                       <div class="form-group">
+                        <label for="password" class="col-md-3 control-label">Password</label>
+                        <div class="col-md-9">
+                          <input type="password" class="form-control" name="passwd" placeholder="Password">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="password" class="col-md-3 control-label">Password confirmation</label>
+                        <div class="col-md-9">
+                          <input type="password" class="form-control" name="passwd" placeholder="Re-type Password">
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <!-- Button -->                                        
+                        <div class="col-md-offset-3 col-md-9">
+                          <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button> 
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>               
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+</div>
