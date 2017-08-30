@@ -76,47 +76,45 @@
                       <div class="panel-title">Sign Up</div>
                     </div>  
                     <div class="panel-body" >
+                    <%= form_for (@user), url: users_path do |f| %>
+                      <%# if user.errors.any? %>
+                     <!--  <div class="error_messages">
+                        <h2>Form is invalid</h2>
+                        <ul> -->
+                            <%# user.errors.full_messages.each do |message| %>
+                         <!--    <li><%#= message %></li>
+                            <%#end %>
+                          </ul>
+                      </div> -->
+                      <%# end %>
                       <form id="signupform" class="form-horizontal" role="form">
-
-                        <div class="form-group">
-                          <label for="email" class="col-md-3 control-label">Who are you?</label>
-                          <div class="col-md-9">
-                            <label class="radio-inline"><input type="radio" name="gender" value="M" id=male />Poet</label>
-                            <label class="radio-inline"><input type="radio" name="gender" value="F" id=female />Reader</label>
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="email" class="col-md-3 control-label">Email</label>
-                          <div class="col-md-9">
-                            <input type="text" class="form-control" name="email" placeholder="Email Address">
-                          </div>
-                        </div>
+                     
 
                         <div class="form-group">
                           <label for="firstname" class="col-md-3 control-label">First Name</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                            <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>                   
                           </div>
                         </div>
+
                         <div class="form-group">
                           <label for="lastname" class="col-md-3 control-label">Last Name</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                            <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name"%>
+                          </div>
+                        </div>
+
+                           <div class="form-group">
+                          <label for="email" class="col-md-3 control-label">Email</label>
+                          <div class="col-md-9">
+                            <%= f.email_field :email, placeholder: "Email", class: "form-control"%>
                           </div>
                         </div>
 
                         <div class="form-group">
                           <label for="lastname" class="col-md-3 control-label">Profile Picture</label>
                           <div class="col-md-9">
-                            <input type="file" class="" name="" placeholder="">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="icode" class="col-md-3 control-label">What's your inspiration in poetry</label>
-                          <div class="col-md-9">
-                            <input type="text" class="form-control" name="icode" placeholder="What's your inspiration in poetry">
+                            <%= f.file_field :profile_picture, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes }, class: "form-control"%>
                           </div>
                         </div>
 
@@ -127,15 +125,9 @@
                           <div class="col-md-9">
 
                            <div class="check_box" style="text-align: justify;">
+                           <%= f.select :category_ids, Category.all.collect {|x| [x.name, x.id]}, {}, :multiple => true %>
 
-                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Love <br>
-                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Life Story <br>
-                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Resilience <br>
-                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Culture <br>
-                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Social Life <br>
-                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> History  <br>
-                             <%= check_box("user", "poet", { id: 'fancy-checkbox-primary' }, true, false) %> Solidarity <br>
-
+                            <%#= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id: "recommends_category_tokens"}%>
 
 
                            </div>
@@ -145,14 +137,14 @@
                        <div class="form-group">
                         <label for="password" class="col-md-3 control-label">Password</label>
                         <div class="col-md-9">
-                          <input type="password" class="form-control" name="passwd" placeholder="Password">
+                          <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
                         </div>
                       </div>
 
                       <div class="form-group">
                         <label for="password" class="col-md-3 control-label">Password confirmation</label>
                         <div class="col-md-9">
-                          <input type="password" class="form-control" name="passwd" placeholder="Re-type Password">
+                          <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Re-type Password" %>
                         </div>
                       </div>
 
@@ -160,11 +152,11 @@
                       <div class="form-group">
                         <!-- Button -->                                        
                         <div class="col-md-offset-3 col-md-9">
-                          <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button> 
+                        <input type="submit" id="btn-signup" class="btn btn-info" name="" value="Sign Up">
                         </div>
                       </div>
                     </form>
-
+                    <% end %>
                   </div>
                 </div>               
               </div>

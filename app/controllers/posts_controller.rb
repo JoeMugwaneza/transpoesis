@@ -11,7 +11,7 @@ class PostsController < ApplicationController
       @posts = Post.published
     end
      @recent_posts = Post.published.in_order.endmost(5)
-   
+   @user = User.new
   end
 
   def show 
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @categories = Category.all
-     @recent_posts = Post.published.in_order.endmost(5)
+    @recent_posts = Post.published.in_order.endmost(5)
   end
 
   def create
