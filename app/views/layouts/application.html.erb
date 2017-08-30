@@ -106,7 +106,7 @@
      <% end %>
    </p>
 
-   <%= render "layouts/sidebar" %>
+   <%= render "layouts/sidebar" unless @disable_sidebar %>
 
    <%= yield %>
  </section>
