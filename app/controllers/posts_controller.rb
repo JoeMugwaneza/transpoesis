@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @disable_sidebar = true
     @post = Post.new
     @categories = Category.all
     @recent_posts = Post.published.in_order.endmost(5)

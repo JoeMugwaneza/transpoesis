@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    @recent_posts = Post.published.in_order.endmost(5)
   end
 
   def show
