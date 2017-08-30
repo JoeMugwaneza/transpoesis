@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  # checking where posts is reviewed by admin
+  scope :published, -> {where(published: true)}
+
   belongs_to :user, optional: true
   
   has_many :comments, :dependent => :destroy

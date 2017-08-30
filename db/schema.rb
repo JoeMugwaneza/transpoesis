@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170827100136) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "review", default: false
+    t.boolean "published", default: false
   end
 
   create_table "punches", force: :cascade do |t|

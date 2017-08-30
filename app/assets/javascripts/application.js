@@ -138,7 +138,7 @@ $(document).ready(function() {
 //= require_tree .
 
 $(function(){
-var textfield = $("input[name=user]");
+var textfield = $("input[email=email]");
             $('button[type="submit"]').click(function(e) {
                 e.preventDefault();
                 //little validation just to check username

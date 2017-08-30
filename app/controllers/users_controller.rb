@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @user_posts = @user.posts
-    @recent_posts = Post.where('review =?', true).in_order.endmost(10)
+    @recent_posts = Post.published.in_order.endmost(5)
   end
 
   def new
