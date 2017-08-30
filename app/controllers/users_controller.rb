@@ -32,8 +32,4 @@ class UsersController < ApplicationController
     params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
     
   end
-
-  def admin
-    @table_number = 0    
-  end
 end
