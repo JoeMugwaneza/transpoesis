@@ -1,6 +1,44 @@
 <!-- table container -->
  <div class="col-md-8">
+  <!-- ads -->
+  <div class="col-md-12 main-box">
+    <div class="ad-title">      
+      <a href="https://www.goethe.de/ins/rw/en/index.html" target="_blank" style="color: #2f5369;"><strong>Goethe Institut</strong></a> <i style="font-size: 10px;">.Sponsored</i>
+
+      <!-- edit and delete ad buttons -->
+      <div class="action pull-right">
+        <button type="button" class="btn btn-primary btn-xs" title="Edit">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" title="Delete">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </div>
+    </div>
+      
+    <div class="col-md-12 ad-img text-center">
+      <img src="http://www.livinginkigali.com/wp-content/uploads/awpcp/Goethe-Institut-Kigali-3-large.jpg">
+    </div>
+   
+      <div class="col-md-12 poem-body">
+        <h2 class="text-center">Calling for Applicants on Scholarship</h2>
+        <p style="text-align: justify;">I've planted a tree in my heart!
+          Whenever I feel tired,
+          rushing,
+          I sit down,
+          with my back against the trunk
+          I look at the sky
+          through the foliage of the tree
+          and peace comes back
+          to my heart.</p>
+      </div>
+      <div class="text-center">
+        <a href="https://www.goethe.de/ins/rw/en/index.html" class="btn-info btn btn-xs" target="_blank">Learn More</a>
+        </div>
+
+  </div>
   <% @posts.find_each do |post| %>  
+  
   <div class="col-md-12 main-box">
     <div class="col-md-3">
       <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="index-image">
@@ -29,69 +67,68 @@
       <hr>
       <div class="col-md-12 poem-body">
         <p><%= post.body.html_safe %>.<i style="color: blue;">| Read more</i></p>
-        </div>
       </div>
+    </div>
 
 
-      <div class="dropup pull-right">
-        <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
-          </li>
-          <li>
-            <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
-          </li>
-          <li>
-            <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
-          </li>
-          <li>
-            <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
-          </li>
+    <div class="dropup pull-right">
+      <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
+        </li>
+        <li>
+          <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
+        </li>
+        <li>
+          <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
+        </li>
+        <li>
+          <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
+        </li>
 
-          <li>
-            <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
-          </li>
+        <li>
+          <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
+        </li>
 
-        </ul>
-      </div>
+      </ul>
+    </div>
 
 
-      <button type="button" class="btn btn-primary btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
+    <button type="button" class="btn btn-primary btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
 
-      <%#= render "designs/signupmodal" %><!--  signup modal -->
-      
-      <a href="" class="btn btn-default btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Add to your favorite folder"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</a>
+    <%#= render "designs/signupmodal" %><!--  signup modal -->
 
-      <div class="text-center">
-        <div class="btn-group">
-          <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>124 </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
+    <a href="" class="btn btn-default btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Add to your favorite folder"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</a>
 
-          <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>45 </span><div class="glyphicon glyphicon-comment"> </div></a>
+    <div class="text-center">
+      <div class="btn-group">
+        <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>124 </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
 
-          <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
+        <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>45 </span><div class="glyphicon glyphicon-comment"> </div></a>
 
-          <!-- Modal -->
-          <div id="Modal" class="modal fade" role="dialog">
-            <div class="modal-dialog video-box">
+        <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- Modal -->
+        <div id="Modal" class="modal fade" role="dialog">
+          <div class="modal-dialog video-box">
 
-                </div>
-                <div class="modal-body">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe>
-                </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+              </div>
+              <div class="modal-body">
+                <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XFQ_rccI2yg" frameborder="0" allowfullscreen></iframe> -->
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
+
     </div>
-    <% end %>
   </div>
+  <% end %>
+</div>
 </div>
