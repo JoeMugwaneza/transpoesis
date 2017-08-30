@@ -3,29 +3,29 @@ class PostsController < ApplicationController
   
   def index
     if params[:sort]
-      @posts = Post.where('review =?', true)
+      @posts = Post.published.order(:updated_at)
 
     elsif params[:category]
-      @posts = Category.find_by(name: params[:category]).posts.where(review: true)
+      @posts = Category.find_by(name: params[:category]).posts.published
     else
-      @posts = Post.where('review =?', true)
+      @posts = Post.published
     end
-     @recent_posts = Post.where('review =?', true).in_order.endmost(5)
-   
+     @recent_posts = Post.published.in_order.endmost(5)
+   @user = User.new
   end
 
   def show 
     @user = User.find_by(id: params[:id])
     @post = Post.find_by(id: params[:id])
     
-    @recent_posts = Post.where('review =?', true).in_order.endmost(10)
+    @recent_posts = Post.published.in_order.endmost(5)
     @post.punch(request)
   end
 
   def new
     @post = Post.new
     @categories = Category.all
-     @recent_posts = Post.where('review =?', true).in_order.endmost(10)
+    @recent_posts = Post.published.in_order.endmost(5)
   end
 
   def create
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @recent_posts = Post.where('review =?', true).in_order.endmost(10)
+    @recent_posts = Post.published.in_order.endmost(5)
     find_post
   end
 

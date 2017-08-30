@@ -77,7 +77,8 @@
 
    <li><a title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal" class="btn btn-outline btn-circle btn-default"><span class="glyphicon glyphicon-user"></span>Join</a>
     <!-- modal -->
-    <%= render "users/signupmodal" %>
+    
+    <%= render :partial => "users/signupmodal" ,:locals=>{:user => @user || User.new} %>
   </li>
   
 </ul>

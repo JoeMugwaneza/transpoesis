@@ -7,14 +7,17 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @user_posts = @user.posts
-    @recent_posts = Post.where('review =?', true).in_order.endmost(10)
+    @recent_posts = Post.published.in_order.endmost(5)
   end
 
   def new
     @user = User.new
+    render :partial => 'users/signupmodal'
+    @categories = Category.all
   end
 
   def create
+    @recent_posts = Post.published.in_order.endmost(5)
     @user = User.new(user_params)
 
     if @user.save
@@ -29,7 +32,7 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :profile_picture, :password, :password_confirmation, category_ids: [])
     
   end
 end
