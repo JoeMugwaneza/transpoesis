@@ -28,10 +28,9 @@
           <div class="col-md-9 col-md-offset-1 col-xs-12 col-xs-offset-1">
            <div class="checkbox">
             <ul>
-              <li>
-                
-             <%= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id:"post_category_tokens"} %> <br>
-              </li>
+        
+                <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id:"post_category_tokens"} %>
+            
             </ul>
           
           </div>

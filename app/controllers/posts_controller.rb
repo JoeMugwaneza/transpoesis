@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @categories = Category.all
     @recent_posts = Post.published.in_order.endmost(5)
+    @user = User.new
   end
 
   def create
