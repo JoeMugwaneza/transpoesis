@@ -1,0 +1,111 @@
+<script type="text/javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+
+
+
+
+<div class="container-fluid col-md-9" style="background-color: #d6dbde;">
+  <!-- Pending poems -->
+  <div class="col-md-12">
+    <h2 class="text-center">PENDING POEMS (142)</h2>
+    <div class="tbody panel table-box">
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th>N<sup>o</sup></th>      
+            <th>Title</th>
+            <th>Poet(ess)</th>
+            <th class="pull-right">view</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- rows -->
+          <% 30.times do || %>
+          <tr>
+            <td>1</td>
+            <td>Talking to My soul</td>
+            <td>Andrea Grieder</td>
+            <td>
+              <a href="" class="btn-xs btn btn-default pull-right">View</a>
+            </td>
+          </tr>
+          <% end %>
+          <!-- end of rows -->
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+  <!-- users table -->
+  <div class="col-md-12">
+    <!-- all Students -->
+    <div id="admintable">
+      <h2 class="text-center">USERS (3452)</h2>
+      <div class="panel table-box">        
+        <table class="table">
+          <thead class="thead">
+            <tr>
+              <th>N<sup>o</sup></th>
+              <th>Full Name</th>
+              <th>N<sup>o</sup> Poems</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!-- rows -->
+              <% 30.times do || %>
+              <tr>
+                <td>1</td>
+                <td>Andrea Grieder</td>
+                <td>34</td>
+                <td>
+                  <!-- <a href="" class="btn-xs btn btn-danger pull-right">Block</a> -->
+                  <a href="" class="btn-xs btn btn-primary pull-right">enable</a>
+
+                </td>
+              </tr>
+              <% end %>
+              <!-- end of rows -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- All poems -->
+  <div class="col-md-12">
+    <h2 class="text-center">PUBLISHED POEMS (433)</h2>
+    <div class="tbody panel table-box">
+      <table class="table sidetable" id="test">
+        <thead class="thead">
+          <tr>
+            <th>N<sup>o</sup></th>      
+            <th>Title</th>
+            <th>Poet(ess)</th>
+            <th class="">view</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- rows -->
+          <% 30.times do || %>
+          <tr>
+            <td>1</td>
+            <td>Talking to My soul</td>
+            <td>Andrea Grieder</td>
+            <td>
+              <a href="" class="btn-xs btn btn-default pull-right">View</a>
+            </td>
+          </tr>
+          <% end %>
+          <!-- end of rows -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

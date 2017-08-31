@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get "/poets2" => "users#poets2"
   get "/show" => "designs#show"
   get "/poet" =>  "designs#poet"
-  get "/admin" => "users#admin"
+  get "/admin" => "admin_dashboards#admin"
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
