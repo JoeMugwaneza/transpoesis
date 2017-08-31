@@ -6,7 +6,7 @@
 <div class="container-fluid col-md-9" style="background-color: #d6dbde;">
   <!-- Pending poems -->
   <div class="col-md-12">
-    <h2 class="text-center">PENDING POEMS (142)</h2>
+    <h2 class="text-center">Pending Poems (<%= @pending_posts.count %>)</h2>
     <div class="tbody panel table-box">
       <table class="table">
         <thead class="thead">
@@ -20,13 +20,14 @@
         <tbody>
 
           <!-- rows -->
-          <% 30.times do || %>
+          <% @pending_posts.each_with_index do |post, count| %>
           <tr>
-            <td>1</td>
-            <td>Talking to My soul</td>
-            <td>Andrea Grieder</td>
+            
+            <td><%= count + 1%></td>
+            <td><%= post.name %></td>
+            <td><%="#{post.user.first_name}  #{post.user.last_name}" %></td>
             <td>
-              <a href="" class="btn-xs btn btn-default pull-right">View</a>
+              <a href="<%= post_path(post) %>" class="btn-xs btn btn-default pull-right">View</a>
             </td>
           </tr>
           <% end %>
@@ -42,7 +43,7 @@
   <div class="col-md-12">
     <!-- all Students -->
     <div id="admintable">
-      <h2 class="text-center">USERS (3452)</h2>
+      <h2 class="text-center">USERS (<%= @users.size %>)</h2>
       <div class="panel table-box">        
         <table class="table">
           <thead class="thead">
@@ -56,14 +57,17 @@
           <tbody>
             <tr>
               <!-- rows -->
-              <% 30.times do || %>
+              <% @users.each_with_index do |user, count| %>
               <tr>
-                <td>1</td>
-                <td>Andrea Grieder</td>
-                <td>34</td>
+                <td><%= count + 1 %></td>
+                <td><%= "#{user.first_name} #{user.last_name}" %></td>
+                <td><%= user.posts.size %></td>
                 <td>
-                  <!-- <a href="" class="btn-xs btn btn-danger pull-right">Block</a> -->
-                  <a href="" class="btn-xs btn btn-primary pull-right">enable</a>
+                  <% if user.enabled == true%>
+                  <a href="/users?disable=<%= user.id%>" class="btn-xs btn btn-danger pull-right">Block</a>
+                  <% else %>
+                  <a href="/users?disable=<%= user.id%>" class="btn-xs btn btn-primary pull-right">enable</a>
+                  <% end %>
 
                 </td>
               </tr>
@@ -78,7 +82,7 @@
 
   <!-- All poems -->
   <div class="col-md-12">
-    <h2 class="text-center">PUBLISHED POEMS (433)</h2>
+    <h2 class="text-center">PUBLISHED POEMS (<%= @published_posts.size %>)</h2>
     <div class="tbody panel table-box">
       <table class="table sidetable" id="test">
         <thead class="thead">
@@ -92,13 +96,13 @@
         <tbody>
 
           <!-- rows -->
-          <% 30.times do || %>
+          <% @published_posts.each_with_index do |post, count| %>
           <tr>
-            <td>1</td>
-            <td>Talking to My soul</td>
-            <td>Andrea Grieder</td>
+            <td><%= count + 1 %></td>
+            <td><%= post.name %></td>
+            <td><%= "#{post.user.first_name} #{post.user.last_name}" %></td>
             <td>
-              <a href="" class="btn-xs btn btn-default pull-right">View</a>
+              <a href="<%= post_path(post) %>" class="btn-xs btn btn-default pull-right">View</a>
             </td>
           </tr>
           <% end %>
