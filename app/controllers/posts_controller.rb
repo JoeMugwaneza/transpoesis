@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     respond_to do |format|
 
       if @post.save
-        format.html {redirect_to @post, notice: 'Post Created'}
+        format.html {redirect_to @post, notice: 'Poem Created'}
         format.json {render :show, status, :created, location: @post}
         format.js
       else
