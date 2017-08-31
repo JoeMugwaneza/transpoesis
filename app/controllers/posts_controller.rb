@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @categories = Category.all
     @recent_posts = Post.published.in_order.endmost(5)
+    @user = User.new
   end
 
   def create
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
     respond_to do |format|
 
       if @post.save
-        format.html {redirect_to @post, notice: 'Post Created'}
+        format.html {redirect_to @post, notice: 'Poem Created'}
         format.json {render :show, status, :created, location: @post}
         format.js
       else
