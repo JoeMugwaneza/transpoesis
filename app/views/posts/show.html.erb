@@ -54,31 +54,32 @@
 
             </ul>
           </div>
+        
+        <%#= render "designs/signupmodal" %><!--  signup modal -->
+         
+        <!-- publish button -->
 
-          <button type="button" class="btn btn-primary btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
+         <!-- if not published -->
+          <!-- <button type="button" class="btn btn-primary btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Publish</button> -->
 
-          <%#= render "designs/signupmodal" %><!--  signup modal -->
+         <!-- If published -->
+          <button type="button" class="btn btn-success btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
 
-          <a href="" class="btn btn-default btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Add to your favorite folder"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</a>
 
           <!-- begin of Favorite codes -->
-
           <div class="votes">
             <% if (current_user.favorited? @post) %>
 
-            <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: 'unfavorite_post btn btn-default btn-xs'%>
+            <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: "unfavorite_post btn btn-primary btn-xs", title:"Remove to Favorites" %>
             <% else %>
 
-            <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: 'favorite_post btn btn-default btn-xs' %>
+            <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: "favorite_post btn btn-default btn-xs", title:"Add to Favorites" %>
             <% end %>
           </div>
-
           <!-- end of favorite codes -->
-          <!-- End of codes about like -->
 
           <div class="text-center">
             <div class="btn-group">
-
               <!-- Start codes about like-->
 
               <div class="vote_count">
