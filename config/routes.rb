@@ -15,9 +15,6 @@ Rails.application.routes.draw do
     
   resources :sessions
 
-
-
-
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
@@ -27,7 +24,7 @@ Rails.application.routes.draw do
   get "/poets2" => "users#poets2"
   get "/show" => "designs#show"
   get "/poet" =>  "designs#poet"
-  get "/admin" => "admin_dashboards#admin"
+  get "/admin" => "admin_dashboards#admin", as: 'admin'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

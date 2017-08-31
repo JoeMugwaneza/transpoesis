@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   # checking where posts is reviewed by admin
   scope :published, -> {where(published: true)}
+  scope :pending, ->{where(published: false)}
 
   belongs_to :user, optional: true
   

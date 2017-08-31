@@ -70,7 +70,7 @@
 </a> 
       <hr>
       <div class="col-md-12 poem-body">
-        <p><%= post.body.html_safe %>.<i style="color: blue;">| Read more</i></p>
+        <p><%= truncate post.body, length: 250, :omission => "" , :escape => false%> | <%= link_to 'Read More', post_path(post) %></p>
       </div>
     </div>
 

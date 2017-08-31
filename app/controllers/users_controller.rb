@@ -2,8 +2,15 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-  end
+    @user = User.find_by(id: params[:disable])
 
+    if params[:disable] && @user 
+      @user.enabled = !@user.enabled
+      @user.save
+      flash[:sucess] = "#{@user.last_name} status changed"
+      redirect_to admin_path
+    end
+  end
   def show
     @user = User.find_by(id: params[:id])
     @user_posts = @user.posts
@@ -11,12 +18,14 @@ class UsersController < ApplicationController
   end
 
   def new
+    @disable_sidebar = true
+
     @user = User.new
-    render :partial => 'users/signupmodal'
     @categories = Category.all
   end
 
   def create
+    @disable_sidebar = true
     @recent_posts = Post.published.in_order.endmost(5)
     @user = User.new(user_params)
 
