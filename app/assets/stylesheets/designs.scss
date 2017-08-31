@@ -2,55 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.main-box {
-  background-color: white;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.poem-body {
-  padding-top: 10px;
-  font-family: 'Bellefair', serif;
-}
-
-.poem-body p {
-  font-size: 18px;
-}
-
-.index-image {
-  width: 70px;
-  height: auto;
-  border-radius: 50%;
-}
-
-.poet-box {
-  width: 100%;
-  background-color: white;
-  margin-top: 10px;
-  border-radius: 5px;
-
-}
-
-.poet-image {
-  width: 100%;
-  height: auto;
-  margin: 0px;
-  // padding-top: 15px;
-
-}
-
-.poet-profile {
-  padding: 15px;
-}
-
 .poems-button {
   background-color: #2f5369;
   border-radius: 50px;
   color: white;
   margin-bottom: 15px;
 }
-
 
 .btn-glyphicon {
   padding:8px;

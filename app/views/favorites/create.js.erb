@@ -1,4 +1,4 @@
 $('.favorite_post').bind('ajax:success', function(){
    $(this).closest('.favorite_post').hide();
-   $(this).closest('.votes').html(' <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: 'unfavorite_post' %>');
+   $(this).closest('.votes').html(' <%= link_to "", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: 'unfavorite_post' %>');
 });

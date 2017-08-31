@@ -1,5 +1,5 @@
 $('.unfavorite_post').bind('ajax:success', function(){
    $(this).closest('.unfavorite_post').hide();
-   $(this).closest('.votes').html(' <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: 'favorite_post' %>');
+   $(this).closest('.votes').html(' <%= link_to "", post_favorite_path(@post), method: :delete, remote: true, class: 'favorite_post' %>');
 
 });
