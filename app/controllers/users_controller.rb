@@ -35,4 +35,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :profile_picture, :password, :password_confirmation, category_ids: [])
     
   end
+
+  def admin
+    @recent_posts = Post.published.in_order.endmost(5)
+    
+  end
 end
