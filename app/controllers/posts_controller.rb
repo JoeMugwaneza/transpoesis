@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @disable_sidebar = true
     @recent_posts = Post.published.in_order.endmost(5)
     find_post
   end
