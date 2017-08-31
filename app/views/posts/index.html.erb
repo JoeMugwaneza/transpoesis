@@ -1,6 +1,6 @@
 <!-- table container -->
  <div class="col-md-8">
-  <!-- ads -->
+  <!-- ads demo -->
   <div class="col-md-12 main-box">
     <div class="ad-title">      
       <a href="https://www.goethe.de/ins/rw/en/index.html" target="_blank" style="color: #2f5369;"><strong>Goethe Institut</strong></a> <i style="font-size: 10px;">.Sponsored</i>
@@ -34,10 +34,13 @@
       </div>
       <div class="text-center">
         <a href="https://www.goethe.de/ins/rw/en/index.html" class="btn-info btn btn-xs" target="_blank">Learn More</a>
-        </div>
-
+      </div>
   </div>
+<!-- end of ad -->
+
   <% @posts.find_each do |post| %>  
+
+<a href="/posts/<%= post.id %>">
   
   <div class="col-md-12 main-box">
     <div class="col-md-3">
@@ -64,13 +67,16 @@
       <a href="<%= user_path(post.user)%>" style="color: #2f5369"><strong><%= "#{post.user.first_name} #{post.user.last_name}" %></strong></a> : <a href="<%= post_path(post) %>"> <%=  post.name%></a>
       <div class="mic-info"><%= post.hits %> <i class="glyphicon glyphicon-eye-open"></i></div>
       <div class="mic-info text-center"> <span style="font-style: italic;">Poem Published <%= time_ago_in_words(post.updated_at) %> Ago</span></div>
+</a> 
       <hr>
       <div class="col-md-12 poem-body">
         <p><%= truncate post.body, length: 250, :omission => "" , :escape => false%> | <%= link_to 'Read More', post_path(post) %></p>
       </div>
     </div>
 
+<!-- Posts bottom buttons -->
 
+    <!-- social media sharing buttons -->
     <div class="dropup pull-right">
       <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
       <ul class="dropdown-menu">
@@ -94,7 +100,7 @@
       </ul>
     </div>
 
-
+<!-- Other buttons -->
     <button type="button" class="btn btn-primary btn-xs pull-left" data-toggle="modal" data-target="#SignupModal" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Approve</button>
 
     <%#= render "designs/signupmodal" %><!--  signup modal -->

@@ -1,6 +1,6 @@
 <%= javascript_include_tag Ckeditor.cdn_url %>
 <div class="jumbotron">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
 
@@ -27,8 +27,12 @@
           <label for="email" class="col-md-2 control-label">Select Categories</label>
           <div class="col-md-9 col-md-offset-1 col-xs-12 col-xs-offset-1">
            <div class="checkbox">
-           
+            <ul>
+              <li>
+                
              <%= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id:"post_category_tokens"} %> <br>
+              </li>
+            </ul>
           
           </div>
           </div>

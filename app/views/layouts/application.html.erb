@@ -41,8 +41,9 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <% if current_user %>
         <li><a href="<%= new_post_path %>" class="pull-right btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
+
+        <% if current_user %>
         <li><a href="users/<%= current_user.id %>" class="nav-content-format pull-right" role="button"><div class="glyphicon glyphicon-user"></div><strong> <%= "#{current_user.last_name}" %></strong></a></li>
         <li><a href="<%= logout_path %>" class=" nav-content-format pull-right" role="button" ><strong>Logout</strong></a></li>
         <% else %>
@@ -75,7 +76,7 @@
     </ul>
     </li> -->
 
-   <li><a title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal" class="btn btn-outline btn-circle btn-default"><span class="glyphicon glyphicon-user"></span>Join</a>
+   <li><a title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal"><span class="glyphicon glyphicon-user"></span>Join</a>
     <!-- modal -->
     <%= render 'users/signupmodal'%>
     <%#= render :partial => "users/signupmodal" ,:locals=>{:user => @user || User.new} %>
