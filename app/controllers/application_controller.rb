@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user
 
   def authorize_user!
-    redirect_to root_path
-    flash[:warning] = "Not authorized, in order to have access to a full Poem or want to create one, just click Join to sign in or up" if current_user.nil?
+    redirect_to root_path, alert: "Not authorized, in order to have access to a full Poem or want to create one, just click Join to sign in or up" if current_user.nil?
   end
 end
