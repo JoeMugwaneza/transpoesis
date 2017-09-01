@@ -2,14 +2,15 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-    @user = User.find_by(id: params[:disable])
     @user = User.new
     @recent_posts = Post.published.in_order.endmost(5)
     
-    if params[:disable] && @user 
-      @user.enabled = !@user.enabled
-      @user.save
-      flash[:sucess] = "#{@user.last_name} status changed"
+    user = User.find_by(id: params[:disable])
+    
+    if params[:disable] && user 
+      user.enabled = !user.enabled
+      user.save
+      flash[:sucess] = "#{user.last_name} status changed"
       redirect_to admin_path
     end
   end

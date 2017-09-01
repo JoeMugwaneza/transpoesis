@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:approve])
 
     if params[:approve]
-      @post.published = true
+      @post.published = !@post.published
       @post.save
       flash[:sucess] = "#{@post.name} Approved"
       redirect_to @post

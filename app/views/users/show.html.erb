@@ -1,7 +1,7 @@
 <!-- table container -->
 <div class="col-md-8">
 
-  <% @user_posts.each do |user|%>
+  <% @user_posts.each do |post|%>
 
   <div class="col-md-12 main-box">
     <div class="col-md-3">
@@ -24,12 +24,12 @@
         </button>
       </div>
       <!-- poem and poet  -->
-      <a href="#" style="color: #2f5369"><strong>Katy Chrisie</strong></a> : <a href="#"> <%= link_to user.name, post_path(user)%></a>
-      <div class="mic-info">46k <i class="glyphicon glyphicon-eye-open"></i></div>
+      <a href="<%= user_path(post) %>" style="color: #2f5369"><strong><%= "#{post.user.first_name} #{post.user.last_name}" %></strong></a> : <a href="<%= user_path(post) %>"> <%= link_to post.name, post_path(post)%></a>
+      <div class="mic-info"><%= post.hits %><i class="glyphicon glyphicon-eye-open"></i></div>
       <div class="mic-info text-center">on 11 Nov 2017</div>
       <hr>
       <div class="col-md-12 poem-body">
-        <p><%= user.body.html_safe%>.<i style="color: blue;">| Read more</i></p>
+        <p><%= post.body.html_safe%>.<i style="color: blue;">| Read more</i></p>
       </div>
     </div>
 
