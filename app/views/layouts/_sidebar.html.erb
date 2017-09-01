@@ -67,7 +67,7 @@
       <% current_user.categories.each do |category| %>
       <div id="group-3" class="list-group collapse out">
         <% category.posts.published.each do |post| %>
-        <a class="list-group-item" href="#">
+        <a class="list-group-item" href="post_path(post)">
           <span class="badge pull-right"><%= post.hits %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name%>
         </a>
         <% end %>
