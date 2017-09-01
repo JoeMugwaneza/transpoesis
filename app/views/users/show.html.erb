@@ -24,7 +24,7 @@
         </button>
       </div>
       <!-- poem and poet  -->
-      <a href="#" style="color: #2f5369"><strong>Katy Chrisie</strong></a> : <a href="#"> <%= link_to user.name, post_path(user)%></a>
+      <a href="#" style="color: #2f5369"><strong><%= "#{user.user.first_name} #{user.user.last_name}" %></strong></a> : <a href="#"> <%= link_to user.name, post_path(user)%></a>
       <div class="mic-info">46k <i class="glyphicon glyphicon-eye-open"></i></div>
       <div class="mic-info text-center">on 11 Nov 2017</div>
       <hr>
