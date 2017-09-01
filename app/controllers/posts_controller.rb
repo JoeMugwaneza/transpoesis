@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authorize, only: [:edit, :update]
   
+  before_action :authorize_user!, except: [:index]
   def index
     if params[:sort]
       @posts = Post.published.order(:updated_at)
@@ -10,16 +10,31 @@ class PostsController < ApplicationController
     else
       @posts = Post.published
     end
-     @recent_posts = Post.published.in_order.endmost(5)
-   @user = User.new
+    @recent_posts = Post.published.in_order.endmost(5)
+    @user = User.new
+
+    @post = Post.find_by(id: params[:approve])
+
+    if params[:approve]
+      @post.published = true
+      @post.save
+      flash[:sucess] = "#{@post.name} Approved"
+      redirect_to @post
+    end
+
+
+    
   end
 
   def show 
+    @user = User.new
     @user = User.find_by(id: params[:id])
     @post = Post.find_by(id: params[:id])
     
     @recent_posts = Post.published.in_order.endmost(5)
     @post.punch(request)
+
+
   end
 
   def new

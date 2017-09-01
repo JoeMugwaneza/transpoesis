@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:disable])
     @user = User.new
     @recent_posts = Post.published.in_order.endmost(5)
+    
     if params[:disable] && @user 
       @user.enabled = !@user.enabled
       @user.save

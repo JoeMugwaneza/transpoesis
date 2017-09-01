@@ -34,13 +34,18 @@
         <a href="<%= user_path(@post.user)%>" style="color: #2f5369"><strong><%= "#{@post.user.first_name} " "#{@post.user.last_name}" %></strong></a> : <a href="<%= post_path(@post) %>"> <%= @post.name %></a>
         <div class="mic-info"> <%= @post.hits %> <i class="glyphicon glyphicon-eye-open"> </i> </div>
         <div class="mic-info text-center">Published <%= time_ago_in_words(@post.created_at) %> Ago</div>
+        
+
         <!-- publish button -->
 
-        <!-- if not published -->
-        <!-- <button type="button" class="btn btn-primary btn-xs pull-left" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Publish</button> -->
+        <% if @post.published == true %>
 
-        <!-- If published -->
-        <button type="button" class="btn btn-success btn-xs pull-right" title="Approve to be posted"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
+          <button type="button" class="btn btn-success btn-xs pull-right" title="Approved"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
+        <% else %>
+        
+          <button type="button" class="btn btn-primary btn-xs pull-right" onclick="location.href='/posts?approve=<%= @post.id%>'" 
+          title="Approve to be posted">Publish</button>
+        <% end %>
 
         <hr>
         <div class="col-md-12 poem-body">
