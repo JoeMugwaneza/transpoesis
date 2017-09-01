@@ -3,9 +3,9 @@
   <% @users.each do |user|%>
   <div class='grid--item col-md-4 col-sm-4 col-xs-12 '>
     <div class='img' style='background-image: url(https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg);'></div>
-    <div class='container'>
-      <h2 class=""><%=user.first_name %> <%= user.last_name %></h2>
-      <a href="/users/<%= user.id %>" class="label label-default" rel="tooltip" title="Click to View my Poems">View <span class="badge">132</span> Poems</a></p>
+    <div class='container' style="width: 100%;">
+      <h2><%=user.first_name %> <%= user.last_name %></h2>
+      <a href="/users/<%= user.id %>" class="label label-default" rel="tooltip" title="Click to View my Poems">View <span class="badge"><%= user.posts.size %></span> Poems</a></p>
       <!-- <div class='desc'>Photo by Ales Krivec</div> -->
     </div>
   </div>

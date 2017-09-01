@@ -47,7 +47,7 @@
       <div id="group-2" class="list-group collapse out">
         <% @recent_posts.find_each do |post| %>
         <a class="list-group-item" href="<%= post_path(post) %>">
-          <span class="badge pull-right"><%= post.hits %> <i class="glyphicon glyphicon-eye-open"></i></span> <%= post.name %>
+          <span class="badge pull-right"><%= post.hits %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name %>
         </a>
         <% end %>
       </div>
@@ -68,7 +68,7 @@
       <div id="group-3" class="list-group collapse out">
         <% category.posts.published.each do |post| %>
         <a class="list-group-item" href="#">
-          <span class="badge pull-right"><%= post.hits %><i class="glyphicon glyphicon-eye-open"></i></span> <%= post.name%>
+          <span class="badge pull-right"><%= post.hits %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name%>
         </a>
         <% end %>
       </div>
@@ -105,7 +105,7 @@
       <div id="group-4" class="list-group collapse out">
         <% current_user.favorites.find_each do |favorite| %>
         <a class="list-group-item" href="<%= post_path(favorite.post) %>">
-          <span class="badge pull-right"><%= favorite.post.hits %> <i class="glyphicon glyphicon-eye-open"></i></span> <%=favorite.post.name%>
+          <span class="badge pull-right"><%= favorite.post.hits %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%=favorite.post.name%>
         </a>
         <% end %>
       </div>
