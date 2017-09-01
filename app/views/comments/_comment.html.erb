@@ -10,7 +10,7 @@
                    <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
                  </div>
 
-                 <a href="">Andrea Grieder</a>
+                 <a href=""><%= "#{comment.user.first_name} #{comment.user.last_name}" %></a>
                  <div class="mic-info">Commented <%= time_ago_in_words(comment.created_at) %> Ago
                  </div>
                </div>

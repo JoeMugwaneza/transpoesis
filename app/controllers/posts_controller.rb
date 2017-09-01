@@ -27,9 +27,9 @@ class PostsController < ApplicationController
   end
 
   def show 
+    @post = Post.find_by(id: params[:id])
     @user = User.new
     @user = User.find_by(id: params[:id])
-    @post = Post.find_by(id: params[:id])
     
     @recent_posts = Post.published.in_order.endmost(5)
     @post.punch(request)
