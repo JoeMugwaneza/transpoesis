@@ -4,6 +4,7 @@
    
   <%= f.text_area :body, class:"form-control", placeholder:"Write your comment here ..." %>
   <%= f.hidden_field :post_id, {:value => @post.id} %><br>
+  <%= f.hidden_field :user_id, {:value => current_user.id} %><br>
   <%= f.submit "Comment", class:"pull-right btn btn-primary", style:"margin-bottom: 10px;"%>
  </div>
  <% end %>
