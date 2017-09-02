@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: transpoesis
+  api_key: '567293899363147'
+  api_secret: fCLUt4BSIHgoxcgp1qnxTsx8iGI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: transpoesis
+  api_key: '567293899363147'
+  api_secret: fCLUt4BSIHgoxcgp1qnxTsx8iGI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: transpoesis
+  api_key: '567293899363147'
+  api_secret: fCLUt4BSIHgoxcgp1qnxTsx8iGI
+  enhance_image_tag: true
+  static_image_support: false
