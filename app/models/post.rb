@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   # checking where posts is reviewed by admin
+  is_impressionable
   scope :published, -> {where(published: true)}
   scope :pending, ->{where(published: false)}
 
@@ -11,7 +12,7 @@ class Post < ApplicationRecord
   # has_many :feedbacks
   has_many :favorites, :dependent => :destroy
 
-  acts_as_punchable
+  # acts_as_punchable
   acts_as_votable
 
 

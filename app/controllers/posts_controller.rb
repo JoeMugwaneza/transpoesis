@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   
   before_action :authorize_user!, except: [:index]
+  impressionist :actions=>[:show,:index]
+  
   def index
     if params[:sort]
       @posts = Post.published.order(:updated_at)
@@ -27,14 +29,14 @@ class PostsController < ApplicationController
   end
 
   def show 
-    @post = Post.find_by(id: params[:id])
     @user = User.new
     @user = User.find_by(id: params[:id])
     
     @recent_posts = Post.published.in_order.endmost(5)
-    @post.punch(request)
+    # @post.punch(request)
 
-
+    @post = Post.find_by(id: params[:id])
+    impressionist(@post)
   end
 
   def new
