@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       user.enabled = !user.enabled
       user.save
       flash[:sucess] = "#{user.last_name} status changed"
-      redirect_to admin_path
+      redirect_to authorize_personel_path
     end
   end
   def show

@@ -8,13 +8,16 @@ class SessionsController < ApplicationController
     @recent_posts = Post.published.in_order.endmost(5)
 
     user = User.find_by_email(params[:email])
-    user != nil
 
     if user && user.authenticate(params[:password]) && user.enabled == true
 
       session[:user_id] = user.id
-      
-      redirect_to root_url, notice: 'Logged in!'
+
+      if user.admin == true
+        redirect_to authorize_personel_path, notice: "Welcome back Admin!"
+      else
+        redirect_to root_url, notice: 'Logged in!'
+      end
 
     elsif user && user.enabled == false
 
