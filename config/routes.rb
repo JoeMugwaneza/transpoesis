@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
   root 'posts#index'
 
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   get "/poets2" => "users#poets2"
   get "/show" => "designs#show"
   get "/poet" =>  "designs#poet"
-  get "/admin" => "admin_dashboards#admin", as: 'admin'
+  get "/authorized_personel" => "admin_dashboards#admin", as: 'authorize_personel'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

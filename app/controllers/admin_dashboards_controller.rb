@@ -1,4 +1,5 @@
 class AdminDashboardsController < ApplicationController
+  before_action :authenticate_admin!
   def admin
     # @disable_sidebar = true
     @user = User.find_by(id: params[:id])

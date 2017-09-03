@@ -48,10 +48,9 @@
       <!-- edit and delete buttons for posts-->
       <div class="action pull-right">
 
-        <button type="button" class="btn btn-primary btn-xs" title="Feedback" onclick="location.href='<%= edit_post_path(post) %>'"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
-        <!-- modal -->
+              <!-- modal -->
 
-        <%= render "posts/feedback" %>
+        <%#= render "posts/feedback" %>
 
       </div>
       <!-- poem and poet  -->
@@ -100,9 +99,9 @@
 
     <div class="text-center">
       <div class="btn-group">
-        <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>124 </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
+        <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %></span><div class="glyphicon glyphicon-heart-empty"> </div></a>
 
-        <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>45 </span><div class="glyphicon glyphicon-comment"> </div></a>
+        <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.comments.size %></span><div class="glyphicon glyphicon-comment"> </div></a>
 
         <a type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Modal"><span class="glyphicon glyphicon-play"></span></a>
 
