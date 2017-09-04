@@ -1,0 +1,16 @@
+#myDIV {
+    background-color: lightblue;
+    border: 1px solid black;
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 1s infinite;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    50% {padding: 50px;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    50% {padding: 50px;}
+}

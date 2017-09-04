@@ -22,11 +22,12 @@
 .main-box {
   background-color: white;
   margin-bottom: 10px;
+  // margin: 10px;
   padding: 10px;
+  background-size: cover;
 }
 
 .poem-body {
-  padding-top: 1;
   font-family: 'Bellefair', serif;
 }
 
@@ -35,7 +36,7 @@
 }
 
 .index-image {
-  width: 70px;
-  height: auto;
-  border-radius: 50%;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 30%;
 }
