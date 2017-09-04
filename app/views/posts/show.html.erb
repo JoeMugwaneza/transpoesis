@@ -48,7 +48,7 @@
           <button type="button" class="btn btn-success btn-xs pull-right" title="Approved"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
           <% end %>
 
-        <% if current_user.admin == true && @post.published == false %>
+        <% if current_user && current_user.admin == true && @post.published == false %>
             <button type="button" class="btn btn-primary btn-xs pull-right" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Approve to be posted">Publish</button>
 
         <% elsif current_user.admin == true && @post.published == true%>

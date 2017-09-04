@@ -93,7 +93,7 @@
 <!-- body content -->
 
 
-<section style="margin-top: -10px;">
+<section style="margin-top: -20px;">
   <p>
     <% flash.each do |key, value| %>
     <% alert_class = case key
@@ -112,5 +112,8 @@
 
    <%= yield %>
  </section>
+ <div class="footer"> Copyright ©Transpoesis 2017. Developed by <a href="https://www.nexpals.com" target="_blank">Nexpals Ltd</a>.</div>
+ 
+
 </body>
 </html>
