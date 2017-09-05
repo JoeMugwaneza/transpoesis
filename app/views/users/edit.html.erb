@@ -1,53 +1,37 @@
-  <div id="signupbox" style="margin-top:50px">
-    <div class="panel panel-info">
+  <div id="signupbox" style="margin: 0px 20px;">
+    <div class="panel panel-info" style="padding: 20px;">
       <div class="panel-heading">
-        <div class="panel-title">Sign Up</div>
+        <div class="panel-title text-center">Edit Profile</div>
       </div>  
       <div class="panel-body" >
         <form id="signupform" class="form-horizontal" role="form">
 
           <div class="form-group">
-            <label for="email" class="col-md-3 control-label">Who are you?</label>
-            <div class="col-md-9">
-              <label class="radio-inline"><input type="radio" name="gender" value="M" id=male />Poet</label>
-              <label class="radio-inline"><input type="radio" name="gender" value="F" id=female />Reader</label>
-            </div>
-          </div>
-
-          <div class="form-group">
             <label for="email" class="col-md-3 control-label">Email</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" name="email" placeholder="Email Address">
+              <input type="text" class="form-control" name="email" value="<%= current_user.email %>" placeholder="Email Address">
             </div>
           </div>
 
           <div class="form-group">
             <label for="firstname" class="col-md-3 control-label">First Name</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" name="firstname" placeholder="First Name">
+              <input type="text" class="form-control" name="first_name" value="<%= current_user.first_name %>" placeholder="First Name">
             </div>
           </div>
           <div class="form-group">
             <label for="lastname" class="col-md-3 control-label">Last Name</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+              <input type="text" class="form-control" name="last_name" value="<%= current_user.last_name %>" placeholder="Last Name">
             </div>
           </div>
 
           <div class="form-group">
             <label for="lastname" class="col-md-3 control-label">Profile Picture</label>
             <div class="col-md-9">
-              <input type="file" class="" name="" placeholder="">
+              <input type="file" name="" placeholder="">
             </div>
           </div>
-
-          <div class="form-group">
-            <label for="icode" class="col-md-3 control-label">What's your inspiration in poetry</label>
-            <div class="col-md-9">
-              <input type="text" class="form-control" name="icode" placeholder="What's your inspiration in poetry">
-            </div>
-          </div>
-
 
           <div class="form-group">
 
