@@ -1,19 +1,18 @@
 class PostsController < ApplicationController
   
-  before_action :authorize_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index]
   impressionist :actions=>[:show,:index]
   
   def index
-    if params[:sort]
-      @posts = Post.published.order(:updated_at)
+ 
+    @posts = Post.published
 
-    elsif params[:category]
+    if params[:category]
       @posts = Category.find_by(name: params[:category]).posts.published
     else
       @posts = Post.published
     end
     @recent_posts = Post.published.in_order.endmost(5)
-    @user = User.new
 
     @post = Post.find_by(id: params[:approve])
 
@@ -23,8 +22,6 @@ class PostsController < ApplicationController
       flash[:sucess] = "#{@post.name} Approved"
       redirect_to @post
     end
-
-
     
   end
 

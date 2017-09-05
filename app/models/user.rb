@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_secure_password
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,8 +13,8 @@ class User < ApplicationRecord
   has_many :recommends
   has_many :categories, through: :recommends
    
-  validates_uniqueness_of :email
-  validates_presence_of :first_name, :last_name
+  # validates_uniqueness_of :email
+  # validates_presence_of :first_name, :last_name
 
   acts_as_voter
 

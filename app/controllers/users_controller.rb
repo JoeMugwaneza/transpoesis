@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-    @user = User.new
     @recent_posts = Post.published.in_order.endmost(5)
     
     user = User.find_by(id: params[:disable])
