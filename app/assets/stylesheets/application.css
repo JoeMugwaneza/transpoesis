@@ -18,6 +18,7 @@
   font-family: 'Poppins', sans-serif;
   background-color: #c9c8c8;
   width: 100%;
+  margin-bottom: 50px;
 }
 
 p {
@@ -92,4 +93,15 @@ p {
 
 .delete-icon {
   color: white;
+}
+
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }

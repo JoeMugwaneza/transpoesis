@@ -25,25 +25,16 @@
         
         <div class="form-group">
           <label for="email" class="col-md-2 control-label">Select Categories</label>
-          <div class="col-md-9 col-md-offset-1 col-xs-12 col-xs-offset-1">
+          <div class="col-md-9 col-xs-12">
            <div class="checkbox">
-            <ul>
-        
-                <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id:"post_category_tokens"} %>
-            
+            <ul>              
+                <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", style:"height: 150px; width: 100px;", id:"post_category_tokens"} %>
             </ul>
           
           </div>
           </div>
         </div>
 
-
-        <!-- <div class="checkbox">
-          <div> -->
-            <!-- <%#= f.label :category_ids, "Select Poem Category" %><br> -->
-            <%#= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id:"post_category_tokens"} %>
-         <!--  </div>
-        </div> -->
         <div class="checkbox col-md-4 col-md-offset-2">
           <%= f.submit :Send, class: "btn btn-primary active form-control" %>
         </div>
