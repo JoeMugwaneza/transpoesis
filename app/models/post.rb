@@ -27,4 +27,8 @@ class Post < ApplicationRecord
   def self.endmost(n)
     all.only(:order).from(all.reverse_order.limit(n), table_name)
   end
+
+  # def update_user
+  #   self.update(user_id: 18)
+  # end
 end
