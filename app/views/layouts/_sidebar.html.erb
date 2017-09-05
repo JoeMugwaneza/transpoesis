@@ -1,142 +1,137 @@
-<div class="mySidebar">  
-  <div class="navbar navbar-default visible-xs">
-    <div class="container-fluid">
-      <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">      
-        <i class="glyphicon glyphicon-list"> </i> Menu
-      </button>
-    </div>
-  </div>
-</div>
-
-
 <div class="container-fluid">
   <div class="row">
     <br>
 
     <!-- filter sidebar -->
+    <div class="mySidebar">
 
-<div class="mySidebar">
-  
-    <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar" style="background-color: #d6dbde;">
+      <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar" style="background-color: #d6dbde;">
 
-    <!-- Recently added -->
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-2" class="form-control side-options">
-        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
-        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
-        
-        Recently Added
-      </h4>
-
-      <div id="group-2" class="list-group collapse out">
-        <% @recent_posts.find_each do |post| %>
-        <a class="list-group-item" href="<%= post_path(post) %>">
-          <span class="badge pull-right"><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name %>
-        </a>
-        <% end %>
+      <% if current_user %>
+       <div class="text-center">          
+        <button type="button" class="btn btn-info btn-xs" title="Edit your profile" onclick="location.href='<%= edit_user_path(current_user) %>'" style="margin-top: 5px; width: 100%;">Edit your Profile</button>
       </div>
-    </div>
-
-
-    <!-- Recommended -->
-    <div>
-
-      <% if current_user && current_user.recommends.present? %>
-      <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
-        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
-        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
-
-        Recommended
-      </h4>
-      <% current_user.categories.each do |category| %>
-      <div id="group-3" class="list-group collapse out">
-        <% category.posts.published.last(5).each do |post| %>
-        <a class="list-group-item" href="<%= post_path(post) %>">
-          <span class="badge pull-right"><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name%>
-        </a>
-        <% end %>
-      </div>
-      <% end %>
       <% else %>
+      <% end %>
+
+      <!-- Recently added -->
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-2" class="form-control side-options">
+          <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+          <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+
+          Recently Added
+        </h4>
+
+        <div id="group-2" class="list-group collapse out">
+          <% @recent_posts.find_each do |post| %>
+          <a class="list-group-item" href="<%= post_path(post) %>">
+            <span class="badge pull-right"><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name %>
+          </a>
+          <% end %>
+        </div>
+      </div>
+      <!-- Recommended -->
 
       <div>
+        <% if current_user && current_user.recommends.present? %>
         <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
           <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
           <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
 
           Recommended
         </h4>
+        <% current_user.categories.each do |category| %>
         <div id="group-3" class="list-group collapse out">
-
-          <a class="list-group-item" href="">
-            No recommended posts yet, add or sign in
+          <% category.posts.published.last(5).each do |post| %>
+          <a class="list-group-item" href="<%= post_path(post) %>">
+            <span class="badge pull-right"><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name%>
           </a>
+          <% end %>
+        </div>
+        <% end %>
+        <% else %>
+
+        <div>
+          <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
+            <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+            <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+
+            Recommended
+          </h4>
+          <div id="group-3" class="list-group collapse out">
+
+            <!-- <a class="list-group-item" href=""> -->
+            <button type="button" class="btn btn-info btn-xs pull-right" title="Edit your profile" onclick="location.href='<%= edit_user_path(current_user) %>'" >Click Here</button>
+            No recommends, Add your favorite categories
+            <!-- </a> -->
+
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+      <!-- Favorites -->
+
+      <% if current_user && current_user.favorites.present?%>
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-4" class="form-control side-options">
+          <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+          <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+
+          Favorites
+        </h4>
+        <div id="group-4" class="list-group collapse out">
+          <% current_user.favorites.find_each do |favorite| %>
+          <a class="list-group-item" href="<%= post_path(favorite.post) %>">
+            <span class="badge pull-right"><%= favorite.post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%=favorite.post.name%>
+          </a>
+          <% end %>
+        </div>
+      </div>
+      <%else %>
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-4" class="form-control side-options">
+          <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+          <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+          Favorites
+        </h4>
+
+        <div id="group-4" class="list-group collapse out">
+          <% if current_user %>
+          <a class="list-group-item" href="">
+            No Favorites yet, add some
+          </a>
+          <% else %>
+          <!-- <a class="list-group-item" href=""> -->
+          <button type="button" class="btn btn-info btn-xs pull-right" title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal">Click Here</button>
+          <!-- modal -->
+          <%= render "users/signupmodal" %>
+          Sign in/up first
+          <!-- </a> -->
+          <% end %>
+
         </div>
       </div>
       <% end %>
-    </div>
 
-    <!-- Favorites -->
 
-    <% if current_user && current_user.favorites.present?%>
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-4" class="form-control side-options">
-        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
-        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
-        
-        Favorites
-      </h4>
-      <div id="group-4" class="list-group collapse out">
-        <% current_user.favorites.find_each do |favorite| %>
-        <a class="list-group-item" href="<%= post_path(favorite.post) %>">
-          <span class="badge pull-right"><%= favorite.post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%=favorite.post.name%>
-        </a>
-        <% end %>
+      <!-- Categories -->
+      <div>
+        <h4 data-toggle="collapse" data-target="#group-5" class="form-control side-options">
+          <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+          <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+
+          Categories
+        </h4>
+        <div id="group-5" class="list-group collapse in">
+          <% Category.all.find_each do |category| %>
+          <a class="list-group-item" href="/posts?category=<%= category.name %>">
+            <span class="badge"><%= category.posts.published.size %></span><%=category.name %>
+          </a>
+          <% end %>
+        </div>
       </div>
+
     </div>
-    <%else %>
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-4" class="form-control side-options">
-        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
-        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
-        Favorites
-      </h4>
-
-      <div id="group-4" class="list-group collapse out">
-        <% if current_user %>
-        <a class="list-group-item" href="">
-          No Favorites yet, add some
-        </a>
-        <% else %>
-        <!-- <a class="list-group-item" href=""> -->
-        <button type="button" class="btn btn-info btn-xs pull-right" title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal">Click Here</button>
-        <!-- modal -->
-        <%= render "users/signupmodal" %>
-        Sign in/up first
-        <!-- </a> -->
-        <% end %>
-
-      </div>
-    </div>
-    <% end %>
-
-
-    <!-- Categories -->
-    <div>
-      <h4 data-toggle="collapse" data-target="#group-5" class="form-control side-options">
-        <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
-        <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
-        
-        Categories
-      </h4>
-      <div id="group-5" class="list-group collapse in">
-        <% Category.all.find_each do |category| %>
-        <a class="list-group-item" href="/posts?category=<%= category.name %>">
-        <span class="badge"><%= category.posts.published.size %></span><%=category.name %>
-        </a>
-        <% end %>
-      </div>
-    </div>
-
   </div>
-</div>

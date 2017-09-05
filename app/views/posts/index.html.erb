@@ -1,32 +1,14 @@
 <!-- table container -->
 <div class="col-md-8">
-<%= render "ad" %>
+  <%#= render "ad" %>
 
-    <% @posts.find_each do |post| %>  
+  <% @posts.find_each do |post| %>  
 
-      <div class="col-md-12 main-box">
-     <!-- edit and delete buttons for posts  
-     buttons for poem owner and admin -->
-     <div class="col-md-12">      
-      <div class="col-xs-12 col-md-6 col-md-offset-6">      
-        <div class="action">
-          <button type="button" class="btn btn-success btn-xs" onclick="location.href='<%= post_path(post) %>'" title="Read it, before you publish it"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
-          <button type="button" class="btn btn-success btn-xs" title="Firstly, read it"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
-          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= edit_post_path(post) %>'" title="Edit">
-            <span class="glyphicon glyphicon-pencil"></span>
-          </button>
-          <!-- delete poem -->
-          <%#= link_to '', post_path, class: "glyphicon glyphicon-trash btn btn-xs btn-warning", method: :delete, data: {confirm: "You want to delete poem titled: #{post.name}?"},  style: "color: red;"%>
-        </div>
-        <br>
-      </div>
-    </div>
-    
-    
+  <div class="col-md-12 main-box">
     <!-- poet and poem & details -->
     <div class="col-md-12">      
       <div class="col-md-2">
-        <img src="https://s-media-cache-ak0.pinimg.com/736x/90/54/b8/9054b80d87e3e88eaf96db08d45664c8--african-portrait-photography-profile-photography.jpg" class="img-responsive index-image" style="background-size: cover; float: right;">
+        <img src="http://pioneersfestival.networktables.com/resources/userfiles/nopicture.jpg" class="img-responsive index-image" style="background-size: cover; float: right;">
       </div>
 
       <div class="col-md-9">
@@ -92,5 +74,5 @@
 
   </div>
 
-    <% end %>
-  </div>
+  <% end %>
+</div>

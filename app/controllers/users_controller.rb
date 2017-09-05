@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     @categories = Category.all
   end
 
+  def edit
+    @recent_posts = Post.published.in_order.endmost(5)
+  end
+
   def create
     @disable_sidebar = true
     @recent_posts = Post.published.in_order.endmost(5)
