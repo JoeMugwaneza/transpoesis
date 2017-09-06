@@ -8,7 +8,12 @@
     <!-- poet and poem & details -->
     <div class="col-md-12">      
       <div class="col-md-2">
+        <% if post.user.profile_picture.present? %>
+        <img src="<%= post.user.profile_picture %>" class="img-responsive index-image" style="background-size: cover; float: right;">
+        <%else  %>
+
         <img src="http://pioneersfestival.networktables.com/resources/userfiles/nopicture.jpg" class="img-responsive index-image" style="background-size: cover; float: right;">
+        <% end  %>
       </div>
       
       <!-- poem and poet  -->

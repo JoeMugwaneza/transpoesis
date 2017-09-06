@@ -15,8 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource, :location => after_sign_up_path_for(resource)
       end
     else
-      clean_up_passwords
-      respond_with resource
+      flash[:error] = "Registration Failed, Fill in all the field and try again!"
+      redirect_to root_url
+
     end
   end 
 
@@ -33,6 +34,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end 
 
   private
+
+  def after_inactive_sign_up_path_for(resource)
+    new_user_session_path
+  end
 
   def registration_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
