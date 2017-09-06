@@ -10,11 +10,11 @@ class User < ApplicationRecord
   # has_many :feedbacks, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :recommends
+  has_many :recommends, :dependent => :destroy
   has_many :categories, through: :recommends
    
-  # validates_uniqueness_of :email
-  # validates_presence_of :first_name, :last_name
+   validates_uniqueness_of :email
+   validates_presence_of :first_name, :last_name
 
   acts_as_voter
 

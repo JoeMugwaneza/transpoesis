@@ -105,3 +105,7 @@ p {
   background-color: #efefef;
   text-align: center;
 }
+
+.form-group .form-control {
+  margin-top: 10px;
+}

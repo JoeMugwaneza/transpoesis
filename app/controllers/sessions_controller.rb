@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   def new
    @disable_sidebar = true 
+    @recent_posts = Post.published.in_order.endmost(5)
+
   end
 
   def create

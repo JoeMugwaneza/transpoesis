@@ -26,9 +26,6 @@ class UsersController < ApplicationController
     @categories = Category.all
   end
 
-  def edit
-    @recent_posts = Post.published.in_order.endmost(5)
-  end
 
   def create
     @disable_sidebar = true
@@ -44,11 +41,35 @@ class UsersController < ApplicationController
     
   end
 
+  def edit
+    @recent_posts = Post.published.in_order.endmost(5)
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    
+    params[:user].delete(:password) if params[:user][:password].blank?
+    if @user.update_attributes(update_account_params)
+      flash[:sucess] = "Profile updated"
+      redirect_to root_url
+    else
+      flash[:info] = "Something went wrong, try again"
+      redirect_to root_url
+    end
+
+  end
+
   private 
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :profile_picture, :password, :password_confirmation, category_ids: [])
     
+  end
+
+
+  def update_account_params
+    params.require(:user).permit(:first_name, :last_name, :profile_picture, :email, :password, :password_confirmation, :current_password, category_ids: [])
   end
 
   def admin
