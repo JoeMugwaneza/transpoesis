@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
     end
 
+  resources :users
   resources :posts do
     resources :favorites, only: [:create, :destroy]
     member do 

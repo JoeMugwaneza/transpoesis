@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  before_action :authenticate_user!, except: [:index]
+  before_action :authorize_user!, except: [:index]
   impressionist :actions=>[:show,:index]
   
   def index
@@ -18,9 +18,16 @@ class PostsController < ApplicationController
 
     if params[:approve]
       @post.published = !@post.published
-      @post.save
-      flash[:sucess] = "#{@post.name} Approved"
-      redirect_to @post
+
+      if @post.published == true
+        @post.save
+        flash[:info] = "#{@post.name} got admin approval"
+        redirect_to @post
+      elsif @post.published == false
+        @post.save
+        flash[:info] = "#{@post.name} disapproved"
+        redirect_to @post
+      end
     end
     
   end

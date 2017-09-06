@@ -25,6 +25,8 @@ class Users::SessionsController < Devise::SessionsController
 
   def new
    @disable_sidebar = true 
+  @recent_posts = Post.published.in_order.endmost(5)
+  redirect_to root_url
   end
 
   def create
@@ -61,7 +63,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     super 
     if resource.destroy
-      redirect_to root_url, notice: 'Logged out!'
+      redirect_to root_url, notice: 'Logged out! badly'
     end
   end
 end

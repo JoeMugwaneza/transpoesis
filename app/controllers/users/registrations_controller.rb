@@ -2,7 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-
   def create
     build_resource(registration_params)
 
@@ -19,11 +18,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords
       respond_with resource
     end
-  end  
+  end 
+
+
+  def update
+     @user = current_user
+     if @user.update(update_account_params)
+        flash[:success] ="Profile Sucessfull updated"
+        redirect_to root_url
+      else
+        flash[:info] = "Something went wrong, try again"
+        redirect_to root_url
+      end
+   end 
 
   private
 
   def registration_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def update_account_params
+    params.require(:user).permit(:first_name, :last_name, :profile_picture, :email, :password, :password_confirmation, :current_password, category_ids: [])
   end
 end

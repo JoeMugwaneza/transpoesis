@@ -7,7 +7,7 @@
 
       <div id="filter-sidebar" class="col-xs-9 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar" style="background-color: #d6dbde;">
 
-      <% if current_user %>
+      <% if user_signed_in? %>
        <div class="text-center">          
         <button type="button" class="btn btn-info btn-xs" title="Edit your profile" onclick="location.href='<%= edit_user_path(current_user) %>'" style="margin-top: 5px; width: 100%;">Edit your Profile</button>
       </div>
@@ -62,10 +62,12 @@
           <div id="group-3" class="list-group collapse out">
 
             <!-- <a class="list-group-item" href=""> -->
+            <% if user_signed_in? %>
             <button type="button" class="btn btn-info btn-xs pull-right" title="Edit your profile" onclick="location.href='<%= edit_user_path(current_user) %>'" >Click Here</button>
             No recommends, Add your favorite categories
             <!-- </a> -->
-
+            <% else %>
+            <% end %>
           </div>
         </div>
         <% end %>
