@@ -8,11 +8,29 @@ class UsersController < ApplicationController
     
     if params[:disable] && user 
       user.enabled = !user.enabled
-      user.save
-      flash[:sucess] = "#{user.last_name} status changed"
-      redirect_to authorize_personel_path
+
+
+      if user.enabled == true
+        user.save
+
+        flash[:info] = "#{user.last_name} is active now"
+        redirect_to authorize_personel_path
+
+      elsif user.enabled == false
+        user.save
+        
+        flash[:info] = "#{user.last_name} is blocked"
+        redirect_to authorize_personel_path
+      end
     end
   end
+
+    # end
+    #   user.save
+    #   flash[:sucess] = "#{user.last_name} status changed"
+    #   redirect_to authorize_personel_path
+    # end
+  # end
   def show
     @user = User.find_by(id: params[:id])
     @user_posts = @user.posts
