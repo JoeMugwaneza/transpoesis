@@ -22,11 +22,11 @@ class PostsController < ApplicationController
       if @post.published == true
         @post.save
         flash[:info] = "#{@post.name} got admin approval"
-        redirect_to @post
+        redirect_to authorize_personel_path
       elsif @post.published == false
         @post.save
         flash[:info] = "#{@post.name} disapproved"
-        redirect_to @post
+        redirect_to authorize_personel_path
       end
     end
     

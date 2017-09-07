@@ -1,42 +1,30 @@
-class SessionsController < ApplicationController
+class SessionsController < Devise::SessionsController
+
+  # GET /resource/sign_in
   def new
-   @disable_sidebar = true 
-    @recent_posts = Post.published.in_order.endmost(5)
-
+    super
   end
 
+  # POST /resource/sign_in
   def create
-    @disable_sidebar = true 
-    @recent_posts = Post.published.in_order.endmost(5)
+    self.resource = warden.authenticate!(auth_options)
+    if @user.admin == true
+      redirect_to authorize_personel_path, notice: "Welcome back Admin!"
 
-
-    user = User.find_for_database_authentication(email: params[:email])
-
-    if user && user.valid_password?(params[:user][:password]) && user.enabled == true
-
-      session[:user_id] = user.id
-
-      if user.admin == true
-        redirect_to authorize_personel_path, notice: "Welcome back Admin!"
-      else
-        redirect_to root_url, notice: 'Logged in!'
-      end
-
-    elsif user && user.enabled == false
-
-      flash[:warning] = "Your account has be disabled, contact admin for more info"
-
-       redirect_to root_url
-    else 
-
-      flash[:info] = 'Email or password is invalid'
-       redirect_to root_url
+    elsif @user.enabled == false
+      redirect_to root_url, notice: 'Your account has be disabled, contact admin for more info'
+    
+    else
+      set_flash_message!(:notice, :signed_in)
+      sign_in(resource_name, resource)
+      yield resource if block_given?
+      respond_with resource, location: after_sign_in_path_for(resource)
     end
-
   end
 
+  # GET /resource/sign_out
   def destroy
-    session[:user_id] = nil
-    redirect_to root_url, notice: 'Logged out!'
+    set_flash_message :notice, :signed_out if signed_in?(resource_name)
+    sign_out_and_redirect(resource_name)
   end
 end

@@ -10,6 +10,16 @@ CKEDITOR.editorConfig = function(config) {
     config.filebrowserUploadUrl = "/ckeditor/attachment_files";
     config.toolbar = 'Pure';
     config.allowedContent = true;
+    myFonts = ['Architects Daughter', 'Open Sans', 'Dancing Script'];
+    config.font_names = 'sans serif';
+
+    for(var i = 0; i<myFonts.length; i++){
+     config.font_names = config.font_names+';'+myFonts[i];
+     myFonts[i] = 'http://fonts.googleapis.com/css?family='+myFonts[i].replace(' ','+');
+
+     //assuming you use jquery
+     $("head").append("<link rel='stylesheet' href='"+ myFonts[i] +"'>");
+  }
 
     config.toolbar_Pure = [
         { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
@@ -25,3 +35,4 @@ CKEDITOR.editorConfig = function(config) {
   
     return true; 
 }
+
