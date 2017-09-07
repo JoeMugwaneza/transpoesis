@@ -66,12 +66,12 @@
 
           <!-- like button -->
           <!-- if liked -->
-          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span>125 </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
+          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
 
           <!-- if not liked -->
           <!-- <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>124 </span><div class="glyphicon glyphicon-heart-empty"> </div></a> -->
 
-          <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span>45 </span><div class="glyphicon glyphicon-comment"> </div></a>
+          <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span><%= post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
 
         </div>
 

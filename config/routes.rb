@@ -3,12 +3,18 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   root 'posts#index'
 
-  devise_for :users, controllers: { registrations: 'users/registrations'}, skip: [:sessions]
-  as :user do
-    get 'signin', to: 'devise/sessions#new', as: :new_user_session
-    post 'signin', to: 'devise/sessions#create', as: :user_session
-    get 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
-    end
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'sessions'}
+
+
+  devise_scope :user do
+    get 'signout', to: 'devise/sessions#destroy', as: :signout
+  end
+
+  # as :user do
+  #   get 'signin', to: 'devise/sessions#new', as: :new_user_session
+  #   post 'signin', to: 'devise/sessions#create', as: :user_session
+  #   get 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
+  #   end
 
   resources :users
   resources :posts do
@@ -22,8 +28,7 @@ Rails.application.routes.draw do
     
 #customized routes 
 
-  get 'login', to: 'users/sessions#new', as: 'login'
-  get 'logout', to: 'users/sessions#destroy', as: 'logout'
+
   # designs routes
   get "/home" => "designs#home"
   get "/poets2" => "users#poets2"
