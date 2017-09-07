@@ -1,14 +1,21 @@
 <!-- table container -->
-<div class="col-md-8 col-xs-12"> 
-  <div class="col-md-12">
-    <div class="panel panel-default widget">
-      <br>
-      <div class="col-md-3">
-        <img src="<%= @post.user.profile_picture %>" class="index-image img-responsive">
-      </div>
-      <div class="col-md-9">
-        <!-- edit and delete buttons for posts-->
+<div class="col-md-8 col-xs-12">
+    <div class="panel">
+     <div class="col-md-12">
+      <div class="col-xs-12 col-md-6 col-md-offset-6">
         <div class="action pull-right">
+
+          <!-- publish button -->
+          <% if current_user && current_user.posts.include?(@post) && @post.published == true  %>
+          <button type="button" class="btn btn-success btn-xs" title="Published"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
+          <% end %>
+
+          <% if current_user && current_user.admin == true && @post.published == false %>
+          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Approve to be posted">Publish</button>
+
+          <% elsif current_user.admin == true && @post.published == true%>
+          <button type="button" class="btn btn-primary btn-xs pull-right" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Unplish the poem">Unpublish</button>
+          <% end %>
 
           <!-- feedback modal -->
           <%= render "posts/feedback" %>
@@ -21,7 +28,7 @@
           <!-- If there's feedback -->
           <% if current_user && current_user.posts.include?(@post) || current_user.admin == true%>
 
-          <button type="button" class="btn btn-success btn-xs pull-right" title="Feedback" data-toggle="modal" data-target="#FeedbackModal"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
+          <button type="button" class="btn btn-success btn-xs" title="Feedback" data-toggle="modal" data-target="#FeedbackModal"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
           <% end %>
 
           <% if  current_user && current_user.posts.include?(@post) %>
@@ -31,132 +38,123 @@
           
           <!-- delete poem -->
           <%= link_to '', post_path, class: "glyphicon glyphicon-trash btn btn-xs btn-warning", method: :delete, data: {confirm: "You want to delete poem titled: #{@post.name}?"},  style: "color: red;"%>
-      
-        <% end %>
-        </div>
 
-        <!-- poem and poet -->
-        <a href="<%#= user_path(@post.user)%>" style="color: #2f5369"><strong><%= "#{@post.user.first_name} " "#{@post.user.last_name}" %></strong></a> : <%= @post.name %>
-        <div class="mic-info"> <%= @post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i> </div>
-        <div class="mic-info text-center"><%= time_ago_in_words(@post.updated_at) %> Ago</div>
-        
-
-        <!-- publish button -->
-
-        <% if current_user && current_user.posts.include?(@post) && @post.published == true  %>
-
-          <button type="button" class="btn btn-success btn-xs pull-right" title="Approved"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
           <% end %>
-
-        <% if current_user && current_user.admin == true && @post.published == false %>
-            <button type="button" class="btn btn-primary btn-xs pull-right" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Approve to be posted">Publish</button>
-
-        <% elsif current_user.admin == true && @post.published == true%>
-            <button type="button" class="btn btn-primary btn-xs pull-right" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Approve to be posted">Unpublish</button>
-        <% end %>
-
+        </div>
+      </div>
+    </div>
+    <br>
+    
+    <div class="col-md-12">      
+    <div class="col-md-2">
+      <img src="<%= @post.user.profile_picture %>" class="index-image img-responsive pull-right">
+    </div>
+    <div class="col-md-9">
+      <!-- poem and poet -->
+      <div>
+        
+      <a href="<%#= user_path(@post.user)%>" style="color: #2f5369"><strong><%= "#{@post.user.first_name} " "#{@post.user.last_name}" %></strong></a> : <%= @post.name %>
+      </div>
+      <div class="mic-info col-md-2 col-xs-4"> <%= @post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i> </div>
+      <div class="mic-info text-center col-md-10 col-xs-8"><%= time_ago_in_words(@post.updated_at) %> Ago</div>
+      <hr>
+    </div>
+      <div class="col-md-10 col-md-offset-2">
+        <div class="poem-body">
+        <p><%= @post.body.html_safe %></p>
+        </div>
         <hr>
-        <div class="col-md-12 poem-body">
-          <p><%= @post.body.html_safe %></p>
-        </div>
 
-        <div class="dropup pull-right">
-          <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
-            </li>
-            <li>
-              <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
-            </li>
-            <li>
-              <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
-            </li>
-            <li>
-              <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
-            </li>
-
-            <li>
-              <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
-            </li>
-
-          </ul>
-        </div>
-        
-        <%#= render "designs/signupmodal" %><!--  signup modal -->
-
-        <!-- begin of Favorite codes -->
-        <div class="votes">
-          <% if (current_user.favorited? @post) %>
-
-          <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: "unfavorite_post btn btn-primary btn-xs", title:"Remove to Favorites" %>
-          <% else %>
-
-          <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: "favorite_post btn btn-default btn-xs", title:"Add to Favorites" %>
-          <% end %>
-        </div>
-        <!-- end of favorite codes -->
-
-        <div class="text-center">
-          <div class="btn-group">             
-            <a href="" class="btn btn-default btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
-
-            <a href="" class="btn btn-default btn-xs"><span><%= @post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
-          </div>
-        </div>
-        <% if current_user.liked? @post %>
-
-          <%= link_to "Unlike", unlike_post_path(@post.id), method: :get%>
-       
-          <% else %>
-          <%= link_to "Like", like_post_path(@post), method: :get %>
-          <% end %>
-        
-      </div>
-
-
-      <!-- comments -->
-      <div class="panel-heading">
-        <span class="badge"><%= @post.comments.size %></span>
-        <h3 class="panel-title">
-          Recent Comments</h3>
-
-        </div>
-        <div class="panel-body">
-          <ul class="list-group">
-
-            <% @post.comments.each do |comment| %>
-            <li class="list-group-item" id="comment_<%= comment.id %>">
-              <div style="padding-left: 20px;">
-
-                <div class="action">
-                 <div id="comment_<%= comment.id %>" class="row single-comment vertical-align">
-                 <% if current_user.comments.include?(comment) %>
-                   <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
-                   <% end %>
-                 </div>
-
-                 <a href=""><%= "#{comment.user.first_name} #{comment.user.last_name}" %></a>
-                 <div class="mic-info"><%= time_ago_in_words(comment.created_at) %> Ago
-                 </div>
-               </div>
-               <div class="comment-text" id="comment-text">
-                <%= comment.body %>
-              </div>
-            </div>
+      <div class="dropup pull-right">
+        <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
           </li>
-          <% end %>
-          <div class="" style="margin-left: 20px;">
-            <div id="comments" >
+          <li>
+            <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
+          </li>
+          <li>
+            <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
+          </li>
+          <li>
+            <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
+          </li>
 
-            </div>
-          </ul>
-          <%= render "comments/form" %>
-        </div>
+          <li>
+            <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
+          </li>
+
+        </ul>
       </div>
+
+      <%#= render "designs/signupmodal" %><!--  signup modal -->
+
+      <!-- begin of Favorite codes -->
+      <div class="votes">
+        <% if (current_user.favorited? @post) %>
+
+        <%= link_to "Unfavorite", post_favorite_path(@post), method: :delete, remote: true, class: "unfavorite_post btn btn-primary btn-xs", title:"Remove to Favorites" %>
+        <% else %>
+
+        <%= link_to "Favorite", post_favorites_path(post_id: @post.id), method: :post, remote: true, class: "favorite_post btn btn-default btn-xs", title:"Add to Favorites" %>
+        <% end %>
+      </div>
+      <!-- end of favorite codes -->
+
+      <!-- Like and comments counts -->
+      <div class="text-center">
+        <div class="btn-group" style="margin-top: -45px; margin-left: 30px;">
+         <% if current_user.liked? @post %>             
+         <a href="/posts/<%= @post.id%>/unlike" class="btn btn-primary btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart"> </div></a>
+         <% else %>
+         <a href="/posts/<%= @post.id%>/like" class="btn btn-default btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
+
+         <% end %>
+         <a href="" class="btn btn-default btn-xs"><span><%= @post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
+       </div>
+     </div>
+
+      </div>
+   </div>
+
+
+   <!-- comments -->
+   <div class="panel-heading">
+    <h3 class="panel-title">
+      Recent Comments</h3>
 
     </div>
+    <div class="panel-body">
+      <ul class="list-group">
+
+        <% @post.comments.each do |comment| %>
+        <li class="list-group-item" id="comment_<%= comment.id %>">
+          <div style="padding-left: 10px;">
+
+            <div class="action">
+             <div id="comment_<%= comment.id %>" class="row single-comment vertical-align pull-right" style="margin-left: 10px;">
+               <% if current_user.comments.include?(comment) %>
+               <%= link_to '', [comment.post, comment], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
+               <% end %>
+             </div>
+           </div>
+
+             <a href=""><%= "#{comment.user.first_name} #{comment.user.last_name}" %></a>
+             <div class="mic-info pull-right"><%= time_ago_in_words(comment.created_at) %> Ago
+             </div>
+           <div class="comment-text" id="comment-text">
+            <%= comment.body %>
+          </div>
+        </div>
+      </li>
+      <% end %>
+      <div class="">
+        <div id="comments" >
+
+        </div>
+      </ul>
+      <%= render "comments/form" %>
+    </div>
   </div>
-</div>
-</div>
 </div>

@@ -37,7 +37,7 @@
       <div class="col-md-9">
         <!-- poem and poet  -->
         <div>        
-          <span style="color: #2f5369"><strong><%= "#{post.user.first_name} #{post.user.last_name}" %></strong></span> : <a href="<%#= user_path(post) %>"> <%= link_to post.name, post_path(post)%></a>
+          <strong style="color: #2f5369"><%= "#{post.user.first_name} #{post.user.last_name}" %></strong> : <a href="<%#= user_path(post) %>"> <%= link_to post.name, post_path(post)%></a>
         </div>
         <div class="mic-info col-md-2 col-xs-4 "><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"></i></div>
         <div class="mic-info text-center col-md-9 col-xs-8"><%= time_ago_in_words(post.updated_at) %> Ago</div>
@@ -76,19 +76,29 @@
 
       <!-- Other buttons -->
 
-      <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs pull-left" title="Firstly, view the whole poem, please!"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</button>
+<!-- begin of Favorite codes -->
+      <div class="votes">
+        <% if (current_user.favorited? post) %>
+
+        <%= link_to "Unfavorite", post_favorite_path(post), method: :delete, remote: true, class: "unfavorite_post btn btn-primary btn-xs", title:"Remove to Favorites" %>
+        <% else %>
+
+        <%= link_to "Favorite", post_favorites_path(post_id: post.id), method: :post, remote: true, class: "favorite_post btn btn-default btn-xs", title:"Add to Favorites" %>
+        <% end %>
+      </div>
+      <!-- end of favorite codes -->
 
       <div class="text-center">
-        <div class="btn-group">
+        <div class="btn-group" style="margin-top: -45px; margin-left: 30px;">
 
           <!-- like button -->
           <!-- if liked -->
-          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span>125 </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
+          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
 
           <!-- if not liked -->
           <!-- <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>124 </span><div class="glyphicon glyphicon-heart-empty"> </div></a> -->
 
-          <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span>45 </span><div class="glyphicon glyphicon-comment"> </div></a>
+          <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span><%= post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
 
         </div>
 
