@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   
   def index
  
-    @posts = Post.published
+  
 
     if params[:category]
-      @posts = Category.find_by(name: params[:category]).posts.published
+      @posts = Category.find_by(name: params[:category]).posts.published.paginate(:page => params[:page], :per_page => 4).all.order(:updated_at)
     else
-      @posts = Post.published
+      @posts = Post.published.paginate(:page => params[:page], :per_page => 4).all.order(:updated_at)
     end
     @recent_posts = Post.published.in_order.endmost(5)
 

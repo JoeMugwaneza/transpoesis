@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get 'like', to: "posts#like"
       get 'unlike', to: "posts#unlike"
     end
-    resources :comments
+    resources :comments, :feedbacks
     end
     
 #customized routes 

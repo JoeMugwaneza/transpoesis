@@ -1,0 +1,9 @@
+ <%= form_for([@post, @post.feedbacks.build], remote: true) do |f| %>
+ <div style="margin: 10px;">
+
+ <%= f.text_area :content, class:"form-control", placeholder:"Write your feedback here ...", style:"margin-bottom: -30px; background-color: #f9f9f9;" %>
+  <%= f.hidden_field :post_id, {:value => @post.id} %><br>
+  <%= f.hidden_field :user_id, {:value => current_user.id} %><br>
+  <%= f.submit "Feedback", class:"pull-right btn btn-primary col-md-6", style:"margin-bottom: 10px;"%>
+</div>
+<% end %>

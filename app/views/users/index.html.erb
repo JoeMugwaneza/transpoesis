@@ -2,7 +2,7 @@
 
   <% @users.each do |user|%>
   <div class='grid--item col-md-4 col-sm-6 col-xs-12 '>
-    <div class='img' style='background-image: url(http://pioneersfestival.networktables.com/resources/userfiles/nopicture.jpg);'></div>
+    <div class='img' style='background-image: url(<%= user.profile_picture %>);'></div>
     <div class='container' style="width: 100%;">
       <h2><%=user.first_name %> <%= user.last_name %></h2>
       <a href="/users/<%= user.id %>" class="label label-default" rel="tooltip" title="Click to View my Poems">View <span class="badge"><%= user.posts.size %></span> Poems</a></p>
@@ -10,5 +10,5 @@
     </div>
   </div>
   <% end %>
-
+  
 </div>

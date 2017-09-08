@@ -1,0 +1,59 @@
+<!-- Modal -->
+<div id="FeedbackModal" class="modal fade" role="dialog">
+<div class="modal-dialog video-box">
+    <!-- Modal content | feedback--> 
+    <div class="modal-content">
+      <div class="modal-header text-center" style="background-color: #112a3e; color: white;">
+        <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
+        <h3>Feeback From Transpoesis</h3>
+      </div>
+      <div class="modal-body">
+      <div class="mic-info"> on 11 Nov 2017
+                    </div>
+        <p>
+          <%#= render 'feedbacks/feedback'%>
+        </p>
+
+        <div class="input-group">
+        </div>
+
+        <div class="panel-heading">
+          <span class="badge"><%= @post.feedbacks.count %></span>
+          <h3 class="panel-title">
+            Replies</h3>
+          </div>
+         <div class="panel-body">
+      <ul class="list-group">
+
+        <% @post.feedbacks.each do |feedback| %>
+        <li class="list-group-item" id="feedback_<%= feedback.id %>">
+          <div style="padding-left: 10px;">
+
+            <div class="action">
+             <div id="feedback_<%= feedback.id %>" class="row single-comment vertical-align pull-right" style="margin-left: 10px;">
+               <% if current_user.feedbacks.include?(feedback) %>
+               <%= link_to '', [feedback.post, feedback], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
+               <% end %>
+             </div>
+           </div>
+
+             <a href=""><%= "#{feedback.user.first_name} #{feedback.user.last_name}" %></a>
+             <div class="mic-info pull-right"><%= time_ago_in_words(feedback.created_at) %> Ago
+             </div>
+           <div class="feedback-text" id="feedback-text">
+            <%= feedback.content %>
+          </div>
+        </div>
+      </li>
+      <% end %>
+      <div class="">
+        <div id="feedbacks" >
+
+        </div>
+      </ul>
+          <%= render 'feedbacks/form' %>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
