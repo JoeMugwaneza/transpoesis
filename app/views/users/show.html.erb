@@ -14,14 +14,24 @@
      buttons for poem owner and admin -->
      <div class="col-md-12">      
       <div class="col-xs-12 col-md-6 col-md-offset-6">      
-        <div class="action">
-          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= post_path(post) %>'" title="Read it, before you publish it"><span class="glyphicon glyphicon-ok-sign"></span> Publish</button>
+        <div class="action pull-right">
+
+             <!-- publish button -->
+          <% if current_user && current_user.posts.include?(@post) && @post.published == true  %>
+          <button type="button" class="btn btn-success btn-xs" title="Published"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
+          <% end %>
+
+          <% if current_user && current_user.admin == true && @post.published == false %>
+          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= post_path(post) %>'" title="Approve to be posted">Publish</button>
+
+          <% elsif current_user.admin == true && @post.published == true%>
+          <button type="button" class="btn btn-primary btn-xs pull-right" onclick="location.href='<%= post_path(post) %>'" title="Unplish the poem">Unpublish</button>
+          <% end %>
+
           <button type="button" class="btn btn-primary btn-xs" title="Firstly, read it"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
           <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= edit_post_path(post) %>'" title="Edit">
             <span class="glyphicon glyphicon-pencil"></span>
           </button>
-          <!-- delete poem -->
-          <%= link_to '', post_path, class: "glyphicon glyphicon-trash btn btn-xs btn-warning", method: :delete, data: {confirm: "You want to delete poem titled: #{post.name}?"},  style: "color: red;"%>
         </div>
         <br>
       </div>
@@ -76,7 +86,7 @@
 
       <!-- Other buttons -->
 
-<!-- begin of Favorite codes -->
+      <!-- begin of Favorite codes -->
       <div class="votes">
         <% if (current_user.favorited? post) %>
 
@@ -93,10 +103,15 @@
 
           <!-- like button -->
           <!-- if liked -->
-          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
+          <% if current_user.liked? post %>
 
-          <!-- if not liked -->
-          <!-- <a href="" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span>124 </span><div class="glyphicon glyphicon-heart-empty"> </div></a> -->
+            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
+
+          <% else %>
+
+            <!-- if not liked -->
+            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
+          <% end %>
 
           <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span><%= post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
 
