@@ -1,0 +1,20 @@
+<div class="panel-body">
+  <ul class="list-group">
+    <li class="list-group-item" id="feedback_<%= feedback.id %>">
+      <div>
+        <div class="action">
+         <div id="feedback_<%= feedback.id %>" class="row single-comment vertical-align pull-right" style="margin-left: 10px;">
+           <%= link_to '', [feedback.post, feedback], class: "glyphicon glyphicon-trash btn-xs btn-xs pull-right",  method: :delete, remote: true,  style: "color: red;"%>
+         </div>
+
+         <a href=""><%= "#{feedback.user.first_name} #{feedback.user.last_name}" %></a>
+         <div class="mic-info pull-right"><%= time_ago_in_words(feedback.created_at) %> Ago
+         </div>
+       </div>
+       <div class="feedback-text" id="feedback-text">
+        <%= feedback.content %>
+      </div>
+    </div>
+  </li>
+</ul>
+</div>

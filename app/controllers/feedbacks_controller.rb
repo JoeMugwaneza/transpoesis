@@ -4,7 +4,6 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
   end
 
-
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.save
@@ -42,7 +41,7 @@ class FeedbacksController < ApplicationController
   private
 
     def feedback_params
-      params.require(:feedback).permit(:content, :post_id)
+      params.require(:feedback).permit(:content, :post_id, :user_id)
     end
 
     def find_feedback

@@ -66,3 +66,6 @@ gem 'cloudinary', '~> 1.8', '>= 1.8.1'
 gem 'impressionist', '~> 1.6'
 gem 'devise', '~> 4.3'
 
+# pagination 
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
