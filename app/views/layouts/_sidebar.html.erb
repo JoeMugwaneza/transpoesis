@@ -34,6 +34,7 @@
       <!-- Recommended -->
 
       <div>
+        <% if current_user %>
         <% if current_user && current_user.recommends.present? %>
         <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
           <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
@@ -71,6 +72,22 @@
           </div>
         </div>
         <% end %>
+        <% else %>
+
+
+          <h4 data-toggle="collapse" data-target="#group-3" class="form-control side-options">
+            <i class="glyphicon glyphicon-triangle-bottom parent-expanded"></i>
+            <i class="glyphicon glyphicon-triangle-right parent-collapsed"></i>
+
+            Recommended
+          </h4>
+          <div id="group-3" class="list-group collapse out">
+            <!-- <a class="list-group-item" href=""> -->
+            No recommends, join the community (sing in/sing up)!
+            <!-- </a> -->
+          </div>
+
+        <% end %>
       </div>
 
       <!-- Favorites -->
@@ -106,10 +123,7 @@
           </a>
           <% else %>
           <!-- <a class="list-group-item" href=""> -->
-          <button type="button" class="btn btn-info btn-xs pull-right" title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal">Click Here</button>
-          <!-- modal -->
-          <%= render "users/signupmodal" %>
-          Sign in/up first
+          No favorites, Join the community (sing in/sing up)!
           <!-- </a> -->
           <% end %>
 

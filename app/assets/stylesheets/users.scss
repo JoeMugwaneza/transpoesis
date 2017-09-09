@@ -33,3 +33,11 @@
 .poet-profile {
   padding: 15px;
 }
+
+
+@media screen and (max-width: 767px) {
+
+ .user-form-label {
+    display: none;
+  }
+}

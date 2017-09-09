@@ -10,29 +10,29 @@
         <form id="signupform" class="form-horizontal" role="form">
 
           <div class="form-group">
-            <label for="email" class="col-md-3 control-label">Email</label>
+            <label for="email" class="col-md-3 user-form-label control-label">Email</label>
             <div class="col-md-9">
-              <%= f.email_field :email, autofocus: true, value: "#{current_user.email}", class: "form-control" %>
+              <%= f.email_field :email, autofocus: true, value: "#{current_user.email}", class: "form-control", placeholder:"Email..." %>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="firstname" class="col-md-3 control-label">First Name</label>
+            <label for="firstname" class="col-md-3 user-form-label control-label">First Name</label>
             <div class="col-md-9">
-            <%= f.text_field :first_name, value: "#{current_user.first_name}", class: "form-control"%>
+            <%= f.text_field :first_name, value: "#{current_user.first_name}", class: "form-control", placeholder:"First Name..." %>
             </div>
           </div>
           <div class="form-group">
-            <label for="lastname" class="col-md-3 control-label">Last Name</label>
+            <label for="lastname" class="col-md-3 user-form-label control-label">Last Name</label>
             <div class="col-md-9">
-            <%= f.text_field :last_name, value: "#{current_user.last_name}", class: "form-control" %>
+            <%= f.text_field :last_name, value: "#{current_user.last_name}", class: "form-control",placeholder:"Last Name..." %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="lastname" class="col-md-3 control-label">Profile Picture</label>
             <div class="col-md-9">
-              <%= f.file_field :profile_picture %><br>
+              <%= f.file_field :profile_picture, style:"margin-top: 10px;" %><br>
             </div>
           </div>
            
@@ -51,14 +51,14 @@
          </div>
 
          <div class="form-group">
-          <label for="password" class="col-md-3 control-label">Password</label>
+          <label for="password" class="col-md-3 user-form-label control-label">Password</label>
           <div class="col-md-9">
             <input type="password" class="form-control" name="password" placeholder="Password">
           </div>
         </div>
 
         <div class="form-group">
-          <label for="password" class="col-md-3 control-label">Password confirmation</label>
+          <label for="password" class="col-md-3 user-form-label control-label">Password confirmation</label>
           <div class="col-md-9">
             <input type="password" class="form-control" name="password" placeholder="Re-type Password">
           </div>
@@ -68,7 +68,7 @@
         <div class="form-group">
           <!-- Button -->                                        
           <div class="col-md-offset-3 col-md-9">
-          <input type="submit" name="" value="Sign Up" class="btn btn-info" class="icon-hand-right">
+          <input type="submit" name="" value="Update" class="btn btn-info" class="icon-hand-right" style="margin-top: 10px;">
           </div>
         </div>
       </form>

@@ -89,7 +89,7 @@
     </ul>
   </li> -->
 
-  <li><a title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal"><span class="glyphicon glyphicon-user"></span>Join</a>
+  <li><a title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal"><span class="glyphicon glyphicon-user"></span> <strong>Join</strong></a>
     <!-- modal -->
     
     <%= render :partial => "users/signupmodal" ,:locals=>{:user => @user || User.new} %>
