@@ -12,121 +12,128 @@
   <div class="col-md-12 main-box">
      <!-- edit and delete buttons for posts  
      buttons for poem owner and admin -->
+     <% if current_user && current_user.posts.include?(post) && post.published == true  %>
      <div class="col-md-12">      
       <div class="col-xs-12 col-md-6 col-md-offset-6">      
         <div class="action pull-right">
 
-             <!-- publish button -->
-          <% if current_user && current_user.posts.include?(post) && post.published == true  %>
-          <button type="button" class="btn btn-success btn-xs" title="Published"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
-          <% end %>
+         <!-- publish button -->
+         <button type="button" class="btn btn-success btn-xs" title="Published"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
+         <% end %>
 
-          <% if current_user && current_user.admin == true && post.published == false %>
-          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= post_path(post) %>'" title="Approve to be posted">Publish</button>
+         <% if current_user && current_user.admin == true && post.published == false %>
+         <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= post_path(post) %>'" title="Approve to be posted">Publish</button>
 
-          <% elsif current_user.admin == true && post.published == true%>
-          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= post_path(post) %>'" title="Unplish the poem">Unpublish</button>
-          <% end %>
+         <% elsif current_user.admin == true && post.published == true%>
+         <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= post_path(post) %>'" title="Unplish the poem">Unpublish</button>
+         
+         <% elsif current_user && current_user.posts.include?(post) %>
+         <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= edit_post_path(post) %>'" title="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+
+       </div>
+       <br>
+     </div>
+   </div>
+   <% end %>
 
 
-          <button type="button" class="btn btn-primary btn-xs" title="Firstly, read it"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
-          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= edit_post_path(post) %>'" title="Edit">
-            <span class="glyphicon glyphicon-pencil"></span>
-          </button>
-        </div>
-        <br>
-      </div>
+   <!-- poet and poem & details -->
+   <div class="col-md-12">      
+    <div class="col-md-2">
+
+      <% if post.user.profile_picture.present? %>
+
+      <img src="<%= post.user.profile_picture %>" class="img-responsive index-image" style="background-size: cover; float: right;">
+
+      <% else %>
+      <img src="http://pioneersfestival.networktables.com/resources/userfiles/nopicture.jpg" class="img-responsive index-image" style="background-size: cover; float: right;">
+
+      <% end %>
+
     </div>
-    
-    
-    <!-- poet and poem & details -->
-    <div class="col-md-12">      
-      <div class="col-md-2">
-        <img src="http://pioneersfestival.networktables.com/resources/userfiles/nopicture.jpg" class="img-responsive index-image" style="background-size: cover; float: right;">
-      </div>
 
-      <div class="col-md-9">
-        <!-- poem and poet  -->
-        <div>        
-          <strong style="color: #2f5369"><%= "#{post.user.first_name} #{post.user.last_name}" %></strong> : <a href="<%#= user_path(post) %>"> <%= link_to post.name, post_path(post)%></a>
-        </div>
-        <div class="mic-info col-md-2 col-xs-4 "><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"></i></div>
-        <div class="mic-info text-center col-md-9 col-xs-8"><%= time_ago_in_words(post.updated_at) %> Ago</div>
-        <hr>
+    <div class="col-md-9">
+      <!-- poem and poet  -->
+      <div>        
+        <strong style="color: #2f5369"><%= "#{post.user.first_name} #{post.user.last_name}" %></strong> : <a href="<%#= user_path(post) %>"> <%= link_to post.name, post_path(post)%></a>
       </div>
-    </div>
-    
-    <div class="col-md-9 col-md-offset-2">
-      <div class="poem-body">        
-        <p><%= truncate post.body, length: 250, :omission => "" , :escape => false%> | <%= link_to 'Read More', post_path(post) %></p>
-      </div>
+      <div class="mic-info col-md-2 col-xs-4 "><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"></i></div>
+      <div class="mic-info text-center col-md-9 col-xs-8"><%= time_ago_in_words(post.updated_at) %> Ago</div>
       <hr>
-      
-      <div class="dropup pull-right">
-        <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt" title="Share on different social media"></span></a>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
-          </li>
-          <li>
-            <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
-          </li>
-          <li>
-            <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
-          </li>
-          <li>
-            <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
-          </li>
+    </div>
+  </div>
 
-          <li>
-            <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
-          </li>
+  <div class="col-md-9 col-md-offset-2">
+    <div class="poem-body">        
+      <p><%= truncate post.body, length: 250, :omission => "" , :escape => false%> | <%= link_to 'Read More', post_path(post) %></p>
+    </div>
+    <hr>
 
-        </ul>
-      </div>
+    <div class="dropup pull-right">
+      <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt" title="Share on different social media"></span></a>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
+        </li>
+        <li>
+          <a class="twitter customer share" href="https://twitter.com/share?url=https://codepen.io/patrickkahl&amp;text=Share popup on &amp;hashtags=codepen" title="Twitter share" target="_blank">Twitter</a>
+        </li>
+        <li>
+          <a class="google_plus customer share" href="https://plus.google.com/share?url=https://codepen.io/patrickkahl" title="Google Plus Share" target="_blank">Google+</a>
+        </li>
+        <li>
+          <a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url=https://codepen.io/patrickkahl" title="linkedin Share" target="_blank">LinkedIn</a>
+        </li>
 
-      <!-- Other buttons -->
+        <li>
+          <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
+        </li>
 
-      <!-- begin of Favorite codes -->
-      <div class="votes">
-        <% if (current_user.favorited? post) %>
+      </ul>
+    </div>
 
-        <%= link_to "Unfavorite", post_favorite_path(post), method: :delete, remote: true, class: "unfavorite_post btn btn-primary btn-xs", title:"Remove to Favorites" %>
+    <!-- Other buttons -->
+
+    <!-- begin of Favorite codes -->
+    <div class="votes">
+      <% if (current_user.favorited? post) %>
+
+      <%= link_to "Unfavorite", post_favorite_path(post), method: :delete, remote: true, class: "unfavorite_post btn btn-primary btn-xs", title:"Remove to Favorites" %>
+      <% else %>
+
+      <%= link_to "Favorite", post_favorites_path(post_id: post.id), method: :post, remote: true, class: "favorite_post btn btn-default btn-xs", title:"Add to Favorites" %>
+      <% end %>
+    </div>
+    <!-- end of favorite codes -->
+
+    <div class="text-center">
+      <div class="btn-group" style="margin-top: -45px; margin-left: 30px;">
+
+        <!-- like button -->
+        <!-- if liked -->
+        <% if current_user %>
+        <% if current_user.liked? post %>
+
+        <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
+
         <% else %>
 
-        <%= link_to "Favorite", post_favorites_path(post_id: post.id), method: :post, remote: true, class: "favorite_post btn btn-default btn-xs", title:"Add to Favorites" %>
+        <!-- if not liked -->
+        <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
         <% end %>
-      </div>
-      <!-- end of favorite codes -->
+        <% else %>
+        <!-- if not liked -->
+        <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
+        <% end %>
 
-      <div class="text-center">
-        <div class="btn-group" style="margin-top: -45px; margin-left: 30px;">
-
-          <!-- like button -->
-          <!-- if liked -->
-          <% if current_user %>
-          <% if current_user.liked? post %>
-
-            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
-          
-          <% else %>
-
-            <!-- if not liked -->
-            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
-          <% end %>
-          <% else %>
-            <!-- if not liked -->
-            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
-          <% end %>
-
-          <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span><%= post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
-
-        </div>
+        <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span><%= post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
 
       </div>
+
     </div>
-
   </div>
-  <% end %>
+
+</div>
+<% end %>
 </div>
 </div>
