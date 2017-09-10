@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :authorize_user!, except: [:index]
+  before_action :correct_user,   only: [:edit, :update]
   def index
     @users = User.all
     @recent_posts = Post.published.in_order.endmost(5)
@@ -94,5 +95,10 @@ class UsersController < ApplicationController
   def admin
     @recent_posts = Post.published.in_order.endmost(5)
     
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 end

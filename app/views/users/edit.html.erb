@@ -5,34 +5,34 @@
         <div class="panel-title text-center">Edit Profile</div>
       </div>  
       <div class="panel-body" >
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_for(resource, :validate => true, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
         <form id="signupform" class="form-horizontal" role="form">
 
           <div class="form-group">
             <label for="email" class="col-md-3 control-label">Email</label>
             <div class="col-md-9">
-              <%= f.email_field :email, autofocus: true, value: "#{current_user.email}", class: "form-control" %>
+              <%= f.email_field :email, autofocus: true, value: "#{@user.email}", class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="firstname" class="col-md-3 control-label">First Name</label>
             <div class="col-md-9">
-            <%= f.text_field :first_name, value: "#{current_user.first_name}", class: "form-control"%>
+            <%= f.text_field :first_name, value: "#{@user.first_name}", class: "form-control"%>
             </div>
           </div>
           <div class="form-group">
             <label for="lastname" class="col-md-3 control-label">Last Name</label>
             <div class="col-md-9">
-            <%= f.text_field :last_name, value: "#{current_user.last_name}", class: "form-control" %>
+            <%= f.text_field :last_name, value: "#{@user.last_name}", class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="lastname" class="col-md-3 control-label">Profile Picture</label>
             <div class="col-md-9">
-              <%= f.file_field :profile_picture %><br>
+              <%= f.file_field :profile_picture, value:"#{@user.profile_picture}" %><br>
             </div>
           </div>
            
@@ -44,7 +44,7 @@
 
           <div class="col-md-9">
 
-            <%= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id: "recommends_category_tokens", value: "#{current_user.categories}"}%>
+            <%= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", id: "recommends_category_tokens"}%>
           </div>
 
           </div>

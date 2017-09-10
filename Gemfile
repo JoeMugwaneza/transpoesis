@@ -69,3 +69,4 @@ gem 'devise', '~> 4.3'
 # pagination 
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+gem 'client_side_validations'
