@@ -23,7 +23,7 @@
     </button>
   </div>
 
- <!-- navbar data toggle button -->
+  <!-- navbar data toggle button -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
       <span class="icon-bar"></span>
@@ -87,9 +87,9 @@
         </div>
       </li>
     </ul>
-    </li> -->
+  </li> -->
 
-   <li><a title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal"><span class="glyphicon glyphicon-user"></span>Join</a>
+  <li><a title="Sing in or sign up" data-toggle="modal" data-target="#SignupModal"><span class="glyphicon glyphicon-user"></span> <strong>Join</strong></a>
     <!-- modal -->
     
     <%= render :partial => "users/signupmodal" ,:locals=>{:user => @user || User.new} %>
@@ -124,7 +124,14 @@
 
    <%= yield %>
  </section>
- <div class="footer">©Transpoesis 2017. Developed by <a href="https://www.nexpals.com" target="_blank">Nexpals Ltd</a>.</div>
+ <div class="footer">
+
+   ©Transpoesis 2017. Developed by 
+   <a href="https://www.nexpals.com" target="_blank">Nexpals Ltd</a>
+
+   <a href="#top" class="pull-right btn btn-xs btn-primary">Back to top</a> 
+
+ </div>
  
 
 </body>

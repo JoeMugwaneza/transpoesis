@@ -34,9 +34,14 @@
       <hr>
       
       <div class="dropup pull-right">
-        <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt" title="Share on different social media"></span></a>
-        <ul class="dropdown-menu">
-          <li>
+        <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown" title="Share on different social media"><span class="glyphicon glyphicon-share-alt"></span></a>
+        <ul class="dropdown-menu" style="border-color: transparent;">
+
+        <li class="text-center">          
+          <%= social_share_button_tag(post.name, :url => "http://transpoesis.com#{post_path(post)}", desc: "#{post.body}", via: "transpoesis") %>
+        </li>
+        
+          <!-- <li>
             <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
           </li>
           <li>
@@ -51,7 +56,7 @@
 
           <li>
             <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
-          </li>
+          </li> -->
 
         </ul>
       </div>
@@ -65,11 +70,20 @@
 
           <!-- like button -->
           <!-- if liked -->
-          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="You have liked it!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style="color: white;"> </div></button>
+          <% if current_user %>
+          <% if current_user.liked? post %>
 
+            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
+          
+          <% else %>
 
-          <!-- if not liked -->
-          <!-- <button onclick="location.href='<%#= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span>124 </span><div class="glyphicon glyphicon-heart-empty"> </div></button> -->
+            <!-- if not liked -->
+            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
+          <% end %>
+          <% else %>
+            <!-- if not liked -->
+            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
+          <% end %>
 
           <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span><%= post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
 
