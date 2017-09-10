@@ -25,7 +25,7 @@ class Users::SessionsController < Devise::SessionsController
 
       flash[:warning] = "Your account has be disabled, contact admin for more info"
 
-       redirect_to root_url
+      redirect_to signout_path
     else 
 
       flash[:info] = 'Email or password is invalid'

@@ -1,6 +1,7 @@
 <div class='grid col-md-8 col-xs-12'>
 
   <% @users.each do |user|%>
+  
   <div class='grid--item col-md-4 col-sm-6 col-xs-12'>
   <% if user.profile_picture.present? %>
     <div class='img' style='background-image: url(<%= user.profile_picture %>);'></div>
@@ -14,5 +15,5 @@
     </div>
   </div>
   <% end %>
-  
+
 </div>

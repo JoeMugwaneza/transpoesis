@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   
   before_action :authorize_user!, except: [:index]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :blocked_user,   only: [:new, :create]
   impressionist :actions=>[:show,:index]
   
   def index
@@ -126,5 +127,12 @@ class PostsController < ApplicationController
   def correct_user
     @post = Post.find_by(id: params[:id])
     redirect_to post_path(@post), notice: 'Impossible Request' unless current_user.posts.include?(@post)
+  end
+
+  def blocked_user
+    unless current_user.enabled == true
+      redirect_to root_url
+      flash[:info] = 'Your account is disactived please contact Transpoesis' unless current_user.enabled == true
+    end
   end
 end
