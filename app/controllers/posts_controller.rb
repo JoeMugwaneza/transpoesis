@@ -1,16 +1,16 @@
 class PostsController < ApplicationController
   
   before_action :authorize_user!, except: [:index]
+  before_action :correct_user,   only: [:edit, :update]
   impressionist :actions=>[:show,:index]
   
   def index
- 
-  
 
     if params[:category]
-      @posts = Category.find_by(name: params[:category]).posts.published.paginate(:page => params[:page], :per_page => 4).all.order(:updated_at)
+      @posts = Category.find_by(name: params[:category]).posts.published.order("updated_at DESC").paginate(:page => params[:page], :per_page => 8)
     else
-      @posts = Post.published.paginate(:page => params[:page], :per_page => 4).all.order(:updated_at)
+      @posts = Post.published.order("updated_at DESC").paginate(:page => params[:page], :per_page => 6)
+      
     end
     @recent_posts = Post.published.in_order.endmost(5)
 
@@ -121,4 +121,10 @@ class PostsController < ApplicationController
     def find_post
       @post = Post.find_by(id: params[:id])
     end
+
+
+  def correct_user
+    @post = Post.find_by(id: params[:id])
+    redirect_to post_path(@post), notice: 'Impossible Request' unless current_user.posts.include?(@post)
+  end
 end

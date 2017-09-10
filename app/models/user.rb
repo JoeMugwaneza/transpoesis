@@ -13,8 +13,14 @@ class User < ApplicationRecord
   has_many :recommends, :dependent => :destroy
   has_many :categories, through: :recommends
    
-   validates_uniqueness_of :email
-   validates_presence_of :first_name, :last_name
+  validates_uniqueness_of :email, :message => 'your email is taken'
+  
+  validates_presence_of :first_name, :last_name, :message => 'This field cannot be blank'
+  validates :password, :presence =>true, :confirmation => true, :length => { :within => 6..40 }, :on => :create
+  validates :password, :confirmation   => true, :length => { :within => 6..40 }, :on => :update, :unless => lambda{ |user| user.password.blank? } 
+
+  validates_presence_of :profile_picture, :on => :update
+
 
   acts_as_voter
 

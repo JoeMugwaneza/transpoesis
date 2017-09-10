@@ -2,6 +2,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  
+
   def create
     build_resource(registration_params)
 
@@ -45,5 +47,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update_account_params
     params.require(:user).permit(:first_name, :last_name, :profile_picture, :email, :password, :password_confirmation, :current_password, category_ids: [])
+  end
+
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    redirect_to root_path unless current_user?(@user)
   end
 end
