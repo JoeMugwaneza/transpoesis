@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   mount_uploader :profile_picture, ProfilePictureUploader
 
+  scope :users_with_posts, -> {joins("INNER JOIN posts ON posts.user_id = users.id AND posts.published = 't'").distinct}
+
   has_many :posts, :dependent => :destroy
   has_many :feedbacks, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
@@ -29,5 +31,4 @@ class User < ApplicationRecord
   def category_tokens=(ids)
     self.category_ids = ids 
   end
-
 end
