@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'social-share-button'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'

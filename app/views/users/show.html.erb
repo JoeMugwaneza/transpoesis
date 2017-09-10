@@ -12,11 +12,11 @@
   <div class="col-md-12 main-box">
      <!-- edit and delete buttons for posts  
      buttons for poem owner and admin -->
-     <% if current_user && current_user.posts.include?(post) && post.published == true  %>
      <div class="col-md-12">      
       <div class="col-xs-12 col-md-6 col-md-offset-6">      
         <div class="action pull-right">
 
+         <% if current_user && current_user.posts.include?(post) && post.published == true  %>
          <!-- publish button -->
          <button type="button" class="btn btn-success btn-xs" title="Published"><span class="glyphicon glyphicon-ok-sign"></span> Published</button>
          <% end %>
@@ -30,11 +30,11 @@
          <% elsif current_user && current_user.posts.include?(post) %>
          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='<%= edit_post_path(post) %>'" title="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
 
+         <% end %>
+
        </div>
-       <br>
      </div>
    </div>
-   <% end %>
 
 
    <!-- poet and poem & details -->
@@ -71,8 +71,13 @@
 
     <div class="dropup pull-right">
       <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt" title="Share on different social media"></span></a>
-      <ul class="dropdown-menu">
-        <li>
+      <ul class="dropdown-menu" style="border-color: transparent;">
+
+        <li class="text-center">          
+          <%= social_share_button_tag(post.name, :url => "http://transpoesis.com#{post_path(post)}", desc: "#{post.body}", via: "transpoesis") %>
+        </li>
+
+        <!-- <li>
           <a class="facebook customer share" href="https://www.facebook.com/sharer.php?u=https://codepen.io/patrickkahl" title="Facebook share" target="_blank">Facebook</a>
         </li>
         <li>
@@ -87,7 +92,7 @@
 
         <li>
           <a href="whatsapp://send" data-text="Text you want to Share" class="wa_btn wa_btn_s" data-href="URL you want to share" onClick="ga('send', 'event', { eventCategory: 'Social', eventAction: 'Share', eventLabel: 'WhatsAppShare', eventValue: 0});" >Whatsapp</a>
-        </li>
+        </li> -->
 
       </ul>
     </div>
@@ -135,5 +140,4 @@
 
 </div>
 <% end %>
-</div>
 </div>
