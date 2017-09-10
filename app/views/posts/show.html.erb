@@ -26,7 +26,7 @@
           <!-- <button type="button" class="btn btn-primary btn-xs" title="Feedback" data-toggle="modal" data-target="#FeedbackModal"></span> Feedback</button> -->
 
           <!-- If there's feedback -->
-          <% if current_user && current_user.posts.include?(@post) || current_user.admin == true%>
+          <% if current_user && current_user.posts.include?(@post) && @post.feedbacks.count !=0 || current_user.admin == true%>
 
           <button type="button" class="btn btn-success btn-xs" title="Feedback" data-toggle="modal" data-target="#FeedbackModal"><span class="glyphicon glyphicon-ok-sign"></span> Feedback</button>
           <% end %>

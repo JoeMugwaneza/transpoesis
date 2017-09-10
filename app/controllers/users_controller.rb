@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   before_action :authorize_user!, except: [:index]
   before_action :correct_user,   only: [:edit, :update]
   def index
-    @users = User.all
+    @users = User.joins("INNER JOIN posts ON posts.user_id = users.id AND posts.published = 't'").distinct
+
+
     @recent_posts = Post.published.in_order.endmost(5)
     
     user = User.find_by(id: params[:disable])
