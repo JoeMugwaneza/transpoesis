@@ -16,6 +16,16 @@ class Post < ApplicationRecord
   acts_as_votable
 
 
+  rails_admin do
+    list do
+      exclude_fields :created_at, :updated_at, :id, :impressions, :comments, :feedbacks, :post_categories, :favorites
+      end
+      edit do
+       exclude_fields :created_at, :updated_at, :id
+      end
+  end
+
+
   def self.in_order
     order(updated_at: :asc)
   end
