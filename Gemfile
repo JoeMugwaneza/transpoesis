@@ -67,6 +67,8 @@ gem 'cloudinary', '~> 1.8', '>= 1.8.1'
 gem 'impressionist', '~> 1.6'
 gem 'devise', '~> 4.3'
 
+gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+gem 'rails_admin_rollincode', '~> 1.0'
 # pagination 
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'

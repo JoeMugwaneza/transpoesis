@@ -31,4 +31,24 @@ class User < ApplicationRecord
   def category_tokens=(ids)
     self.category_ids = ids 
   end
+
+
+   def reset_password; nil; end
+
+  def reset_password=(value)
+    return nil if value.blank?
+    self.password = value
+    self.password_confirmation = value
+  end
+
+   rails_admin do
+      configure :reset_password
+      list do
+        include_fields :first_name, :last_name, :email, :admin, :profile_picture, :enabled
+      end
+      edit do
+       exclude_fields :id, :slug, :encrypted_password, :created_at, :updated_at, :remember_created_at, :sign_in_count , :current_sign_in_at, :reset_password_token, :reset_password_sent_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip
+       include_fields :reset_password
+      end
+  end
 end

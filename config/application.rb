@@ -16,4 +16,6 @@ module Transpoesis
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+
+  ENV['RAILS_ADMIN_THEME'] = 'rollincode'
 end

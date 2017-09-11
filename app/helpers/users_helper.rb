@@ -15,8 +15,5 @@ module UsersHelper
     favorites.find_by(post_id: post.id).present?
   end
 
-  def users_with_posts
-    joins("INNER JOIN posts ON posts.user_id = users.id AND posts.published = 't'").distinct
-  end
   
 end
