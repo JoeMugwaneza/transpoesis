@@ -55,31 +55,31 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li><a href="<%= new_post_path %>" class="pull-right btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
+        <li><a href="<%= new_post_path %>" class=" btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
 
 
-        <% if current_user.admin == true %>
+        <% if user_signed_in? %>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle nav-content-format" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <div class="glyphicon glyphicon-user">
           </div><%= current_user.last_name %>
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            
-            <li><a href="">My Poems</a></li>
-            <li><a href="">Edit Profile</a></li>
-            <li><a href="/admin">Admin Dashboard</a></li>
-            <li><a href="/admin">Admin Panel</a></li>
+          <% if current_user && current_user.admin == true %>
+              <li><a href="/users/<%=current_user.id %>">My Poems</a></li>
+              <li><a href="<%= edit_user_path(current_user) %>">Edit Profile</a></li>
+              <li><a href="<%= authorize_personel_path %>">Admin Dashboard</a></li>
+              <li><a href="/admin">Admin Panel</a></li>
+         
+          <% else %>
+              <li><a href="/users/<%=current_user.id %>">My Poems</a></li>
+              <li><a href="<%= edit_user_path(current_user) %>">Edit Profile</a></li>
+          <% end %>
           </ul>
         </li>
 
        <li><a href="<%= signout_path %>" class=" nav-content-format pull-right" role="button" ><strong>Logout</strong></a></li>
-
-        
-        <% elsif current_user && current_user.admin == false %>
-        <li><a href="/users/<%=current_user.id %>" class="nav-content-format pull-right" role="button"><div class="glyphicon glyphicon-user"></div><strong> <%= "#{current_user.last_name}" %></strong></a></li>
-        <li><a href="<%= signout_path %>" class=" nav-content-format pull-right" role="button" ><strong>Logout</strong></a></li>
-        <% else %>
+       <% else %>
 
 
         <!-- <li class="dropdown">
