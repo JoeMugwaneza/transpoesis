@@ -7,7 +7,7 @@ RailsAdmin.config do |config|
     unless current_user && current_user.admin?
       redirect_to(
         main_app.root_path,
-        alert: "You don't seem to be admin, you can log in and continue  your work"
+        alert: "You don't have access to the page, Keep Enjoying Transpoesis Services"
       )
     end
   end
