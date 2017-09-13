@@ -19,7 +19,7 @@
       <!-- poem and poet  -->
       <div class="col-md-9">
         <div>        
-          <a href="<%= user_path(post.user)%>" style="color: #2f5369"><strong><%= "#{post.user.first_name} #{post.user.last_name}" %></strong></a> : <a href="<%= post_path(post) %>"> <%=  post.name%></a>
+          <a href="<%= user_path(post.user)%>" style="color: #2f5369"><strong><%= "#{post.user.first_name} #{post.user.last_name}" %></strong></a> : <button class="btn btn-link" onclick="location.href='<%= post_path(post) %>'"><%= post.name %></button>
         </div>
         <div class="mic-info col-md-2 col-xs-4"><%= post.impressionist_count(:filter=>:session_hash)  %> <i class="glyphicon glyphicon-eye-open"></i></div>
         <div class="mic-info text-center col-md-9 col-xs-8"> <span><%= time_ago_in_words(post.updated_at) %> Ago</span></div>  
