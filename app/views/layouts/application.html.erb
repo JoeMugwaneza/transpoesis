@@ -66,6 +66,8 @@
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <% if current_user && current_user.admin == true %>
+
+
               <li><a href="<%= poet_path(current_user) %>">My Poems</a></li>
               <li><a href="<%= edit_poet_path(current_user) %>">Edit Profile</a></li>
               <li><a href="<%= authorize_personel_path %>">Admin Dashboard</a></li>
