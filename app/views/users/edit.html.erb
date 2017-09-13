@@ -49,7 +49,7 @@
 
           <div class="col-md-9">
 
-            <%= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select align-checkbox", id: "recommends_category_tokens"}%>
+            <%= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select align-checkbox"}%>
           </div>
 
           </div>
