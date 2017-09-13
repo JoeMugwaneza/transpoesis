@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   # end
   def show
     @user = User.find_by(id: params[:id])
-    @user_posts = @user.posts
+    @user_posts = @user.posts.published.order("updated_at DESC").paginate(:page => params[:page], :per_page => 6)
     @recent_posts = Post.published.in_order.endmost(5)
   end
 
