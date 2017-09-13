@@ -37,7 +37,7 @@
   <div class="collapse navbar-collapse" id="myNavbar">
 
     <ul class="nav navbar-nav">   
-      <li><a href="/users">Poets</a></li>
+      <li><a href="<%= poets_path %>">Poets</a></li>
     </ul>
     
 
@@ -55,7 +55,7 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li><a href="<%= new_post_path %>" class=" btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
+        <li><a href="<%= new_poem_path %>" class=" btn btn-default btn-circle btn-outline btn-xs" role="button"><div class="glyphicon glyphicon-plus"></div><strong> Poem</strong></a></li>
 
 
         <% if user_signed_in? %>
@@ -66,14 +66,16 @@
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <% if current_user && current_user.admin == true %>
-              <li><a href="<%= user_path(current_user) %>">My Poems</a></li>
-              <li><a href="<%= edit_user_path(current_user) %>">Edit Profile</a></li>
+
+
+              <li><a href="<%= poet_path(current_user) %>">My Poems</a></li>
+              <li><a href="<%= edit_poet_path(current_user) %>">Edit Profile</a></li>
               <li><a href="<%= authorize_personel_path %>">Admin Dashboard</a></li>
               <li><a href="/admin">Admin Panel</a></li>
          
           <% else %>
-              <li><a href="<%= user_path(current_user) %>">My Poems</a></li>
-              <li><a href="<%= edit_user_path(current_user) %>">Edit Profile</a></li>
+              <li><a href="<%= poet_path(current_user)%>">My Poems</a></li>
+              <li><a href="<%= edit_poet_path(current_user) %>">Edit Profile</a></li>
           <% end %>
           </ul>
         </li>

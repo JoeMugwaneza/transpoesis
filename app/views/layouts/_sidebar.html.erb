@@ -19,7 +19,7 @@
 
         <div id="group-2" class="list-group collapse out">
           <% @recent_posts.find_each do |post| %>
-          <a class="list-group-item" href="<%= post_path(post) %>">
+          <a class="list-group-item" href="<%= poem_path(post) %>">
             <span class="badge pull-right"><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name %>
           </a>
           <% end %>
@@ -39,7 +39,7 @@
         <% current_user.categories.each do |category| %>
         <div id="group-3" class="list-group collapse out">
           <% category.posts.published.last(5).each do |post| %>
-          <a class="list-group-item" href="<%= post_path(post) %>">
+          <a class="list-group-item" href="<%= poem_path(post) %>">
             <span class="badge pull-right"><%= post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%= post.name%>
           </a>
           <% end %>
@@ -58,7 +58,7 @@
 
             <!-- <a class="list-group-item" href=""> -->
             <% if user_signed_in? %>
-            <button type="button" class="btn btn-info btn-xs pull-right" title="Edit your profile" onclick="location.href='<%= edit_user_path(current_user) %>'" >Click Here</button>
+            <button type="button" class="btn btn-info btn-xs pull-right" title="Edit your profile" onclick="location.href='<%= edit_poet_path(current_user) %>'" >Click Here</button>
             No recommends, Add your favorite categories
             <!-- </a> -->
             <% else %>
@@ -96,7 +96,7 @@
         </h4>
         <div id="group-4" class="list-group collapse out">
           <% current_user.favorites.find_each do |favorite| %>
-          <a class="list-group-item" href="<%= post_path(favorite.post) %>">
+          <a class="list-group-item" href="<%= poem_path(favorite.post) %>">
             <span class="badge pull-right"><%= favorite.post.impressionist_count(:filter=>:session_hash) %> <i class="glyphicon glyphicon-eye-open"> </i></span> <%=favorite.post.name%>
           </a>
           <% end %>
@@ -136,7 +136,7 @@
         </h4>
         <div id="group-5" class="list-group collapse in">
           <% Category.all.find_each do |category| %>
-          <a class="list-group-item" href="/posts?category=<%= category.name %>">
+          <a class="list-group-item" href="/poems?category=<%= category.name %>">
             <span class="badge"><%= category.posts.published.size %></span><%=category.name %>
           </a>
           <% end %>
