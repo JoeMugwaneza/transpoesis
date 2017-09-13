@@ -17,15 +17,19 @@ Rails.application.routes.draw do
   #   get 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
   #   end
 
-  resources :users
-  resources :posts do
-    resources :favorites, only: [:create, :destroy]
+  resources :poets, :controller => 'users'
+
+  resources :poems, :controller => 'posts' do
     member do 
       get 'like', to: "posts#like"
       get 'unlike', to: "posts#unlike"
     end
-    resources :comments, :feedbacks
     end
+
+  resources :posts do 
+    resources :favorites, only: [:create, :destroy]
+    resources :comments, :feedbacks
+  end
     
 #customized routes 
 
