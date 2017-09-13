@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     # end
   # end
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @user_posts = @user.posts.published.order("updated_at DESC").paginate(:page => params[:page], :per_page => 6)
     @recent_posts = Post.published.in_order.endmost(5)
   end
@@ -64,11 +64,11 @@ class UsersController < ApplicationController
 
   def edit
     @recent_posts = Post.published.in_order.endmost(5)
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     
     params[:user].delete(:password) if params[:user][:password].blank?
     if @user.update_attributes(update_account_params)

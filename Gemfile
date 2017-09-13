@@ -73,3 +73,6 @@ gem 'rails_admin_rollincode', '~> 1.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 gem 'client_side_validations'
+
+#friendly_url
+gem 'friendly_id', '~> 5.2', '>= 5.2.1'
