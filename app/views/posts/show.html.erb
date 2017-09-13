@@ -14,7 +14,7 @@
           <button type="button" class="btn btn-primary btn-xs" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Approve to be posted">Publish</button>
 
           <% elsif current_user.admin == true && @post.published == true%>
-          <button type="button" class="btn btn-primary btn-xs pull-right" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Unplish the poem">Unpublish</button>
+          <button type="button" class="btn btn-primary btn-xs" onclick="location.href='/posts?approve=<%= @post.id%>'" title="Unplish the poem">Unpublish</button>
           <% end %>
 
           <!-- feedback modal -->
@@ -72,20 +72,22 @@
 
 
       <div class="dropup pull-right">
-       <!--  <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
+
+        <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-share-alt"></span></a>
         <ul class="dropdown-menu" style="border-color: transparent;">
         <li class="text-center">
           
-        <%#= social_share_button_tag(@post.name, :url => "http://transpoesis.com#{post_path(@post)}", desc: "#{@post.body}", via: "transpoesis") %>
+        <%= social_share_button_tag(@post.name, :url => "http://transpoesis.com#{post_path(@post)}", desc: "#{@post.body}", via: "transpoesis") %>
 
-        </li> -->
+        </li>
+
+        </ul>
 
         <body>
           <!-- Go to www.addthis.com/dashboard to customize your tools -->
           <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59b8e5a86114ef65"></script> 
         </body>
 
-        </ul>
       </div>
 
       <%#= render "designs/signupmodal" %><!--  signup modal -->
