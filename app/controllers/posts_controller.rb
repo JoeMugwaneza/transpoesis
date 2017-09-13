@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :authorize_user!, except: [:index]
   before_action :correct_user,   only: [:edit, :update]
   before_action :blocked_user,   only: [:new, :create]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
   impressionist :actions=>[:show,:index]
   
   def index
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
     @recent_posts = Post.published.in_order.endmost(5)
     # @post.punch(request)
 
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     impressionist(@post)
   end
 
@@ -122,12 +123,12 @@ class PostsController < ApplicationController
     end
 
     def find_post
-      @post = Post.find_by(id: params[:id])
+      @post = Post.find(params[:id])
     end
 
 
   def correct_user
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     redirect_to post_path(@post), notice: 'Impossible Request' unless current_user.posts.include?(@post)
   end
 

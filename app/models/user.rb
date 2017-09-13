@@ -25,6 +25,20 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+
+  include FriendlyId
+
+   friendly_id :full_name, use: [:slugged, :finders]
+
+
+  def should_generate_new_friendly_id?
+    full_name || super
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   include UsersHelper
 
 

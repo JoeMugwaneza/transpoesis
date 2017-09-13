@@ -15,6 +15,16 @@ class Post < ApplicationRecord
   # acts_as_punchable
   acts_as_votable
 
+   include FriendlyId
+
+   friendly_id :name, use: [:slugged, :finders]
+
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
+
+
   validates_presence_of :name, :message => 'You will have to provide the name of your peom'
   validates_presence_of :body, :message => 'Provide your poem'
 
