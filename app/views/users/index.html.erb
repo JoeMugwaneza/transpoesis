@@ -10,7 +10,7 @@
   <% end %>
     <div class='container' style="width: 100%;">
       <h2><%=user.first_name %> <%= user.last_name %></h2>
-      <a href="/users/<%= user.id %>" class="label label-default" rel="tooltip" title="Click to View my Poems">View <span class="badge"><%= user.posts.size %></span> Poems</a></p>
+      <a href="<%= poet_path(user)%>" class="label label-default" rel="tooltip" title="Click to View my Poems">View <span class="badge"><%= user.posts.size %></span> Poems</a></p>
       <!-- <div class='desc'>Photo by Ales Krivec</div> -->
     </div>
   </div>
