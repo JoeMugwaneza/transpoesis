@@ -112,3 +112,7 @@ p {
 .form-group .form-control {
   margin-top: 10px;
 }
+
+.align-checkbox {
+  width: 50%;
+}
