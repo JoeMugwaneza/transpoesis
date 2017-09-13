@@ -6,7 +6,7 @@
 
         <h4 class="form-control text-center" style="background-color: #112a3e; color: white;"> New Poem </h4>  
 
-        <%= form_for @post do |f| %>
+        <%= form_for @post, validate: true do |f| %>
 
         <div class="form-group">
           <label for="email" class="col-md-2 control-label">Title</label>
@@ -30,8 +30,7 @@
             <ul>              
                 <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, {multiple: true, class: "chosen-select", style:"height: 150px; width: 100px;", id:"post_category_tokens"} %>
             </ul>
-          
-          </div>
+         
           </div>
         </div>
 

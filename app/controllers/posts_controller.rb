@@ -53,6 +53,8 @@ class PostsController < ApplicationController
   end
 
   def create
+    @disable_sidebar = true
+    @recent_posts = Post.published.in_order.endmost(5)
     @post = current_user.posts.build(post_params)
     respond_to do |format|
 

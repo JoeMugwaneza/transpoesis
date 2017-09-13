@@ -15,6 +15,12 @@ class Post < ApplicationRecord
   # acts_as_punchable
   acts_as_votable
 
+  validates_presence_of :name, :message => 'You will have to provide the name of your peom'
+  validates_presence_of :body, :message => 'Provide your poem'
+
+  validates_presence_of :category_ids
+
+
 
   rails_admin do
     list do
