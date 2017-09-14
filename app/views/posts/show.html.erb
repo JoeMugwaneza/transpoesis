@@ -98,9 +98,9 @@
       <div class="text-center">
         <div class="btn-group" style="margin-top: -45px; margin-left: 30px;">
          <% if current_user.liked? @post %>             
-         <a href="/posts/<%= @post.id%>/unlike" class="btn btn-primary btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart"> </div></a>
+         <a href="/poems/<%= @post.slug%>/unlike" class="btn btn-primary btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart"> </div></a>
          <% else %>
-         <a href="/posts/<%= @post.id%>/like" class="btn btn-default btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
+         <a href="/poems/<%= @post.slug%>/like" class="btn btn-default btn-xs"><span><%= @post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></a>
 
          <% end %>
          <a href="" class="btn btn-default btn-xs"><span><%= @post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>

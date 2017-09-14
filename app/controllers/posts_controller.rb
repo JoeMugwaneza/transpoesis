@@ -97,21 +97,21 @@ class PostsController < ApplicationController
 
 
   def like
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     @post.liked_by current_user
 
     respond_to do |format|
-      format.html { redirect_to post_path(@post) }
+      format.html { redirect_to poem_path(@post) }
       format.js { render layout: false }
     end
   end
 
   def unlike
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     @post.unliked_by current_user
 
     respond_to do |format|
-      format.html { redirect_to post_path(@post) }
+      format.html { redirect_to poem_path(@post) }
       format.js { render layout: false }
     end
   end
