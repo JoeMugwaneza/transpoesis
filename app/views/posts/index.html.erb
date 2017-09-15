@@ -37,17 +37,26 @@
         <a class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown" title="Share on different social media"><span class="glyphicon glyphicon-share-alt"></span></a>
         <ul class="dropdown-menu" style="border-color: transparent;">
 
-        <li class="text-center">          
-          <%= social_share_button_tag(post.name, :url => "http://transpoesis.com#{post_path(post)}", desc: "#{post.body}", via: "transpoesis") %>
-        </li>
-  
+          <li class="text-center">          
+            <%= social_share_button_tag(post.name, :url => "http://transpoesis.com#{post_path(post)}", desc: "#{post.body}", via: "transpoesis") %>
+          </li>
+
 
         </ul>
       </div>
 
       <!-- Other buttons -->
-
+      <% if current_user %>
+        <div class="votes">
+          <% if (current_user.favorited? post) %>
+            <%= link_to "Unfavorite", post_favorite_path(post), method: :delete, remote: true, class: "unfavorite_post btn btn-primary btn-xs", title:"Remove to Favorites" %>
+          <% else %>
+            <%= link_to "Favorite", post_favorites_path(post_id: post.id), method: :post, remote: true, class: "favorite_post btn btn-default btn-xs", title:"Add to Favorites" %>
+          <% end %>
+        </div>
+      <% else %>
       <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs pull-left" title="Firstly, view the whole poem, please!"><span></span><div class="glyphicon glyphicon-plus"> </div> Favorites</button>
+      <% end %>
 
       <div class="text-center">
         <div class="btn-group">
@@ -57,16 +66,16 @@
           <% if current_user %>
           <% if current_user.liked? post %>
 
-            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
+          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-primary btn-xs" title="Read the whole thing, Please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart" style=""> </div></button>
           
           <% else %>
 
-            <!-- if not liked -->
-            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
+          <!-- if not liked -->
+          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" data-toggle="modal" data-target="#SignupModal"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
           <% end %>
           <% else %>
-            <!-- if not liked -->
-            <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
+          <!-- if not liked -->
+          <button onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, please!"><span><%= post.get_likes.size %> </span><div class="glyphicon glyphicon-heart-empty"> </div></button>
           <% end %>
 
           <a onclick="location.href='<%= post_path(post) %>'" class="btn btn-default btn-xs" title="Read the whole thing, Please!"><span><%= post.comments.size %> </span><div class="glyphicon glyphicon-comment"> </div></a>
@@ -80,7 +89,7 @@
 
   <% end %>
   <div>
-    
+
     <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
   </div>
 </div>
