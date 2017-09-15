@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       get 'like', to: "posts#like"
       get 'unlike', to: "posts#unlike"
     end
-    end
+  end
 
   resources :posts do 
     resources :favorites, only: [:create, :destroy]

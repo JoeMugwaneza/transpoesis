@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def index
 
     if params[:category]
-      @posts = Category.find_by(name: params[:category]).posts.published.order("updated_at DESC").paginate(:page => params[:page], :per_page => 8)
+      @posts = Category.find_by(name: params[:category]).posts.published.order("updated_at DESC").paginate(:page => params[:page], :per_page => 6)
     else
       @posts = Post.published.order("updated_at DESC").paginate(:page => params[:page], :per_page => 6)
       
