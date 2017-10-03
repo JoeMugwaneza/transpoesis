@@ -1,0 +1,25 @@
+<div>
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">           
+      <div class="item active">
+        <img src="http://res.cloudinary.com/transpoesis/image/upload/v1507037081/vibration-2_lzlfpx.jpg" alt="Slide1">        
+      </div>
+
+      <div class="item">
+        <img src="http://res.cloudinary.com/transpoesis/image/upload/v1507037089/vibration-3_ywymz2.jpg" alt="Slide2">
+      </div>
+    </div>          
+    <div class="carousel-controls">
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-angle-double-left fa-lg"></i></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-angle-double-right fa-lg" style="margin-top: -20px;"></i></a>
+    </div>
+  </div>   
+</div>
+
+<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script>
+  $('#myCarousel').carousel({
+    interval:   4000
+  });
+</script>
