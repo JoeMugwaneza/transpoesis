@@ -135,7 +135,7 @@
           Categories
         </h4>
         <div id="group-5" class="list-group collapse in">
-          <% Category.all.find_each do |category| %>
+          <% Category.joins(:posts).distinct.find_each do |category| %>
           <a class="list-group-item" href="/poems?category=<%= category.name %>">
             <span class="badge"><%= category.posts.published.size %></span><%=category.name %>
           </a>
